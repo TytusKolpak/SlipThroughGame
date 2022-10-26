@@ -7,6 +7,7 @@ namespace Slip_through
     {
         String panelName = "panel2";
         String panelNumberString = "0";
+        String newPanel = "panel";
         int panelNumberInt = 0;
 
         public Form1()
@@ -15,11 +16,10 @@ namespace Slip_through
         }
         private void checkPanelNumber(Control parent)
         {
-            pictureBox1.Parent = panel1;
             panelName = parent.Name.ToString();
-            panelNumberString = Regex.Match(panelName, @"\d+").Value;
-            panelNumberInt = Int32.Parse(panelNumberString);
-            label1.Text = panelNumberString;
+            panelNumberString = Regex.Match(panelName, @"\d+").Value; //single numeric value in string form
+            panelNumberInt = Int32.Parse(panelNumberString);//single numeric value in int form
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -44,6 +44,7 @@ namespace Slip_through
 
         private void button4_Click(object sender, EventArgs e)
         {
+            checkPanelNumber(pictureBox1.Parent);
         }
 
         private void button5_Click(object sender, EventArgs e)
