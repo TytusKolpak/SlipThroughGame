@@ -24,21 +24,26 @@ namespace Slip_through
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            pictureBox1.Parent = panel1;
+            pictureBox1.Location = new Point(0, 0);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            pictureBox1.Parent = panel2;
+            pictureBox1.Location = new Point(0, 0);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            pictureBox1.Parent = panel3;
+            pictureBox1.Location = new Point(0, 0);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            pictureBox1.Parent = panel10;
+            pictureBox1.Location = new Point(0, 0);
 
         }
 
