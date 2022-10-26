@@ -2,48 +2,28 @@ namespace Slip_through
 {
     public partial class Form1 : Form
     {
+        String nextPanel = "panel1";
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            pictureBox1.Parent = panel1;
-            pictureBox1.Location = new Point(0, 0);
+            movePiece(1);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            pictureBox1.Parent = panel2;
-            pictureBox1.Location = new Point(0, 0);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            pictureBox1.Parent = panel3;
-            pictureBox1.Location = new Point(0, 0);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            pictureBox1.Parent = panel10;
-            pictureBox1.Location = new Point(0, 0);
 
         }
 
@@ -57,14 +37,43 @@ namespace Slip_through
 
         }
 
-        private void pictureBox1_Click_1(object sender, EventArgs e)
+        private void GoButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void GoButton_Click(object sender, EventArgs e)
+        private void SlipButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void movePiece(int steps)
+        {
+            switch (steps)
+            {
+                case 1:
+                    pictureBox1.Parent = panel1;
+                    break;
+                case 2:
+                    pictureBox1.Parent = panel2;
+                    break;
+                case 3:
+                    pictureBox1.Parent = panel3;
+                    break;
+                case 4:
+                    pictureBox1.Parent = panel4;
+                    break;
+                case 5:
+                    pictureBox1.Parent = panel5;
+                    break;
+                case 6:
+                    pictureBox1.Parent = panel6;
+                    break;
+                default:
+                    Console.WriteLine("Something is wrong");
+                    break;
+            }
+            pictureBox1.Location = new Point(0, 0);
         }
     }
 }
