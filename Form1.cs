@@ -16,25 +16,27 @@ namespace Slip_through
 
         private void button2_Click(object sender, EventArgs e)
         {
+            movePiece(2);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            movePiece(3);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            movePiece(4);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            movePiece(5);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            movePiece(6);
         }
 
         private void GoButton_Click(object sender, EventArgs e)
