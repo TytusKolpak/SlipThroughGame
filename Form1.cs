@@ -8,16 +8,18 @@ namespace Slip_through
     {
         String panelName = "panel1";
         String panelNumberString = "0";
-        String newPanelNumber = "0";
         int panelNumberInt = 0;
+        int pictureBoxNumber = 0;
         Panel[] panelArray;
+        PictureBox[] pictureBoxArray;
+        PictureBox currentPictureBox;
 
         public Form1()
         {
             InitializeComponent();
-            createPanelArray();
+            createArrays();
         }
-        private void createPanelArray()
+        private void createArrays()
         {
             panelArray = new Panel[30]
             {
@@ -28,6 +30,12 @@ namespace Slip_through
                 panel21, panel22, panel23, panel24, panel25,
                 panel26, panel27, panel28, panel29, panel30,
             };
+
+            pictureBoxArray = new PictureBox[3]
+            {
+                pictureBox1, pictureBox2, pictureBox3,
+            };
+            currentPictureBox = pictureBoxArray[0];
         }
 
         private void changePanel(Control parent, int steps)
@@ -38,38 +46,39 @@ namespace Slip_through
             panelNumberInt += steps - 1;
             if (panelNumberInt < 30)
             {
-                pictureBox1.Parent = panelArray[panelNumberInt];
+                currentPictureBox.Parent = panelArray[panelNumberInt];
+                currentPictureBox.BringToFront();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            changePanel(pictureBox1.Parent, 1);
+            changePanel(currentPictureBox.Parent, 1);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            changePanel(pictureBox1.Parent, 2);
+            changePanel(currentPictureBox.Parent, 2);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            changePanel(pictureBox1.Parent, 3);
+            changePanel(currentPictureBox.Parent, 3);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            changePanel(pictureBox1.Parent, 4);
+            changePanel(currentPictureBox.Parent, 4);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            changePanel(pictureBox1.Parent, 5);
+            changePanel(currentPictureBox.Parent, 5);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            changePanel(pictureBox1.Parent, 6);
+            changePanel(currentPictureBox.Parent, 6);
         }
 
         private void GoButton_Click(object sender, EventArgs e)
@@ -79,6 +88,34 @@ namespace Slip_through
 
         private void SlipButton_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void NextPlayerButton_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxNumber < 2)
+            {
+                pictureBoxNumber++;
+            }
+            else
+            {
+                pictureBoxNumber = 0;
+            }
+
+            if (pictureBoxNumber == 0)
+            {
+                label1.Text = "Warrior";
+            }
+            else if (pictureBoxNumber == 1)
+            {
+                label1.Text = "Archer";
+            }
+            else
+            {
+                label1.Text = "Wizard";
+            }
+
+            currentPictureBox = pictureBoxArray[pictureBoxNumber];
 
         }
     }
