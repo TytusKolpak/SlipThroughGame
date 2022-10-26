@@ -15,50 +15,9 @@ namespace Slip_through
         public Form1()
         {
             InitializeComponent();
+            createPanelArray();
         }
-
-        private void changePanel(Control parent, int steps)
-        {
-            panelName = parent.Name.ToString();
-            panelNumberString = Regex.Match(panelName, @"\d+").Value; //single numeric value in string form
-            panelNumberInt = Int32.Parse(panelNumberString);//single numeric value in int form
-            panelNumberInt += steps;
-            pictureBox1.Parent = panelArray[panelNumberInt];
-        }
-
-        private void checkPanelNumber(Control parent)
-        {
-            panelName = parent.Name.ToString();
-            panelNumberString = Regex.Match(panelName, @"\d+").Value; //single numeric value in string form
-            panelNumberInt = Int32.Parse(panelNumberString);//single numeric value in int form
-            label1.Text = panelNumberString;
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Parent = panel1;
-            pictureBox1.Location = new Point(0, 0);
-            checkPanelNumber(pictureBox1.Parent);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Parent = panel2;
-            pictureBox1.Location = new Point(0, 0);
-            checkPanelNumber(pictureBox1.Parent);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Parent = panel3;
-            pictureBox1.Location = new Point(0, 0);
-            checkPanelNumber(pictureBox1.Parent);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            changePanel(pictureBox1.Parent, 4);
-        }
-        private void test123(Panel panel)
+        private void createPanelArray()
         {
             panelArray = new Panel[30]
             {
@@ -70,14 +29,47 @@ namespace Slip_through
                 panel26, panel27, panel28, panel29, panel30,
             };
         }
+
+        private void changePanel(Control parent, int steps)
+        {
+            panelName = parent.Name.ToString();
+            panelNumberString = Regex.Match(panelName, @"\d+").Value; //single numeric value in string form
+            panelNumberInt = Int32.Parse(panelNumberString);//single numeric value in int form
+            panelNumberInt += steps - 1;
+            if (panelNumberInt < 30)
+            {
+                pictureBox1.Parent = panelArray[panelNumberInt];
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            changePanel(pictureBox1.Parent, 1);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            changePanel(pictureBox1.Parent, 2);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            changePanel(pictureBox1.Parent, 3);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            changePanel(pictureBox1.Parent, 4);
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
-            test123(panel1);
+            changePanel(pictureBox1.Parent, 5);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            changePanel(pictureBox1.Parent, 6);
         }
 
         private void GoButton_Click(object sender, EventArgs e)
