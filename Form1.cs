@@ -10,14 +10,17 @@ namespace Slip_through
         String panelNumberString = "0";
         int panelNumberInt = 0;
         int pictureBoxNumber = 0;
-        Panel[] panelArray;
-        PictureBox[] pictureBoxArray;
+        Panel[] panelArray = new Panel[0];
+        PictureBox[] pictureBoxArray = new PictureBox[0];
         PictureBox currentPictureBox;
+        int turn = 1;
 
         public Form1()
         {
             InitializeComponent();
             createArrays();
+            label2.Text = "Turn :";
+            currentPictureBox = Warrior;
         }
         private void createArrays()
         {
@@ -33,66 +36,41 @@ namespace Slip_through
 
             pictureBoxArray = new PictureBox[3]
             {
-                pictureBox1, pictureBox2, pictureBox3,
+                Warrior, Archer, Wizard,
             };
             currentPictureBox = pictureBoxArray[0];
         }
 
-        private void changePanel(Control parent, int steps)
+        private void moveThisBy(Control parent, int steps)
         {
             panelName = parent.Name.ToString();
             panelNumberString = Regex.Match(panelName, @"\d+").Value; //single numeric value in string form
             panelNumberInt = Int32.Parse(panelNumberString);//single numeric value in int form
-            panelNumberInt += steps - 1;
-            if (panelNumberInt < 30)
+            if (panelNumberInt < 30) //will have a place to end on
             {
-                currentPictureBox.Parent = panelArray[panelNumberInt];
-                currentPictureBox.BringToFront();
+                for (int i = 0; i < steps; i++)
+                {
+                    Thread.Sleep(250);
+                    if (SlipBox.Checked == true && panelNumberInt%5==0 && panelNumberInt>=10) // that is wrong
+                    {
+                        panelNumberInt -= 9; //works, but updates in wrong moment
+                    }
+                    else
+                    {
+                        panelNumberInt++;
+                    }
+                    currentPictureBox.Parent = panelArray[panelNumberInt-1];
+                    //-1 is because panel1 has index 0 : x on x-1
+                    currentPictureBox.BringToFront();
+                    currentPictureBox.Update();
+                }
             }
+            nextPlayer();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void nextPlayer() //complete, works properly
         {
-            changePanel(currentPictureBox.Parent, 1);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            changePanel(currentPictureBox.Parent, 2);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            changePanel(currentPictureBox.Parent, 3);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            changePanel(currentPictureBox.Parent, 4);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            changePanel(currentPictureBox.Parent, 5);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            changePanel(currentPictureBox.Parent, 6);
-        }
-
-        private void GoButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SlipButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void NextPlayerButton_Click(object sender, EventArgs e)
-        {
+            
             if (pictureBoxNumber < 2)
             {
                 pictureBoxNumber++;
@@ -100,7 +78,10 @@ namespace Slip_through
             else
             {
                 pictureBoxNumber = 0;
+                turn++;
             }
+
+            TurnLabel.Text = turn.ToString();
 
             if (pictureBoxNumber == 0)
             {
@@ -116,6 +97,50 @@ namespace Slip_through
             }
 
             currentPictureBox = pictureBoxArray[pictureBoxNumber];
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            moveThisBy(currentPictureBox.Parent, 1);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            moveThisBy(currentPictureBox.Parent, 2);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            moveThisBy(currentPictureBox.Parent, 3);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            moveThisBy(currentPictureBox.Parent, 4);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            moveThisBy(currentPictureBox.Parent, 5);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            moveThisBy(currentPictureBox.Parent, 6);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SlipBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
