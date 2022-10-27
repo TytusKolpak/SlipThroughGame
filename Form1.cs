@@ -117,16 +117,22 @@ namespace Slip_through
         private void button4_Click(object sender, EventArgs e)
         {
             moveThisBy(currentPictureBox.Parent, 4);
+            pictureBoxPlayer.Image = Properties.Resources.knight;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             moveThisBy(currentPictureBox.Parent, 5);
+            pictureBoxPlayer.Image = Properties.Resources.wizard;
+            labelEnemyHitPoints.Text = "83";
+            tableLayoutPanelEnemy.Visible = true;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            pictureBoxPlayer.Image = Properties.Resources.archer;
             moveThisBy(currentPictureBox.Parent, 6);
+            tableLayoutPanelEnemy.Visible = false;
         }
 
         private void SlipBox_CheckedChanged(object sender, EventArgs e)

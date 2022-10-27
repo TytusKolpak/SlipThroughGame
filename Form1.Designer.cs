@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -78,7 +77,7 @@
             this.SlipBox = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelPlayer = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.labelPlayerHitPoints = new System.Windows.Forms.Label();
             this.labelPlayerEffectivness = new System.Windows.Forms.Label();
@@ -88,8 +87,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.pictureBoxFramed = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxPlayer = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanelEnemy = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.labelEnemyHitPoints = new System.Windows.Forms.Label();
             this.labelEnemyEffectivness = new System.Windows.Forms.Label();
@@ -99,7 +98,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxEnemy = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel25.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cerberus)).BeginInit();
@@ -111,12 +110,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Warrior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Archer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wizard)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanelPlayer.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFramed)).BeginInit();
-            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayer)).BeginInit();
+            this.tableLayoutPanelEnemy.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEnemy)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -384,7 +383,7 @@
             // Cerberus
             // 
             this.Cerberus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Cerberus.Image = ((System.Drawing.Image)(resources.GetObject("Cerberus.Image")));
+            this.Cerberus.Image = global::Slip_through.Properties.Resources.cerberus;
             this.Cerberus.Location = new System.Drawing.Point(49, 48);
             this.Cerberus.Name = "Cerberus";
             this.Cerberus.Size = new System.Drawing.Size(50, 50);
@@ -536,7 +535,7 @@
             // Werewolf
             // 
             this.Werewolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Werewolf.Image = ((System.Drawing.Image)(resources.GetObject("Werewolf.Image")));
+            this.Werewolf.Image = global::Slip_through.Properties.Resources.werewolf;
             this.Werewolf.Location = new System.Drawing.Point(49, 48);
             this.Werewolf.Name = "Werewolf";
             this.Werewolf.Size = new System.Drawing.Size(50, 50);
@@ -560,7 +559,7 @@
             // Wolf
             // 
             this.Wolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Wolf.Image = ((System.Drawing.Image)(resources.GetObject("Wolf.Image")));
+            this.Wolf.Image = global::Slip_through.Properties.Resources.wolf1;
             this.Wolf.Location = new System.Drawing.Point(49, 49);
             this.Wolf.Name = "Wolf";
             this.Wolf.Size = new System.Drawing.Size(50, 50);
@@ -687,7 +686,7 @@
             // Warrior
             // 
             this.Warrior.BackColor = System.Drawing.Color.Transparent;
-            this.Warrior.Image = ((System.Drawing.Image)(resources.GetObject("Warrior.Image")));
+            this.Warrior.Image = global::Slip_through.Properties.Resources.knight;
             this.Warrior.Location = new System.Drawing.Point(0, 0);
             this.Warrior.Margin = new System.Windows.Forms.Padding(0);
             this.Warrior.Name = "Warrior";
@@ -700,7 +699,7 @@
             // 
             this.Archer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Archer.BackColor = System.Drawing.Color.Transparent;
-            this.Archer.Image = ((System.Drawing.Image)(resources.GetObject("Archer.Image")));
+            this.Archer.Image = global::Slip_through.Properties.Resources.archer;
             this.Archer.Location = new System.Drawing.Point(0, 48);
             this.Archer.Margin = new System.Windows.Forms.Padding(0);
             this.Archer.Name = "Archer";
@@ -713,7 +712,7 @@
             // 
             this.Wizard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Wizard.BackColor = System.Drawing.Color.Transparent;
-            this.Wizard.Image = ((System.Drawing.Image)(resources.GetObject("Wizard.Image")));
+            this.Wizard.Image = global::Slip_through.Properties.Resources.wizard;
             this.Wizard.Location = new System.Drawing.Point(50, 0);
             this.Wizard.Margin = new System.Windows.Forms.Padding(0);
             this.Wizard.Name = "Wizard";
@@ -798,25 +797,25 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "0";
             // 
-            // tableLayoutPanel2
+            // tableLayoutPanelPlayer
             // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel2.BackgroundImage")));
-            this.tableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.pictureBoxFramed, 0, 0);
-            this.tableLayoutPanel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(501, 1);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.33334F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.66667F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(232, 300);
-            this.tableLayoutPanel2.TabIndex = 24;
+            this.tableLayoutPanelPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanelPlayer.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanelPlayer.BackgroundImage = global::Slip_through.Properties.Resources.trees;
+            this.tableLayoutPanelPlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanelPlayer.ColumnCount = 1;
+            this.tableLayoutPanelPlayer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPlayer.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanelPlayer.Controls.Add(this.pictureBoxPlayer, 0, 0);
+            this.tableLayoutPanelPlayer.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanelPlayer.Location = new System.Drawing.Point(501, 1);
+            this.tableLayoutPanelPlayer.Name = "tableLayoutPanelPlayer";
+            this.tableLayoutPanelPlayer.RowCount = 2;
+            this.tableLayoutPanelPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.33334F));
+            this.tableLayoutPanelPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.66667F));
+            this.tableLayoutPanelPlayer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelPlayer.Size = new System.Drawing.Size(232, 300);
+            this.tableLayoutPanelPlayer.TabIndex = 24;
             // 
             // tableLayoutPanel3
             // 
@@ -937,36 +936,36 @@
             this.label8.Text = "HP";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBoxFramed
+            // pictureBoxPlayer
             // 
-            this.pictureBoxFramed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.pictureBoxPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxFramed.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxFramed.Image")));
-            this.pictureBoxFramed.Location = new System.Drawing.Point(3, 47);
-            this.pictureBoxFramed.Name = "pictureBoxFramed";
-            this.pictureBoxFramed.Size = new System.Drawing.Size(226, 182);
-            this.pictureBoxFramed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxFramed.TabIndex = 22;
-            this.pictureBoxFramed.TabStop = false;
+            this.pictureBoxPlayer.Image = global::Slip_through.Properties.Resources.knight;
+            this.pictureBoxPlayer.Location = new System.Drawing.Point(3, 47);
+            this.pictureBoxPlayer.Name = "pictureBoxPlayer";
+            this.pictureBoxPlayer.Size = new System.Drawing.Size(226, 182);
+            this.pictureBoxPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPlayer.TabIndex = 22;
+            this.pictureBoxPlayer.TabStop = false;
             // 
-            // tableLayoutPanel4
+            // tableLayoutPanelEnemy
             // 
-            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel4.BackgroundImage")));
-            this.tableLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(501, 300);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(232, 300);
-            this.tableLayoutPanel4.TabIndex = 25;
+            this.tableLayoutPanelEnemy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanelEnemy.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanelEnemy.BackgroundImage = global::Slip_through.Properties.Resources.fire;
+            this.tableLayoutPanelEnemy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanelEnemy.ColumnCount = 1;
+            this.tableLayoutPanelEnemy.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelEnemy.Controls.Add(this.tableLayoutPanel5, 0, 1);
+            this.tableLayoutPanelEnemy.Controls.Add(this.pictureBoxEnemy, 0, 0);
+            this.tableLayoutPanelEnemy.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanelEnemy.Location = new System.Drawing.Point(501, 300);
+            this.tableLayoutPanelEnemy.Name = "tableLayoutPanelEnemy";
+            this.tableLayoutPanelEnemy.RowCount = 2;
+            this.tableLayoutPanelEnemy.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanelEnemy.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelEnemy.Size = new System.Drawing.Size(232, 300);
+            this.tableLayoutPanelEnemy.TabIndex = 25;
             // 
             // tableLayoutPanel5
             // 
@@ -1087,25 +1086,25 @@
             this.label20.Text = "HP";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // pictureBoxEnemy
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.pictureBoxEnemy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 55);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(226, 182);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 22;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxEnemy.Image = global::Slip_through.Properties.Resources.wolf;
+            this.pictureBoxEnemy.Location = new System.Drawing.Point(3, 55);
+            this.pictureBoxEnemy.Name = "pictureBoxEnemy";
+            this.pictureBoxEnemy.Size = new System.Drawing.Size(226, 182);
+            this.pictureBoxEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEnemy.TabIndex = 22;
+            this.pictureBoxEnemy.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 627);
-            this.Controls.Add(this.tableLayoutPanel4);
-            this.Controls.Add(this.tableLayoutPanel2);
+            this.Controls.Add(this.tableLayoutPanelEnemy);
+            this.Controls.Add(this.tableLayoutPanelPlayer);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SlipBox);
@@ -1134,14 +1133,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.Warrior)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Archer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wizard)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanelPlayer.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFramed)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayer)).EndInit();
+            this.tableLayoutPanelEnemy.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEnemy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1198,8 +1197,8 @@
         private CheckBox SlipBox;
         private Label label3;
         private Label label4;
-        private TableLayoutPanel tableLayoutPanel2;
-        private PictureBox pictureBoxFramed;
+        private TableLayoutPanel tableLayoutPanelPlayer;
+        private PictureBox pictureBoxPlayer;
         private TableLayoutPanel tableLayoutPanel3;
         private Label label5;
         private Label label6;
@@ -1209,7 +1208,7 @@
         private Label labelPlayerEffectivness;
         private Label labelPlayerDefense;
         private Label labelPlayerAttack;
-        private TableLayoutPanel tableLayoutPanel4;
+        private TableLayoutPanel tableLayoutPanelEnemy;
         private TableLayoutPanel tableLayoutPanel5;
         private Label labelEnemyHitPoints;
         private Label labelEnemyEffectivness;
@@ -1219,6 +1218,6 @@
         private Label label18;
         private Label label19;
         private Label label20;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBoxEnemy;
     }
 }
