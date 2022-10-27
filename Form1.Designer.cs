@@ -78,6 +78,28 @@
             this.SlipBox = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelPlayerHitPoints = new System.Windows.Forms.Label();
+            this.labelPlayerEffectivness = new System.Windows.Forms.Label();
+            this.labelPlayerDefense = new System.Windows.Forms.Label();
+            this.labelPlayerAttack = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBoxFramed = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelEnemyHitPoints = new System.Windows.Forms.Label();
+            this.labelEnemyEffectivness = new System.Windows.Forms.Label();
+            this.labelEnemyDefense = new System.Windows.Forms.Label();
+            this.labelEnemyAttack = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel25.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Cerberus)).BeginInit();
@@ -89,6 +111,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Warrior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Archer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wizard)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFramed)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -200,6 +228,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 2, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(500, 600);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -658,7 +687,7 @@
             this.Warrior.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Warrior.BackColor = System.Drawing.Color.Transparent;
             this.Warrior.Image = ((System.Drawing.Image)(resources.GetObject("Warrior.Image")));
-            this.Warrior.Location = new System.Drawing.Point(-1, 0);
+            this.Warrior.Location = new System.Drawing.Point(0, 0);
             this.Warrior.Margin = new System.Windows.Forms.Padding(0);
             this.Warrior.Name = "Warrior";
             this.Warrior.Size = new System.Drawing.Size(50, 50);
@@ -671,7 +700,7 @@
             this.Archer.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Archer.BackColor = System.Drawing.Color.Transparent;
             this.Archer.Image = ((System.Drawing.Image)(resources.GetObject("Archer.Image")));
-            this.Archer.Location = new System.Drawing.Point(0, 49);
+            this.Archer.Location = new System.Drawing.Point(0, 48);
             this.Archer.Margin = new System.Windows.Forms.Padding(0);
             this.Archer.Name = "Archer";
             this.Archer.Size = new System.Drawing.Size(50, 50);
@@ -684,7 +713,7 @@
             this.Wizard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Wizard.BackColor = System.Drawing.Color.Transparent;
             this.Wizard.Image = ((System.Drawing.Image)(resources.GetObject("Wizard.Image")));
-            this.Wizard.Location = new System.Drawing.Point(49, -1);
+            this.Wizard.Location = new System.Drawing.Point(50, 0);
             this.Wizard.Margin = new System.Windows.Forms.Padding(0);
             this.Wizard.Name = "Wizard";
             this.Wizard.Size = new System.Drawing.Size(50, 50);
@@ -765,11 +794,314 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "0";
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel2.BackgroundImage")));
+            this.tableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBoxFramed, 0, 0);
+            this.tableLayoutPanel2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(501, 1);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.33334F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.66667F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(232, 300);
+            this.tableLayoutPanel2.TabIndex = 24;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 4;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.Controls.Add(this.labelPlayerHitPoints, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.labelPlayerEffectivness, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.labelPlayerDefense, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.labelPlayerAttack, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 3, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(20, 216);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(20, 0, 20, 10);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(192, 53);
+            this.tableLayoutPanel3.TabIndex = 23;
+            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
+            // 
+            // labelPlayerHitPoints
+            // 
+            this.labelPlayerHitPoints.AutoSize = true;
+            this.labelPlayerHitPoints.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPlayerHitPoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPlayerHitPoints.Location = new System.Drawing.Point(147, 0);
+            this.labelPlayerHitPoints.Name = "labelPlayerHitPoints";
+            this.labelPlayerHitPoints.Size = new System.Drawing.Size(42, 35);
+            this.labelPlayerHitPoints.TabIndex = 28;
+            this.labelPlayerHitPoints.Text = "0";
+            this.labelPlayerHitPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelPlayerEffectivness
+            // 
+            this.labelPlayerEffectivness.AutoSize = true;
+            this.labelPlayerEffectivness.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPlayerEffectivness.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPlayerEffectivness.Location = new System.Drawing.Point(99, 0);
+            this.labelPlayerEffectivness.Name = "labelPlayerEffectivness";
+            this.labelPlayerEffectivness.Size = new System.Drawing.Size(42, 35);
+            this.labelPlayerEffectivness.TabIndex = 27;
+            this.labelPlayerEffectivness.Text = "0";
+            this.labelPlayerEffectivness.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelPlayerDefense
+            // 
+            this.labelPlayerDefense.AutoSize = true;
+            this.labelPlayerDefense.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPlayerDefense.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPlayerDefense.Location = new System.Drawing.Point(51, 0);
+            this.labelPlayerDefense.Name = "labelPlayerDefense";
+            this.labelPlayerDefense.Size = new System.Drawing.Size(42, 35);
+            this.labelPlayerDefense.TabIndex = 26;
+            this.labelPlayerDefense.Text = "0";
+            this.labelPlayerDefense.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelPlayerAttack
+            // 
+            this.labelPlayerAttack.AutoSize = true;
+            this.labelPlayerAttack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPlayerAttack.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPlayerAttack.Location = new System.Drawing.Point(3, 0);
+            this.labelPlayerAttack.Name = "labelPlayerAttack";
+            this.labelPlayerAttack.Size = new System.Drawing.Size(42, 35);
+            this.labelPlayerAttack.TabIndex = 25;
+            this.labelPlayerAttack.Text = "0";
+            this.labelPlayerAttack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelPlayerAttack.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(3, 35);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label5.Size = new System.Drawing.Size(42, 18);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "ATT";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(51, 35);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 18);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "DEF";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(99, 35);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 18);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "EFF";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Location = new System.Drawing.Point(147, 35);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 18);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "HP";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBoxFramed
+            // 
+            this.pictureBoxFramed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxFramed.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxFramed.Image")));
+            this.pictureBoxFramed.Location = new System.Drawing.Point(3, 21);
+            this.pictureBoxFramed.Name = "pictureBoxFramed";
+            this.pictureBoxFramed.Size = new System.Drawing.Size(226, 192);
+            this.pictureBoxFramed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxFramed.TabIndex = 22;
+            this.pictureBoxFramed.TabStop = false;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel4.BackgroundImage")));
+            this.tableLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(501, 300);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.33334F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.66667F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(232, 300);
+            this.tableLayoutPanel4.TabIndex = 25;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 4;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.Controls.Add(this.labelEnemyHitPoints, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.labelEnemyEffectivness, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.labelEnemyDefense, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.labelEnemyAttack, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label17, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label18, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label19, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label20, 3, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(20, 232);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(20, 0, 20, 10);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(192, 58);
+            this.tableLayoutPanel5.TabIndex = 23;
+            // 
+            // labelEnemyHitPoints
+            // 
+            this.labelEnemyHitPoints.AutoSize = true;
+            this.labelEnemyHitPoints.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEnemyHitPoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelEnemyHitPoints.Location = new System.Drawing.Point(147, 0);
+            this.labelEnemyHitPoints.Name = "labelEnemyHitPoints";
+            this.labelEnemyHitPoints.Size = new System.Drawing.Size(42, 38);
+            this.labelEnemyHitPoints.TabIndex = 28;
+            this.labelEnemyHitPoints.Text = "0";
+            this.labelEnemyHitPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelEnemyEffectivness
+            // 
+            this.labelEnemyEffectivness.AutoSize = true;
+            this.labelEnemyEffectivness.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEnemyEffectivness.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelEnemyEffectivness.Location = new System.Drawing.Point(99, 0);
+            this.labelEnemyEffectivness.Name = "labelEnemyEffectivness";
+            this.labelEnemyEffectivness.Size = new System.Drawing.Size(42, 38);
+            this.labelEnemyEffectivness.TabIndex = 27;
+            this.labelEnemyEffectivness.Text = "0";
+            this.labelEnemyEffectivness.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelEnemyDefense
+            // 
+            this.labelEnemyDefense.AutoSize = true;
+            this.labelEnemyDefense.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEnemyDefense.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelEnemyDefense.Location = new System.Drawing.Point(51, 0);
+            this.labelEnemyDefense.Name = "labelEnemyDefense";
+            this.labelEnemyDefense.Size = new System.Drawing.Size(42, 38);
+            this.labelEnemyDefense.TabIndex = 26;
+            this.labelEnemyDefense.Text = "0";
+            this.labelEnemyDefense.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelEnemyAttack
+            // 
+            this.labelEnemyAttack.AutoSize = true;
+            this.labelEnemyAttack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEnemyAttack.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelEnemyAttack.Location = new System.Drawing.Point(3, 0);
+            this.labelEnemyAttack.Name = "labelEnemyAttack";
+            this.labelEnemyAttack.Size = new System.Drawing.Size(42, 38);
+            this.labelEnemyAttack.TabIndex = 25;
+            this.labelEnemyAttack.Text = "0";
+            this.labelEnemyAttack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label17.Location = new System.Drawing.Point(3, 38);
+            this.label17.Name = "label17";
+            this.label17.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label17.Size = new System.Drawing.Size(42, 20);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "ATT";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label18.Location = new System.Drawing.Point(51, 38);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(42, 20);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "DEF";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Location = new System.Drawing.Point(99, 38);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(42, 20);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "EFF";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label20.Location = new System.Drawing.Point(147, 38);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(42, 20);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "HP";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(226, 192);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 627);
+            this.ClientSize = new System.Drawing.Size(734, 627);
+            this.Controls.Add(this.tableLayoutPanel4);
+            this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SlipBox);
@@ -798,6 +1130,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.Warrior)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Archer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wizard)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFramed)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -854,5 +1194,27 @@
         private CheckBox SlipBox;
         private Label label3;
         private Label label4;
+        private TableLayoutPanel tableLayoutPanel2;
+        private PictureBox pictureBoxFramed;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label labelPlayerHitPoints;
+        private Label labelPlayerEffectivness;
+        private Label labelPlayerDefense;
+        private Label labelPlayerAttack;
+        private TableLayoutPanel tableLayoutPanel4;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Label labelEnemyHitPoints;
+        private Label labelEnemyEffectivness;
+        private Label labelEnemyDefense;
+        private Label labelEnemyAttack;
+        private Label label17;
+        private Label label18;
+        private Label label19;
+        private Label label20;
+        private PictureBox pictureBox1;
     }
 }
