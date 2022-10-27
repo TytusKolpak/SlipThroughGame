@@ -228,7 +228,6 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 2, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(500, 600);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -734,7 +733,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(100, 99);
             this.panel3.TabIndex = 42;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label1
             // 
@@ -745,10 +743,10 @@
             this.label1.Size = new System.Drawing.Size(46, 15);
             this.label1.TabIndex = 15;
             this.label1.Text = "Warrior";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(235, 605);
             this.label2.Name = "label2";
@@ -758,6 +756,7 @@
             // 
             // TurnLabel
             // 
+            this.TurnLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TurnLabel.AutoSize = true;
             this.TurnLabel.Location = new System.Drawing.Point(266, 605);
             this.TurnLabel.Name = "TurnLabel";
@@ -767,6 +766,7 @@
             // 
             // SlipBox
             // 
+            this.SlipBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SlipBox.AutoSize = true;
             this.SlipBox.Location = new System.Drawing.Point(452, 606);
             this.SlipBox.Name = "SlipBox";
@@ -778,6 +778,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(308, 605);
             this.label3.Name = "label3";
@@ -787,6 +788,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(336, 605);
             this.label4.Name = "label4";
@@ -796,17 +798,18 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel2.BackgroundImage")));
             this.tableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.pictureBoxFramed, 0, 0);
             this.tableLayoutPanel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(501, 1);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.33334F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.66667F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -829,16 +832,15 @@
             this.tableLayoutPanel3.Controls.Add(this.label7, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.label8, 3, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(20, 216);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(20, 0, 20, 10);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(20, 232);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(20, 0, 20, 20);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(192, 53);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(192, 48);
             this.tableLayoutPanel3.TabIndex = 23;
-            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
             // 
             // labelPlayerHitPoints
             // 
@@ -847,7 +849,7 @@
             this.labelPlayerHitPoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelPlayerHitPoints.Location = new System.Drawing.Point(147, 0);
             this.labelPlayerHitPoints.Name = "labelPlayerHitPoints";
-            this.labelPlayerHitPoints.Size = new System.Drawing.Size(42, 35);
+            this.labelPlayerHitPoints.Size = new System.Drawing.Size(42, 32);
             this.labelPlayerHitPoints.TabIndex = 28;
             this.labelPlayerHitPoints.Text = "0";
             this.labelPlayerHitPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -859,7 +861,7 @@
             this.labelPlayerEffectivness.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelPlayerEffectivness.Location = new System.Drawing.Point(99, 0);
             this.labelPlayerEffectivness.Name = "labelPlayerEffectivness";
-            this.labelPlayerEffectivness.Size = new System.Drawing.Size(42, 35);
+            this.labelPlayerEffectivness.Size = new System.Drawing.Size(42, 32);
             this.labelPlayerEffectivness.TabIndex = 27;
             this.labelPlayerEffectivness.Text = "0";
             this.labelPlayerEffectivness.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -871,7 +873,7 @@
             this.labelPlayerDefense.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelPlayerDefense.Location = new System.Drawing.Point(51, 0);
             this.labelPlayerDefense.Name = "labelPlayerDefense";
-            this.labelPlayerDefense.Size = new System.Drawing.Size(42, 35);
+            this.labelPlayerDefense.Size = new System.Drawing.Size(42, 32);
             this.labelPlayerDefense.TabIndex = 26;
             this.labelPlayerDefense.Text = "0";
             this.labelPlayerDefense.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -883,20 +885,19 @@
             this.labelPlayerAttack.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelPlayerAttack.Location = new System.Drawing.Point(3, 0);
             this.labelPlayerAttack.Name = "labelPlayerAttack";
-            this.labelPlayerAttack.Size = new System.Drawing.Size(42, 35);
+            this.labelPlayerAttack.Size = new System.Drawing.Size(42, 32);
             this.labelPlayerAttack.TabIndex = 25;
             this.labelPlayerAttack.Text = "0";
             this.labelPlayerAttack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelPlayerAttack.Click += new System.EventHandler(this.label9_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(3, 35);
+            this.label5.Location = new System.Drawing.Point(3, 32);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label5.Size = new System.Drawing.Size(42, 18);
+            this.label5.Size = new System.Drawing.Size(42, 16);
             this.label5.TabIndex = 0;
             this.label5.Text = "ATT";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -905,9 +906,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(51, 35);
+            this.label6.Location = new System.Drawing.Point(51, 32);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 18);
+            this.label6.Size = new System.Drawing.Size(42, 16);
             this.label6.TabIndex = 1;
             this.label6.Text = "DEF";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -916,9 +917,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(99, 35);
+            this.label7.Location = new System.Drawing.Point(99, 32);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 18);
+            this.label7.Size = new System.Drawing.Size(42, 16);
             this.label7.TabIndex = 2;
             this.label7.Text = "EFF";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -927,9 +928,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(147, 35);
+            this.label8.Location = new System.Drawing.Point(147, 32);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 18);
+            this.label8.Size = new System.Drawing.Size(42, 16);
             this.label8.TabIndex = 3;
             this.label8.Text = "HP";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -939,28 +940,29 @@
             this.pictureBoxFramed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxFramed.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxFramed.Image")));
-            this.pictureBoxFramed.Location = new System.Drawing.Point(3, 21);
+            this.pictureBoxFramed.Location = new System.Drawing.Point(3, 47);
             this.pictureBoxFramed.Name = "pictureBoxFramed";
-            this.pictureBoxFramed.Size = new System.Drawing.Size(226, 192);
+            this.pictureBoxFramed.Size = new System.Drawing.Size(226, 182);
             this.pictureBoxFramed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFramed.TabIndex = 22;
             this.pictureBoxFramed.TabStop = false;
             // 
             // tableLayoutPanel4
             // 
+            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel4.BackgroundImage")));
             this.tableLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(501, 300);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.33334F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.66667F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(232, 300);
             this.tableLayoutPanel4.TabIndex = 25;
             // 
@@ -980,14 +982,14 @@
             this.tableLayoutPanel5.Controls.Add(this.label19, 2, 1);
             this.tableLayoutPanel5.Controls.Add(this.label20, 3, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(20, 232);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(20, 0, 20, 10);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(20, 240);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(20, 0, 20, 20);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(192, 58);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(192, 40);
             this.tableLayoutPanel5.TabIndex = 23;
             // 
             // labelEnemyHitPoints
@@ -997,7 +999,7 @@
             this.labelEnemyHitPoints.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelEnemyHitPoints.Location = new System.Drawing.Point(147, 0);
             this.labelEnemyHitPoints.Name = "labelEnemyHitPoints";
-            this.labelEnemyHitPoints.Size = new System.Drawing.Size(42, 38);
+            this.labelEnemyHitPoints.Size = new System.Drawing.Size(42, 26);
             this.labelEnemyHitPoints.TabIndex = 28;
             this.labelEnemyHitPoints.Text = "0";
             this.labelEnemyHitPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1009,7 +1011,7 @@
             this.labelEnemyEffectivness.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelEnemyEffectivness.Location = new System.Drawing.Point(99, 0);
             this.labelEnemyEffectivness.Name = "labelEnemyEffectivness";
-            this.labelEnemyEffectivness.Size = new System.Drawing.Size(42, 38);
+            this.labelEnemyEffectivness.Size = new System.Drawing.Size(42, 26);
             this.labelEnemyEffectivness.TabIndex = 27;
             this.labelEnemyEffectivness.Text = "0";
             this.labelEnemyEffectivness.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1021,7 +1023,7 @@
             this.labelEnemyDefense.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelEnemyDefense.Location = new System.Drawing.Point(51, 0);
             this.labelEnemyDefense.Name = "labelEnemyDefense";
-            this.labelEnemyDefense.Size = new System.Drawing.Size(42, 38);
+            this.labelEnemyDefense.Size = new System.Drawing.Size(42, 26);
             this.labelEnemyDefense.TabIndex = 26;
             this.labelEnemyDefense.Text = "0";
             this.labelEnemyDefense.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1033,7 +1035,7 @@
             this.labelEnemyAttack.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelEnemyAttack.Location = new System.Drawing.Point(3, 0);
             this.labelEnemyAttack.Name = "labelEnemyAttack";
-            this.labelEnemyAttack.Size = new System.Drawing.Size(42, 38);
+            this.labelEnemyAttack.Size = new System.Drawing.Size(42, 26);
             this.labelEnemyAttack.TabIndex = 25;
             this.labelEnemyAttack.Text = "0";
             this.labelEnemyAttack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1042,10 +1044,10 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label17.Location = new System.Drawing.Point(3, 38);
+            this.label17.Location = new System.Drawing.Point(3, 26);
             this.label17.Name = "label17";
             this.label17.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label17.Size = new System.Drawing.Size(42, 20);
+            this.label17.Size = new System.Drawing.Size(42, 14);
             this.label17.TabIndex = 0;
             this.label17.Text = "ATT";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1054,9 +1056,9 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label18.Location = new System.Drawing.Point(51, 38);
+            this.label18.Location = new System.Drawing.Point(51, 26);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(42, 20);
+            this.label18.Size = new System.Drawing.Size(42, 14);
             this.label18.TabIndex = 1;
             this.label18.Text = "DEF";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1065,9 +1067,9 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label19.Location = new System.Drawing.Point(99, 38);
+            this.label19.Location = new System.Drawing.Point(99, 26);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(42, 20);
+            this.label19.Size = new System.Drawing.Size(42, 14);
             this.label19.TabIndex = 2;
             this.label19.Text = "EFF";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1076,9 +1078,9 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label20.Location = new System.Drawing.Point(147, 38);
+            this.label20.Location = new System.Drawing.Point(147, 26);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(42, 20);
+            this.label20.Size = new System.Drawing.Size(42, 14);
             this.label20.TabIndex = 3;
             this.label20.Text = "HP";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1088,9 +1090,9 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 37);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 55);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(226, 192);
+            this.pictureBox1.Size = new System.Drawing.Size(226, 182);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
@@ -1115,7 +1117,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.MinimumSize = new System.Drawing.Size(516, 666);
+            this.MinimumSize = new System.Drawing.Size(750, 666);
             this.Name = "Form1";
             this.Text = "Slip through";
             this.tableLayoutPanel1.ResumeLayout(false);

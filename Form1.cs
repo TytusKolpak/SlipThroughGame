@@ -129,32 +129,7 @@ namespace Slip_through
             moveThisBy(currentPictureBox.Parent, 6);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void SlipBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel31_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
         {
 
         }
