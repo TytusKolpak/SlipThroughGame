@@ -383,6 +383,7 @@
             // 
             // Cerberus
             // 
+            this.Cerberus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Cerberus.Image = ((System.Drawing.Image)(resources.GetObject("Cerberus.Image")));
             this.Cerberus.Location = new System.Drawing.Point(49, 48);
             this.Cerberus.Name = "Cerberus";
@@ -534,6 +535,7 @@
             // 
             // Werewolf
             // 
+            this.Werewolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Werewolf.Image = ((System.Drawing.Image)(resources.GetObject("Werewolf.Image")));
             this.Werewolf.Location = new System.Drawing.Point(49, 48);
             this.Werewolf.Name = "Werewolf";
@@ -557,6 +559,7 @@
             // 
             // Wolf
             // 
+            this.Wolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Wolf.Image = ((System.Drawing.Image)(resources.GetObject("Wolf.Image")));
             this.Wolf.Location = new System.Drawing.Point(49, 49);
             this.Wolf.Name = "Wolf";
@@ -683,7 +686,6 @@
             // 
             // Warrior
             // 
-            this.Warrior.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Warrior.BackColor = System.Drawing.Color.Transparent;
             this.Warrior.Image = ((System.Drawing.Image)(resources.GetObject("Warrior.Image")));
             this.Warrior.Location = new System.Drawing.Point(0, 0);
@@ -696,7 +698,7 @@
             // 
             // Archer
             // 
-            this.Archer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Archer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Archer.BackColor = System.Drawing.Color.Transparent;
             this.Archer.Image = ((System.Drawing.Image)(resources.GetObject("Archer.Image")));
             this.Archer.Location = new System.Drawing.Point(0, 48);
@@ -709,7 +711,7 @@
             // 
             // Wizard
             // 
-            this.Wizard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Wizard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Wizard.BackColor = System.Drawing.Color.Transparent;
             this.Wizard.Image = ((System.Drawing.Image)(resources.GetObject("Wizard.Image")));
             this.Wizard.Location = new System.Drawing.Point(50, 0);
