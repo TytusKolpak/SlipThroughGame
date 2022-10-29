@@ -6,21 +6,31 @@ namespace Slip_through
 {
     public partial class Form1 : Form
     {
-        String panelName = "panel1";
-        String panelNumberString = "0";
         int panelNumberInt = 0;
         int pictureBoxNumber = 0;
+        int turn = 1;
+        String panelName = "panel1";
+        String panelNumberString = "0";
         Panel[] panelArray = new Panel[0];
         PictureBox[] pictureBoxArray = new PictureBox[0];
         PictureBox currentPictureBox;
-        int turn = 1;
+        CombatCard WizardCard = new CombatCard(3, 1, 1, 10);
+        CombatCard WarriorCard = new CombatCard(2, 1, 2, 10);
+        CombatCard ArcherCard = new CombatCard(1, 1, 3, 10);
+        CombatCard WolfCard = new CombatCard(3, 0, 2, 5);
+        CombatCard WerewolfCard = new CombatCard(4, 2, 3, 10);
+        CombatCard CerberusCard = new CombatCard(5, 4, 4, 15);
 
         public Form1()
         {
             InitializeComponent();
+            InitMySetup();
+            currentPictureBox = Warrior;
+        }
+        private void InitMySetup()
+        {
             createArrays();
             label2.Text = "Turn :";
-            currentPictureBox = Warrior;
         }
         private void createArrays()
         {
@@ -40,7 +50,6 @@ namespace Slip_through
             };
             currentPictureBox = pictureBoxArray[0];
         }
-
         private void moveThisBy(Control parent, int steps)
         {
             panelName = parent.Name.ToString();
@@ -51,7 +60,7 @@ namespace Slip_through
                 for (int i = 0; i < steps; i++)
                 {
                     Thread.Sleep(250);
-                    if (SlipBox.Checked == true && panelNumberInt%5==0 && panelNumberInt>=10) // that is wrong
+                    if (SlipBox.Checked == true && panelNumberInt % 5 == 0 && panelNumberInt >= 10) // that is wrong
                     {
                         panelNumberInt -= 9; //works, but updates in wrong moment
                     }
@@ -59,18 +68,52 @@ namespace Slip_through
                     {
                         panelNumberInt++;
                     }
-                    currentPictureBox.Parent = panelArray[panelNumberInt-1];
+                    currentPictureBox.Parent = panelArray[panelNumberInt - 1];
                     //-1 is because panel1 has index 0 : x on x-1
                     currentPictureBox.BringToFront();
                     currentPictureBox.Update();
                 }
             }
+            endOfMovement();
+        }
+
+        private void endOfMovement()
+        {
+            pictureBoxPlayer.Image = Properties.Resources.wizard;
+            labelEnemyHitPoints.Text = "83";
+            tableLayoutPanelEnemy.Visible = true;
+            //execute combat
+
+            fight(WarriorCard, WolfCard, 2); //example
+
+            //and when it;s ended
             nextPlayer();
+        }
+
+        public void fight(CombatCard attacker, CombatCard defender, int diceThrow)
+        {
+
+                if (attacker.hitPoints > 0)
+                {
+                    if (attacker.effectivenes + diceThrow > defender.effectivenes)
+                    {
+                        defender.hitPoints -= attacker.attack - defender.defence;
+                    }
+                }
+
+                if (defender.hitPoints > 0)
+                {
+                    if (defender.effectivenes - diceThrow > attacker.effectivenes)
+                    {
+                        defender.hitPoints -= attacker.attack - defender.defence;
+                    }
+                }
+            
         }
 
         private void nextPlayer() //complete, works properly
         {
-            
+
             if (pictureBoxNumber < 2)
             {
                 pictureBoxNumber++;
@@ -99,6 +142,7 @@ namespace Slip_through
             currentPictureBox = pictureBoxArray[pictureBoxNumber];
 
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             moveThisBy(currentPictureBox.Parent, 1);
@@ -123,9 +167,6 @@ namespace Slip_through
         private void button5_Click(object sender, EventArgs e)
         {
             moveThisBy(currentPictureBox.Parent, 5);
-            pictureBoxPlayer.Image = Properties.Resources.wizard;
-            labelEnemyHitPoints.Text = "83";
-            tableLayoutPanelEnemy.Visible = true;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -139,5 +180,8 @@ namespace Slip_through
         {
 
         }
+
+        //check if panel has a child of enemy when stepping on it,
+        //enable choice of a throw and a random throw
     }
 }
