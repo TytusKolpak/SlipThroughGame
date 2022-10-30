@@ -7,32 +7,36 @@ namespace Slip_through
     public partial class Form1 : Form
     {
         int panelNumberInt = 0;
-        int pictureBoxNumber = 0;
-        int turn = 1;
+        int thisPlayerInTurn = 0;
         String panelName = "panel1";
         String panelNumberString = "0";
         Panel[] panelArray = new Panel[0];
-        PictureBox[] pictureBoxArray = new PictureBox[0];
-        PictureBox currentPictureBox;
-        CombatCard WizardCard = new CombatCard(3, 1, 1, 10);
-        CombatCard WarriorCard = new CombatCard(2, 1, 2, 10);
-        CombatCard ArcherCard = new CombatCard(1, 1, 3, 10);
-        CombatCard WolfCard = new CombatCard(3, 0, 2, 5);
-        CombatCard WerewolfCard = new CombatCard(4, 2, 3, 10);
-        CombatCard CerberusCard = new CombatCard(5, 4, 4, 15);
+        PictureBox[] pictureBoxArray = new PictureBox[6];
+        CombatCard[] CombatCardArray = new CombatCard[0];
+
+        CombatCard WarriorCard;
+        CombatCard WizardCard;
+        CombatCard ArcherCard;
+        CombatCard WolfCard;
+        CombatCard WerewolfCard;
+        CombatCard CerberusCard;
 
         public Form1()
         {
+            createPanelArray();
+            createPlayerArray();
             InitializeComponent();
-            InitMySetup();
-            currentPictureBox = Warrior;
+            createPictureBoxArray();
+
+            WarriorCard = new CombatCard(2, 1, 2, 10, Properties.Resources.warrior, pictureBoxArray[0]);
+            WizardCard = new CombatCard(3, 1, 1, 10, Properties.Resources.wizard, pictureBoxArray[1]);
+            ArcherCard = new CombatCard(1, 1, 3, 10, Properties.Resources.archer, pictureBoxArray[2]);
+            WolfCard = new CombatCard(3, 0, 2, 5, Properties.Resources.wolf, pictureBoxArray[3]);
+            WerewolfCard = new CombatCard(4, 2, 3, 10, Properties.Resources.werewolf, pictureBoxArray[4]);
+            CerberusCard = new CombatCard(5, 4, 4, 15, Properties.Resources.cerberus, pictureBoxArray[5]);
+            CombatCard.currentPlayer = WarriorCard;
         }
-        private void InitMySetup()
-        {
-            createArrays();
-            label2.Text = "Turn :";
-        }
-        private void createArrays()
+        private void createPanelArray()
         {
             panelArray = new Panel[30]
             {
@@ -43,16 +47,31 @@ namespace Slip_through
                 panel21, panel22, panel23, panel24, panel25,
                 panel26, panel27, panel28, panel29, panel30,
             };
-
-            pictureBoxArray = new PictureBox[3]
-            {
-                Warrior, Archer, Wizard,
-            };
-            currentPictureBox = pictureBoxArray[0];
         }
-        private void moveThisBy(Control parent, int steps)
+        private void createPictureBoxArray()
         {
-            panelName = parent.Name.ToString();
+            pictureBoxArray = new PictureBox[6]
+            {
+                pictureBoxWarrior,
+                pictureBoxWizard,
+                pictureBoxArcher,
+                pictureBoxWolf,
+                pictureBoxWerewolf,
+                pictureBoxCerberus,
+            };
+        }
+        private void createPlayerArray()
+        {
+            CombatCardArray = new CombatCard[3]{
+                WarriorCard,
+                WizardCard,
+                ArcherCard,
+            };
+        }
+        private void moveThisBy(int steps)
+        {
+            //change parent to a path to the parent
+            panelName = CombatCard.currentPlayer.pictureBox.Parent.Name;
             panelNumberString = Regex.Match(panelName, @"\d+").Value; //single numeric value in string form
             panelNumberInt = Int32.Parse(panelNumberString);//single numeric value in int form
             if (panelNumberInt < 30) //will have a place to end on
@@ -60,128 +79,83 @@ namespace Slip_through
                 for (int i = 0; i < steps; i++)
                 {
                     Thread.Sleep(250);
-                    if (SlipBox.Checked == true && panelNumberInt % 5 == 0 && panelNumberInt >= 10) // that is wrong
+                    if (SlipBox.Checked == true && panelNumberInt % 5 == 0 && panelNumberInt >= 10)
                     {
-                        panelNumberInt -= 9; //works, but updates in wrong moment
+                        panelNumberInt -= 9;
                     }
                     else
                     {
-                        panelNumberInt++;
+                        panelNumberInt++; //mark next panel as destination
                     }
-                    currentPictureBox.Parent = panelArray[panelNumberInt - 1];
-                    //-1 is because panel1 has index 0 : x on x-1
-                    currentPictureBox.BringToFront();
-                    currentPictureBox.Update();
+
+                    CombatCard.currentPlayer.pictureBox.Parent = panelArray[panelNumberInt - 1];
+                    //position of picture box is set by assigning it to specific parent (setting it's parent property)
+                    //it's like: place the picture box on destinated panel
+                    //- 1 is because panel1 has index 0, so xth panel: panelx has index of x-1
+                    CombatCard.currentPlayer.pictureBox.BringToFront();           //so that the panel does not cover the picturebox
+                    CombatCard.currentPlayer.pictureBox.Update();                 //idk without it the picture is not visible
                 }
             }
-            endOfMovement();
         }
-
         private void endOfMovement()
         {
             pictureBoxPlayer.Image = Properties.Resources.wizard;
             labelEnemyHitPoints.Text = "83";
             tableLayoutPanelEnemy.Visible = true;
-            //execute combat
-
-            fight(WarriorCard, WolfCard, 2); //example
-
-            //and when it;s ended
-            nextPlayer();
         }
-
-        public void fight(CombatCard attacker, CombatCard defender, int diceThrow)
+        private void nextPlayer()
         {
-
-                if (attacker.hitPoints > 0)
-                {
-                    if (attacker.effectivenes + diceThrow > defender.effectivenes)
-                    {
-                        defender.hitPoints -= attacker.attack - defender.defence;
-                    }
-                }
-
-                if (defender.hitPoints > 0)
-                {
-                    if (defender.effectivenes - diceThrow > attacker.effectivenes)
-                    {
-                        defender.hitPoints -= attacker.attack - defender.defence;
-                    }
-                }
-            
-        }
-
-        private void nextPlayer() //complete, works properly
-        {
-
-            if (pictureBoxNumber < 2)
+            if (thisPlayerInTurn<2)
             {
-                pictureBoxNumber++;
+                thisPlayerInTurn++;
             }
             else
             {
-                pictureBoxNumber = 0;
-                turn++;
+                thisPlayerInTurn = 0;
             }
 
-            TurnLabel.Text = turn.ToString();
-
-            if (pictureBoxNumber == 0)
-            {
-                label1.Text = "Warrior";
-            }
-            else if (pictureBoxNumber == 1)
-            {
-                label1.Text = "Archer";
-            }
-            else
-            {
-                label1.Text = "Wizard";
-            }
-
-            currentPictureBox = pictureBoxArray[pictureBoxNumber];
-
+            CombatCard.currentPlayer = CombatCardArray[thisPlayerInTurn];
         }
-
+        private void loadPlayerInfo(CombatCard currentPlayer)
+        {
+            CombatCard.currentPlayer = WarriorCard;
+            labelPlayerAttack.Text = CombatCard.currentPlayer.attack.ToString();
+            labelPlayerDefense.Text = CombatCard.currentPlayer.attack.ToString();
+            labelPlayerEffectiveness.Text = CombatCard.currentPlayer.attack.ToString();
+            labelPlayerHitPoints.Text = CombatCard.currentPlayer.attack.ToString();
+            pictureBoxPlayer.Image = CombatCard.currentPlayer.picture;
+        }
+        private void carryOutSequence(int diceThrowValue)
+        {
+            loadPlayerInfo(CombatCard.currentPlayer);
+            moveThisBy(diceThrowValue);//from which panel it starts and how far it moves
+            endOfMovement();
+            CombatCard.fight(WarriorCard, WolfCard, 2);//example of execute combat
+            nextPlayer();//and when it;s ended
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            moveThisBy(currentPictureBox.Parent, 1);
+            carryOutSequence(1);
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            moveThisBy(currentPictureBox.Parent, 2);
+            carryOutSequence(2);
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            moveThisBy(currentPictureBox.Parent, 3);
+            carryOutSequence(3);
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
-            moveThisBy(currentPictureBox.Parent, 4);
-            pictureBoxPlayer.Image = Properties.Resources.knight;
+            carryOutSequence(4);
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
-            moveThisBy(currentPictureBox.Parent, 5);
+            carryOutSequence(5);
         }
-
         private void button6_Click(object sender, EventArgs e)
         {
-            pictureBoxPlayer.Image = Properties.Resources.archer;
-            moveThisBy(currentPictureBox.Parent, 6);
-            tableLayoutPanelEnemy.Visible = false;
+            carryOutSequence(6);
         }
-
-        private void SlipBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //check if panel has a child of enemy when stepping on it,
-        //enable choice of a throw and a random throw
     }
 }

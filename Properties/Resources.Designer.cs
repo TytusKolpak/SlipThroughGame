@@ -113,6 +113,16 @@ namespace Slip_through.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap warrior {
+            get {
+                object obj = ResourceManager.GetObject("warrior", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap werewolf {
             get {
                 object obj = ResourceManager.GetObject("werewolf", resourceCulture);
