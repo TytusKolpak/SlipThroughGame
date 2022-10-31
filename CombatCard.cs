@@ -9,7 +9,7 @@ namespace Slip_through
     public class CombatCard
     {
         public string name;
-        public int attack, defence, effectiveness, hitPoints, deathCounter;
+        public int attack, defence, effectiveness, hitPoints, maxHP, deathCounter;
         public Bitmap bitmapImage;
 
         public CombatCard(String name, int attack, int defence, int effectiveness, int hitPoints, Bitmap bitmapImage)
@@ -21,6 +21,7 @@ namespace Slip_through
             this.hitPoints = hitPoints;
             this.bitmapImage = bitmapImage;
             this.deathCounter = 0;
+            this.maxHP = hitPoints;
         }
     }
 }

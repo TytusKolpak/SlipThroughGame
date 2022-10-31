@@ -19,7 +19,8 @@ namespace Slip_through
 
         Panel[] panelArray = System.Array.Empty<Panel>();                   //resolves CA1825 (and now allocates less memory)
         PictureBox[] pictureBoxArray = System.Array.Empty<PictureBox>();    //resolves CA1825
-        PictureBox currentPictureBox;
+        PictureBox currentPlayerPictureBox;
+        PictureBox currentEnemyPictureBox;
 
         CombatCard WarriorCard = new("Warrior", 2, 1, 2, 10, Properties.Resources.warrior);
         CombatCard ArcherCard = new("Archer", 1, 1, 3, 9, Properties.Resources.archer);
@@ -29,6 +30,8 @@ namespace Slip_through
         CombatCard CerberusCard = new("Cerberus", 5, 4, 4, 15, Properties.Resources.cerberus);
         CombatCard player;
         CombatCard enemy;
+
+        Random random = new();
 
         public Form1()//working and complete (so far)
         {
@@ -44,7 +47,7 @@ namespace Slip_through
             setAddButtonsVisibility(false);
 
             player = WarriorCard;
-            currentPictureBox = pictureBoxWarrior;
+            currentPlayerPictureBox = pictureBoxWarrior;
             displayPlayerInfo();
         }
         private void createArrays()//working and complete
@@ -70,7 +73,7 @@ namespace Slip_through
         }
         private void movementElement(int steps)//working and complete
         {
-            panelName = currentPictureBox.Parent.Name.ToString();
+            panelName = currentPlayerPictureBox.Parent.Name.ToString();
             panelNumberString = Regex.Match(panelName, @"\d+").Value; //single numeric value in string form
             panelNumberInt = Int32.Parse(panelNumberString);//single numeric value in int form
             if (panelNumberInt + steps <= 30) //will have a place to end on
@@ -88,9 +91,9 @@ namespace Slip_through
                     }
 
                     //place the player on destination tile, on it, and update it
-                    currentPictureBox.Parent = panelArray[panelNumberInt - 1]; //-1 is because panel1 has index 0 : x on x-1
-                    currentPictureBox.BringToFront();
-                    currentPictureBox.Update();
+                    currentPlayerPictureBox.Parent = panelArray[panelNumberInt - 1]; //-1 is because panel1 has index 0 : x on x-1
+                    currentPlayerPictureBox.BringToFront();
+                    currentPlayerPictureBox.Update();
 
                     //check for the end of the game
                     if (panelNumberInt == 30)
@@ -105,16 +108,30 @@ namespace Slip_through
         {
             //chosing the enemy depending on how far the player is 
             if (panelNumberInt <= 10)
-                enemy = WolfCard;
-            else if (panelNumberInt <= 20)
-                enemy = WerewolfCard;
-            else
-                enemy = CerberusCard;
-
-            if (panelNumberInt == 5)                        // just a test means to fight always on 5th tile, change later to 1-4 dice throw and anywhere
             {
-                pictureBoxWolf.Visible = true;
-                pictureBoxWolf.Update();
+                currentEnemyPictureBox = pictureBoxArray[3];
+                enemy = WolfCard;
+            }
+            else if (panelNumberInt <= 20)
+            {
+                currentEnemyPictureBox = pictureBoxArray[4];
+                enemy = WerewolfCard;
+            }
+            else
+            {
+                currentEnemyPictureBox = pictureBoxArray[5];
+                enemy = CerberusCard;
+            }
+
+
+            int diceRoll = random.Next(1, 7);
+
+            if (diceRoll <= steps)//if player rolls more than what they moved then they are not found out (move less -> less chance of a fight)
+            {
+                currentEnemyPictureBox.Parent = panelArray[panelNumberInt - 1];
+                currentEnemyPictureBox.Visible = true;
+                currentEnemyPictureBox.Update();
+
                 displayEnemyInfo();
                 setCombatText(enemy.name + " attacks you. You have to fight it.");
 
@@ -124,9 +141,6 @@ namespace Slip_through
                 if (enemy.hitPoints <= 0)                                       //enemy died - player won
                 {
                     setCombatText(player.name + " killed the " + enemy.name);
-                    WolfCard.hitPoints = 5;                                     //Set health of the wolf Card back to max for next fight
-                    pictureBoxWolf.Visible = false;                             //erase dead opponent's icon on the boar
-                    tableLayoutPanelEnemy.Visible = false;                      //erase dead opponent's card
                     rewardEarned = true;                                        //enable adding stat points later on
                 }
 
@@ -134,9 +148,7 @@ namespace Slip_through
                 {
                     setCombatText(enemy.name + " killed the " + player.name);
                     player.deathCounter++;                                      //keep track of how many deaths each player has
-                    panelNumberInt -= 10;                                       //set destination point to be 10 tiles back
-                    panelNumberInt = panelNumberInt < 1 ? 1 : panelNumberInt;   //if tile number it's less than 1, make it 1 (index 0)
-                    currentPictureBox.Parent = panelArray[panelNumberInt - 1];  //move player to the destination tile in the back
+                    currentPlayerPictureBox.Parent = panelArray[0];             //move player to the first tile
 
                     if (player.name == "Wizard")                                //get back all hit points - heal to full
                         player.hitPoints = 8;
@@ -145,11 +157,14 @@ namespace Slip_through
                     else if (player.name == "Archer")
                         player.hitPoints = 9;
                 }
+
+                enemy.hitPoints = enemy.maxHP;                              //Set health of the enemy back to max for next fight
+                currentEnemyPictureBox.Visible = false;                     //opponents either flee or die after a battle
+                tableLayoutPanelEnemy.Visible = false;                      //old enemies are never encountered again (idk if correct)
             }
         }
         private void fightSequence()//working and enough for now
         {
-            Random random = new();
             int diceRoll;
             int damage;
 
@@ -185,14 +200,16 @@ namespace Slip_through
         }
         private void nextPlayer()//working and complete
         {
+            //temporary change to 1 player for testing purposes
+
             //change player to the next one in a loop
-            if (playerNr < 2)
-                playerNr++;
-            else
-            {
-                turnCounter++;
-                playerNr = 0;
-            }
+            //if (playerNr < 2)
+            //    playerNr++;
+            //else
+            //{
+            //    turnCounter++;
+            //    playerNr = 0;
+            //}
 
             //assign the object of the card(player) whose turn it is now to the currentCard for easy - uniform access
             if (playerNr == 0)
@@ -212,7 +229,7 @@ namespace Slip_through
             labelPlayerHitPoints.Text = player.hitPoints.ToString();
             tableLayoutPanelPlayer.Update();
 
-            currentPictureBox = pictureBoxArray[playerNr];                                  //this is complicated
+            currentPlayerPictureBox = pictureBoxArray[playerNr];                                  //this is complicated
         }
         private void displayEnemyInfo()
         {
