@@ -72,7 +72,6 @@
             this.pictureBoxArcher = new System.Windows.Forms.PictureBox();
             this.pictureBoxWizard = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.SlipBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPlayer = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -97,6 +96,9 @@
             this.label20 = new System.Windows.Forms.Label();
             this.pictureBoxEnemy = new System.Windows.Forms.PictureBox();
             this.labelCombatLog = new System.Windows.Forms.Label();
+            this.buttonAddATT = new System.Windows.Forms.Button();
+            this.buttonAddDEF = new System.Windows.Forms.Button();
+            this.buttonAddEFF = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel25.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerberus)).BeginInit();
@@ -382,7 +384,7 @@
             // 
             this.pictureBoxCerberus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxCerberus.Image = global::Slip_through.Properties.Resources.cerberus;
-            this.pictureBoxCerberus.Location = new System.Drawing.Point(49, 38);
+            this.pictureBoxCerberus.Location = new System.Drawing.Point(50, 50);
             this.pictureBoxCerberus.Name = "pictureBoxCerberus";
             this.pictureBoxCerberus.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxCerberus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -534,7 +536,7 @@
             // 
             this.pictureBoxWerewolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxWerewolf.Image = global::Slip_through.Properties.Resources.werewolf;
-            this.pictureBoxWerewolf.Location = new System.Drawing.Point(49, 38);
+            this.pictureBoxWerewolf.Location = new System.Drawing.Point(50, 50);
             this.pictureBoxWerewolf.Name = "pictureBoxWerewolf";
             this.pictureBoxWerewolf.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxWerewolf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -558,7 +560,7 @@
             // 
             this.pictureBoxWolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxWolf.Image = global::Slip_through.Properties.Resources.wolf;
-            this.pictureBoxWolf.Location = new System.Drawing.Point(49, 39);
+            this.pictureBoxWolf.Location = new System.Drawing.Point(50, 50);
             this.pictureBoxWolf.Name = "pictureBoxWolf";
             this.pictureBoxWolf.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxWolf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -733,21 +735,11 @@
             this.panel3.Size = new System.Drawing.Size(100, 99);
             this.panel3.TabIndex = 42;
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(145, 606);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 15);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Warrior";
-            // 
             // SlipBox
             // 
             this.SlipBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SlipBox.AutoSize = true;
-            this.SlipBox.Location = new System.Drawing.Point(455, 606);
+            this.SlipBox.Location = new System.Drawing.Point(146, 606);
             this.SlipBox.Name = "SlipBox";
             this.SlipBox.Size = new System.Drawing.Size(45, 19);
             this.SlipBox.TabIndex = 18;
@@ -1057,27 +1049,57 @@
             // 
             // labelCombatLog
             // 
-            this.labelCombatLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelCombatLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCombatLog.AutoSize = true;
             this.labelCombatLog.BackColor = System.Drawing.Color.Transparent;
-            this.labelCombatLog.Location = new System.Drawing.Point(501, 606);
+            this.labelCombatLog.Location = new System.Drawing.Point(192, 606);
             this.labelCombatLog.Name = "labelCombatLog";
             this.labelCombatLog.Size = new System.Drawing.Size(10, 15);
             this.labelCombatLog.TabIndex = 27;
             this.labelCombatLog.Text = " ";
+            // 
+            // buttonAddATT
+            // 
+            this.buttonAddATT.Location = new System.Drawing.Point(517, 602);
+            this.buttonAddATT.Name = "buttonAddATT";
+            this.buttonAddATT.Size = new System.Drawing.Size(50, 23);
+            this.buttonAddATT.TabIndex = 28;
+            this.buttonAddATT.Text = "+ATT";
+            this.buttonAddATT.UseVisualStyleBackColor = true;
+            this.buttonAddATT.Click += new System.EventHandler(this.buttonAddATT_Click);
+            // 
+            // buttonAddDEF
+            // 
+            this.buttonAddDEF.Location = new System.Drawing.Point(565, 602);
+            this.buttonAddDEF.Name = "buttonAddDEF";
+            this.buttonAddDEF.Size = new System.Drawing.Size(50, 23);
+            this.buttonAddDEF.TabIndex = 29;
+            this.buttonAddDEF.Text = "+DEF";
+            this.buttonAddDEF.UseVisualStyleBackColor = true;
+            this.buttonAddDEF.Click += new System.EventHandler(this.buttonAddDEF_Click);
+            // 
+            // buttonAddEFF
+            // 
+            this.buttonAddEFF.Location = new System.Drawing.Point(613, 602);
+            this.buttonAddEFF.Name = "buttonAddEFF";
+            this.buttonAddEFF.Size = new System.Drawing.Size(50, 23);
+            this.buttonAddEFF.TabIndex = 30;
+            this.buttonAddEFF.Text = "+EFF";
+            this.buttonAddEFF.UseVisualStyleBackColor = true;
+            this.buttonAddEFF.Click += new System.EventHandler(this.buttonAddEFF_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 627);
+            this.Controls.Add(this.buttonAddEFF);
+            this.Controls.Add(this.buttonAddDEF);
+            this.Controls.Add(this.buttonAddATT);
             this.Controls.Add(this.labelCombatLog);
             this.Controls.Add(this.tableLayoutPanelEnemy);
             this.Controls.Add(this.tableLayoutPanelPlayer);
             this.Controls.Add(this.SlipBox);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -1150,7 +1172,6 @@
         private Panel panel3;
         private Panel panel2;
         private Panel panel1;
-        private Label label1;
         private Panel panel16;
         private PictureBox pictureBoxWizard;
         private PictureBox pictureBoxWarrior;
@@ -1183,5 +1204,8 @@
         private Label label20;
         private PictureBox pictureBoxEnemy;
         private Label labelCombatLog;
+        private Button buttonAddATT;
+        private Button buttonAddDEF;
+        private Button buttonAddEFF;
     }
 }

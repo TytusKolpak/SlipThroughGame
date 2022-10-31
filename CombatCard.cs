@@ -22,26 +22,5 @@ namespace Slip_through
             this.bitmapImage = bitmapImage;
             this.deathCounter = 0;
         }
-
-        public static void combatRound(CombatCard attacker, CombatCard defender, int diceThrow)
-        {
-            //Assumed that the player attacks the enemy, who defends angainst them (changable depending on variant)
-            if (attacker.hitPoints > 0)
-            {
-                if (attacker.effectiveness + diceThrow > defender.effectiveness)
-                    defender.hitPoints -= attacker.attack - defender.defence;
-            }
-
-            if (defender.hitPoints > 0)
-            {
-                if (defender.effectiveness - diceThrow > attacker.effectiveness)
-                    defender.hitPoints -= attacker.attack - defender.defence;
-            }
-        }
-
-        public static void choseReward()
-        {
-
-        }
     }
 }
