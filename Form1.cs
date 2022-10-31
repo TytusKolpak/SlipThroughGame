@@ -164,7 +164,7 @@ namespace Slip_through
             pictureBoxPlayer.Image = CombatCard.currentCard.bitmapImage;                    //big main picture on the right
             labelPlayerAttack.Text = CombatCard.currentCard.attack.ToString();              //following stats
             labelPlayerDefense.Text = CombatCard.currentCard.defence.ToString();
-            labelPlayerEffectiveness.Text = CombatCard.currentCard.effectivenes.ToString();
+            labelPlayerEffectiveness.Text = CombatCard.currentCard.effectiveness.ToString();
             labelPlayerHitPoints.Text = CombatCard.currentCard.hitPoints.ToString();
             label1.Text = CombatCard.currentCard.name;                                      //name of the current player on the bottom of window
 

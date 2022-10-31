@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -379,6 +380,7 @@
             // pictureBoxCerberus
             // 
             this.pictureBoxCerberus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCerberus.Image = global::Slip_through.Properties.Resources.cerberus;
             this.pictureBoxCerberus.Location = new System.Drawing.Point(49, 48);
             this.pictureBoxCerberus.Name = "pictureBoxCerberus";
             this.pictureBoxCerberus.Size = new System.Drawing.Size(50, 50);
@@ -530,6 +532,7 @@
             // pictureBoxWerewolf
             // 
             this.pictureBoxWerewolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxWerewolf.Image = global::Slip_through.Properties.Resources.werewolf;
             this.pictureBoxWerewolf.Location = new System.Drawing.Point(49, 48);
             this.pictureBoxWerewolf.Name = "pictureBoxWerewolf";
             this.pictureBoxWerewolf.Size = new System.Drawing.Size(50, 50);
@@ -553,6 +556,7 @@
             // pictureBoxWolf
             // 
             this.pictureBoxWolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxWolf.Image = global::Slip_through.Properties.Resources.wolf;
             this.pictureBoxWolf.Location = new System.Drawing.Point(49, 49);
             this.pictureBoxWolf.Name = "pictureBoxWolf";
             this.pictureBoxWolf.Size = new System.Drawing.Size(50, 50);
@@ -679,6 +683,7 @@
             // pictureBoxWarrior
             // 
             this.pictureBoxWarrior.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxWarrior.Image = global::Slip_through.Properties.Resources.warrior;
             this.pictureBoxWarrior.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxWarrior.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxWarrior.Name = "pictureBoxWarrior";
@@ -691,6 +696,7 @@
             // 
             this.pictureBoxArcher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxArcher.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxArcher.Image = global::Slip_through.Properties.Resources.wizard;
             this.pictureBoxArcher.Location = new System.Drawing.Point(0, 48);
             this.pictureBoxArcher.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxArcher.Name = "pictureBoxArcher";
@@ -703,6 +709,7 @@
             // 
             this.pictureBoxWizard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxWizard.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxWizard.Image = global::Slip_through.Properties.Resources.archer;
             this.pictureBoxWizard.Location = new System.Drawing.Point(50, 0);
             this.pictureBoxWizard.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxWizard.Name = "pictureBoxWizard";
@@ -750,6 +757,7 @@
             // 
             this.tableLayoutPanelPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelPlayer.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanelPlayer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanelPlayer.BackgroundImage")));
             this.tableLayoutPanelPlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanelPlayer.ColumnCount = 1;
             this.tableLayoutPanelPlayer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -888,6 +896,7 @@
             // 
             this.pictureBoxPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxPlayer.Image = global::Slip_through.Properties.Resources.warrior;
             this.pictureBoxPlayer.Location = new System.Drawing.Point(3, 47);
             this.pictureBoxPlayer.Name = "pictureBoxPlayer";
             this.pictureBoxPlayer.Size = new System.Drawing.Size(226, 182);
@@ -899,6 +908,7 @@
             // 
             this.tableLayoutPanelEnemy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelEnemy.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanelEnemy.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanelEnemy.BackgroundImage")));
             this.tableLayoutPanelEnemy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanelEnemy.ColumnCount = 1;
             this.tableLayoutPanelEnemy.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
