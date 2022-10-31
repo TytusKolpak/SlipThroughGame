@@ -9,7 +9,6 @@ namespace Slip_through
     {
         bool rewardEarned = false;
         bool gameOver = false;
-        bool fought = false;
 
         int iterationMs = 100;
         int panelNumberInt = 0;
@@ -102,7 +101,7 @@ namespace Slip_through
                 }
             }
         }
-        private void combatElement()
+        private void combatElement(int steps)
         {
             //chosing the enemy depending on how far the player is 
             if (panelNumberInt <= 10)
@@ -112,11 +111,8 @@ namespace Slip_through
             else
                 enemy = CerberusCard;
 
-            fought = false;
-
             if (panelNumberInt == 5)                        // just a test means to fight always on 5th tile, change later to 1-4 dice throw and anywhere
             {
-                fought = true;
                 pictureBoxWolf.Visible = true;
                 pictureBoxWolf.Update();
                 displayEnemyInfo();
@@ -148,21 +144,7 @@ namespace Slip_through
                         player.hitPoints = 10;
                     else if (player.name == "Archer")
                         player.hitPoints = 9;
-
-
-
-                    nextPlayer();               //remove from here - disrupts logic flow (should be at the end of sequence)
-                    if (!gameOver)
-                        displayPlayerInfo();
                 }
-            }
-
-
-            if (!fought)
-            {
-                nextPlayer();               //switch to the next player (should be at the end of sequence)
-                if (!gameOver)
-                    displayPlayerInfo();
             }
         }
         private void fightSequence()//working and enough for now
@@ -252,7 +234,6 @@ namespace Slip_through
         {
             setAddButtonsVisibility(true);          //show the buttons related to increasing stats
             setMovementButtonsVisibility(false);    //hide the buttons related to movement
-            rewardEarned = false;                       //to reset ability to access reward
         }
         private void setMovementButtonsVisibility(bool logicValue)
         {
@@ -269,48 +250,66 @@ namespace Slip_through
             buttonAddDEF.Visible = logicValue;
             buttonAddEFF.Visible = logicValue;
         }
+        private void endRewardCollection()
+        {
+            displayPlayerInfo();
+            setAddButtonsVisibility(false);
+            setMovementButtonsVisibility(true);
+            Thread.Sleep(iterationMs);
+
+            nextPlayer();
+            displayPlayerInfo();    //of the next player
+        }
         private void mainSequence(int distanceChoice)
         {
             movementElement(distanceChoice);            //carry out all actions related to movement
 
-            combatElement();                            //carry out all actions related to combat
+            combatElement(distanceChoice);              //carry out all actions related to combat
 
-            if (rewardEarned)                           //which is only after an enemy is defeated
-                getReward();
+            if (gameOver)
+            {
+                setAddButtonsVisibility(false);
+                setMovementButtonsVisibility(false);
+                //set play again button isibility true?
+            }
+            else
+            {
+                //next player should load only after the due reward has been collected (it's due only after an enemy is defeated)
+                if (rewardEarned)
+                    getReward();                            //a chain of events leading to waiting for user's choice of reward
+                else                                        //the reward is not due, no need to wait for it's collection, load next player
+                {
+                    nextPlayer();
+                    displayPlayerInfo();
+                }
 
-            //if
-
+                rewardEarned = false;                       //to reset ability to access reward
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!gameOver)
-                mainSequence(1);
+            mainSequence(1);
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!gameOver)
-                mainSequence(2);
+            mainSequence(2);
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            if (!gameOver)
-                mainSequence(3);
+            mainSequence(3);
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            if (!gameOver)
-                mainSequence(4);
+            mainSequence(4);
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            if (!gameOver)
-                mainSequence(5);
+            mainSequence(5);
         }
         private void button6_Click(object sender, EventArgs e)
         {
-            if (!gameOver)
-                mainSequence(6);
+            mainSequence(6);
         }
         private void buttonAddATT_Click(object sender, EventArgs e)
         {
@@ -321,14 +320,7 @@ namespace Slip_through
             else
                 player.attack += 3;
 
-            displayPlayerInfo();
-            setAddButtonsVisibility(false);
-            setMovementButtonsVisibility(true);
-            Thread.Sleep(iterationMs);
-
-            nextPlayer();               //switch to the next player (should be at the end of sequence)
-            if (!gameOver)
-                displayPlayerInfo();    //of the next player
+            endRewardCollection();
         }
         private void buttonAddDEF_Click(object sender, EventArgs e)
         {
@@ -339,14 +331,7 @@ namespace Slip_through
             else
                 player.defence += 3;
 
-            displayPlayerInfo();
-            setAddButtonsVisibility(false);
-            setMovementButtonsVisibility(true);
-            Thread.Sleep(iterationMs);
-
-            nextPlayer();               //switch to the next player (should be at the end of sequence)
-            if (!gameOver)
-                displayPlayerInfo();
+            endRewardCollection();
         }
         private void buttonAddEFF_Click(object sender, EventArgs e)
         {
@@ -357,14 +342,7 @@ namespace Slip_through
             else
                 player.effectiveness += 3;
 
-            displayPlayerInfo();
-            setAddButtonsVisibility(false);
-            setMovementButtonsVisibility(true);
-            Thread.Sleep(iterationMs);
-
-            nextPlayer();               //switch to the next player (should be at the end of sequence)
-            if (!gameOver)
-                displayPlayerInfo();
+            endRewardCollection();
         }
     }
 }
