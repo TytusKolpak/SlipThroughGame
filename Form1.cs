@@ -22,9 +22,9 @@ namespace Slip_through
         PictureBox[] pictureBoxArray = System.Array.Empty<PictureBox>();    //resolves CA1825
         PictureBox currentPictureBox;
 
-        CombatCard WarriorCard = new("Warrior", 2, 1, 2, 10, Properties.Resources.warrior);    
-        CombatCard ArcherCard = new("Archer", 1, 1, 3, 9, Properties.Resources.archer);        
-        CombatCard WizardCard = new("Wizard", 3, 1, 1, 8, Properties.Resources.wizard);        
+        CombatCard WarriorCard = new("Warrior", 2, 1, 2, 10, Properties.Resources.warrior);
+        CombatCard ArcherCard = new("Archer", 1, 1, 3, 9, Properties.Resources.archer);
+        CombatCard WizardCard = new("Wizard", 3, 1, 1, 8, Properties.Resources.wizard);
         CombatCard WolfCard = new("Wolf", 3, 0, 0, 5, Properties.Resources.wolf);
         CombatCard WerewolfCard = new("Werewolf", 4, 2, 2, 10, Properties.Resources.werewolf);
         CombatCard CerberusCard = new("Cerberus", 5, 4, 4, 15, Properties.Resources.cerberus);
@@ -42,9 +42,7 @@ namespace Slip_through
             pictureBoxCerberus.Visible = false;
             labelCombatLog.Visible = false;
             labelCombatLog.Visible = true;
-            buttonAddATT.Visible = false;
-            buttonAddDEF.Visible = false;
-            buttonAddEFF.Visible = false;
+            setAddButtonsVisibility(false);
 
             player = WarriorCard;
             currentPictureBox = pictureBoxWarrior;
@@ -99,9 +97,7 @@ namespace Slip_through
                     if (panelNumberInt == 30)
                     {
                         gameOver = true;
-                        labelCombatLog.Text = player.name + " won in " +
-                            turnCounter + " turns, with " +
-                            player.deathCounter + " deaths.";
+                        labelCombatLog.Text = player.name + " won. Turns: " + turnCounter + ". Deaths: " + player.deathCounter + ".";
                     }
                 }
             }
@@ -111,7 +107,7 @@ namespace Slip_through
             //chosing the enemy depending on how far the player is 
             if (panelNumberInt <= 10)
                 enemy = WolfCard;
-            else if (panelNumberInt >= 11 && panelNumberInt <= 20)
+            else if (panelNumberInt <= 20)
                 enemy = WerewolfCard;
             else
                 enemy = CerberusCard;
@@ -126,30 +122,27 @@ namespace Slip_through
                 displayEnemyInfo();
                 setCombatText(enemy.name + " attacks you. You have to fight it.");
 
-                while (player.hitPoints > 0 && enemy.hitPoints > 0)
-                {
+                while (player.hitPoints > 0 && enemy.hitPoints > 0)             //carry out full sequence until someone dies
                     fightSequence();
+
+                if (enemy.hitPoints <= 0)                                       //enemy died - player won
+                {
+                    setCombatText(player.name + " killed the " + enemy.name);
+                    WolfCard.hitPoints = 5;                                     //Set health of the wolf Card back to max for next fight
+                    pictureBoxWolf.Visible = false;                             //erase dead opponent's icon on the boar
+                    tableLayoutPanelEnemy.Visible = false;                      //erase dead opponent's card
+                    rewardEarned = true;                                        //enable adding stat points later on
                 }
 
-                if (enemy.hitPoints <= 0)                   //enemy died - player won
+                if (player.hitPoints <= 0)                                      //player died
                 {
-                    WolfCard = new("Wolf", 3, 0, 0, 5, Properties.Resources.wolf);
-                    pictureBoxWolf.Visible = false;
-                    rewardEarned = true;
-                    tableLayoutPanelEnemy.Visible = false;  //erase dead opponent
-                }
+                    setCombatText(enemy.name + " killed the " + player.name);
+                    player.deathCounter++;                                      //keep track of how many deaths each player has
+                    panelNumberInt -= 10;                                       //set destination point to be 10 tiles back
+                    panelNumberInt = panelNumberInt < 1 ? 1 : panelNumberInt;   //if tile number it's less than 1, make it 1 (index 0)
+                    currentPictureBox.Parent = panelArray[panelNumberInt - 1];  //move player to the destination tile in the back
 
-                if (player.hitPoints <=0)                                      //player died
-                {
-                    setCombatText("You died.");
-                    player.deathCounter++;
-                    panelNumberInt -= 10;
-                    panelNumberInt = panelNumberInt < 1 ? 1 : panelNumberInt;  //if tile number it's less than 1, make it 1 (index 0)
-
-                    currentPictureBox.Parent = panelArray[panelNumberInt - 1]; //move to the back that many tiles
-
-                    //get back all hit points - heal to full
-                    if (player.name == "Wizard")
+                    if (player.name == "Wizard")                                //get back all hit points - heal to full
                         player.hitPoints = 8;
                     else if (player.name == "Warrior")
                         player.hitPoints = 10;
@@ -157,13 +150,11 @@ namespace Slip_through
                         player.hitPoints = 9;
 
 
-                    nextPlayer();               //switch to the next player (should be at the end of sequence)
+
+                    nextPlayer();               //remove from here - disrupts logic flow (should be at the end of sequence)
                     if (!gameOver)
                         displayPlayerInfo();
                 }
-
-
-                labelCombatLog.Text = " ";              //clear text
             }
 
 
@@ -176,44 +167,38 @@ namespace Slip_through
         }
         private void fightSequence()//working and enough for now
         {
-            //both lines are necessary to create a random integer between 1 and 6 including both
             Random random = new();
             int diceRoll;
             int damage;
 
-            //player attack sequence
-            setCombatText("You attempt to attack your enemy. Your ATT + EFF = " + (player.attack + player.effectiveness));
-
-            diceRoll = random.Next(1, 7);
-            //if (player.effectiveness + diceRoll > enemy.effectiveness) //alternate
-            if (player.effectiveness + player.attack > enemy.effectiveness + diceRoll) //player manages to attack
+            if (player.hitPoints > 0)                       //carry out player attack if they are alive
             {
-                damage = player.attack - enemy.defence;
-                damage = damage >= 0 ? damage : 0;      //it can only go down to 0, no lower
-                enemy.hitPoints -= damage;              //enemy loses health
-                setCombatText("Your ATT + EFF = " + (player.attack + player.effectiveness) + " > " + enemy.name+ "'s EFF + roll = " + (enemy.effectiveness + diceRoll) + ", so you succeed.");
-                setCombatText("You deal your ATT - their DEF = " + (player.attack - enemy.defence) + " damage.");
-                displayEnemyInfo();                     //show changed stats and refresh the view
+                diceRoll = random.Next(1, 7);
+                if (player.effectiveness + player.attack > enemy.effectiveness + diceRoll) //player manages to attack the enemy
+                {
+                    damage = player.attack - enemy.defence;
+                    damage = damage >= 0 ? damage : 0;      //it can only go down to 0, no lower
+                    enemy.hitPoints -= damage;              //enemy loses health
+                    displayEnemyInfo();                     //show changed stats and refresh the view
+                    setCombatText("You succesfully attacked");
+                }
+                else
+                    setCombatText("You failed to attack");
             }
-            else                                        //player fails to attack, nothing happens
-                setCombatText("Your ATT + EFF = " + (player.attack + player.effectiveness) + " <= " + enemy.name + "'s EFF + roll = " + (enemy.effectiveness + diceRoll) + ", so you fail.");
 
-            //enemy attack sequence
-            diceRoll = random.Next(1, 7);
-            setCombatText(enemy.name + " attacks you it rolls for = " + diceRoll + ". Its EFF + roll= " + (enemy.effectiveness + diceRoll));
-
-            if (enemy.effectiveness + diceRoll > player.effectiveness) //It manages to attack the player
+            if (enemy.hitPoints > 0)                        //carry out enemy attack if they are alive
             {
-                damage = enemy.attack - player.defence;
-                damage = damage >= 0 ? damage : 0;
-                player.hitPoints -= damage;
-                setCombatText(enemy.name + "'s EFF + roll = " + (enemy.effectiveness + diceRoll) + " > your EFF = " + player.effectiveness + ", so it succeeds");
-                setCombatText(enemy.name + " deals their ATT - your DEF = " + (enemy.attack - player.defence) + " damage.");
-                displayPlayerInfo();                     //show changed stats and refresh the view
-            }
-            else
-            {
-                setCombatText(enemy.name + "'s EFF + roll = " + (enemy.effectiveness + diceRoll) + " <= your EFF = " + player.effectiveness + ", so it fails");
+                diceRoll = random.Next(1, 7);
+                if (enemy.effectiveness + diceRoll > player.effectiveness) //enemy manages to attack the player
+                {
+                    damage = enemy.attack - player.defence;
+                    damage = damage >= 0 ? damage : 0;
+                    player.hitPoints -= damage;
+                    displayPlayerInfo();                     //show changed stats and refresh the view
+                    setCombatText(enemy.name + " succesfully attacked");
+                }
+                else
+                    setCombatText(enemy.name + " failed to attack");
             }
         }
         private void nextPlayer()//working and complete
@@ -265,19 +250,35 @@ namespace Slip_through
         }
         private void getReward()
         {
-            if (rewardEarned)
-            {
-                buttonAddATT.Visible = true;
-                buttonAddDEF.Visible = true;
-                buttonAddEFF.Visible = true;
-            }
+            setAddButtonsVisibility(true);          //show the buttons related to increasing stats
+            setMovementButtonsVisibility(false);    //hide the buttons related to movement
+            rewardEarned = false;                       //to reset ability to access reward
         }
-        private void mainSequence(int diceRoll)
+        private void setMovementButtonsVisibility(bool logicValue)
         {
-            movementElement(diceRoll);      //carry outh all actions relatet do just movement
-            combatElement();
-            getReward();                    //this works but scatters the code, might need reshaping
+            button1.Visible = logicValue;
+            button2.Visible = logicValue;
+            button3.Visible = logicValue;
+            button4.Visible = logicValue;
+            button5.Visible = logicValue;
+            button6.Visible = logicValue;
+        }
+        private void setAddButtonsVisibility(bool logicValue)
+        {
+            buttonAddATT.Visible = logicValue;
+            buttonAddDEF.Visible = logicValue;
+            buttonAddEFF.Visible = logicValue;
+        }
+        private void mainSequence(int distanceChoice)
+        {
+            movementElement(distanceChoice);            //carry out all actions related to movement
 
+            combatElement();                            //carry out all actions related to combat
+
+            if (rewardEarned)                           //which is only after an enemy is defeated
+                getReward();
+
+            //if
 
         }
 
@@ -311,78 +312,54 @@ namespace Slip_through
             if (!gameOver)
                 mainSequence(6);
         }
-
         private void buttonAddATT_Click(object sender, EventArgs e)
         {
             if (panelNumberInt <= 10)
-            {
                 player.attack += 1;
-            }
             else if (panelNumberInt <= 20)
-            {
                 player.attack += 2;
-            }
             else
-            {
                 player.attack += 3;
-            }
-            displayPlayerInfo();
-            buttonAddATT.Visible = false;
-            buttonAddDEF.Visible = false;
-            buttonAddEFF.Visible = false;
 
+            displayPlayerInfo();
+            setAddButtonsVisibility(false);
+            setMovementButtonsVisibility(true);
             Thread.Sleep(iterationMs);
 
             nextPlayer();               //switch to the next player (should be at the end of sequence)
             if (!gameOver)
-                displayPlayerInfo();
+                displayPlayerInfo();    //of the next player
         }
-
         private void buttonAddDEF_Click(object sender, EventArgs e)
         {
             if (panelNumberInt <= 10)
-            {
                 player.defence += 1;
-            }
             else if (panelNumberInt <= 20)
-            {
                 player.defence += 2;
-            }
             else
-            {
                 player.defence += 3;
-            }
-            displayPlayerInfo();
-            buttonAddATT.Visible = false;
-            buttonAddDEF.Visible = false;
-            buttonAddEFF.Visible = false;
 
+            displayPlayerInfo();
+            setAddButtonsVisibility(false);
+            setMovementButtonsVisibility(true);
             Thread.Sleep(iterationMs);
 
             nextPlayer();               //switch to the next player (should be at the end of sequence)
             if (!gameOver)
                 displayPlayerInfo();
         }
-
         private void buttonAddEFF_Click(object sender, EventArgs e)
         {
             if (panelNumberInt <= 10)
-            {
                 player.effectiveness += 1;
-            }
             else if (panelNumberInt <= 20)
-            {
                 player.effectiveness += 2;
-            }
             else
-            {
                 player.effectiveness += 3;
-            }
-            displayPlayerInfo();
-            buttonAddATT.Visible = false;
-            buttonAddDEF.Visible = false;
-            buttonAddEFF.Visible = false;
 
+            displayPlayerInfo();
+            setAddButtonsVisibility(false);
+            setMovementButtonsVisibility(true);
             Thread.Sleep(iterationMs);
 
             nextPlayer();               //switch to the next player (should be at the end of sequence)

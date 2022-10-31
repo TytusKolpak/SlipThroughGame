@@ -1060,7 +1060,7 @@
             // 
             // buttonAddATT
             // 
-            this.buttonAddATT.Location = new System.Drawing.Point(517, 602);
+            this.buttonAddATT.Location = new System.Drawing.Point(516, 602);
             this.buttonAddATT.Name = "buttonAddATT";
             this.buttonAddATT.Size = new System.Drawing.Size(50, 23);
             this.buttonAddATT.TabIndex = 28;
@@ -1080,7 +1080,7 @@
             // 
             // buttonAddEFF
             // 
-            this.buttonAddEFF.Location = new System.Drawing.Point(613, 602);
+            this.buttonAddEFF.Location = new System.Drawing.Point(614, 602);
             this.buttonAddEFF.Name = "buttonAddEFF";
             this.buttonAddEFF.Size = new System.Drawing.Size(50, 23);
             this.buttonAddEFF.TabIndex = 30;
