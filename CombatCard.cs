@@ -12,8 +12,6 @@ namespace Slip_through
         public int attack, defence, effectiveness, hitPoints, deathCounter;
         public Bitmap bitmapImage;
 
-        public static CombatCard currentCard = new ("Warrior", 2, 1, 2, 10, Properties.Resources.warrior);
-
         public CombatCard(String name, int attack, int defence, int effectiveness, int hitPoints, Bitmap bitmapImage)
         {
             this.name = name;

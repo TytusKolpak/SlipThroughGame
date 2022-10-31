@@ -88,7 +88,7 @@
             this.tableLayoutPanelEnemy = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.labelEnemyHitPoints = new System.Windows.Forms.Label();
-            this.labelEnemyEffectivness = new System.Windows.Forms.Label();
+            this.labelEnemyEffectiveness = new System.Windows.Forms.Label();
             this.labelEnemyDefense = new System.Windows.Forms.Label();
             this.labelEnemyAttack = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -96,6 +96,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.pictureBoxEnemy = new System.Windows.Forms.PictureBox();
+            this.labelCombatLog = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel25.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerberus)).BeginInit();
@@ -381,7 +382,7 @@
             // 
             this.pictureBoxCerberus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxCerberus.Image = global::Slip_through.Properties.Resources.cerberus;
-            this.pictureBoxCerberus.Location = new System.Drawing.Point(49, 48);
+            this.pictureBoxCerberus.Location = new System.Drawing.Point(49, 38);
             this.pictureBoxCerberus.Name = "pictureBoxCerberus";
             this.pictureBoxCerberus.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxCerberus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -533,7 +534,7 @@
             // 
             this.pictureBoxWerewolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxWerewolf.Image = global::Slip_through.Properties.Resources.werewolf;
-            this.pictureBoxWerewolf.Location = new System.Drawing.Point(49, 48);
+            this.pictureBoxWerewolf.Location = new System.Drawing.Point(49, 38);
             this.pictureBoxWerewolf.Name = "pictureBoxWerewolf";
             this.pictureBoxWerewolf.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxWerewolf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -557,7 +558,7 @@
             // 
             this.pictureBoxWolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxWolf.Image = global::Slip_through.Properties.Resources.wolf;
-            this.pictureBoxWolf.Location = new System.Drawing.Point(49, 49);
+            this.pictureBoxWolf.Location = new System.Drawing.Point(49, 39);
             this.pictureBoxWolf.Name = "pictureBoxWolf";
             this.pictureBoxWolf.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxWolf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -696,8 +697,8 @@
             // 
             this.pictureBoxArcher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxArcher.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxArcher.Image = global::Slip_through.Properties.Resources.wizard;
-            this.pictureBoxArcher.Location = new System.Drawing.Point(0, 48);
+            this.pictureBoxArcher.Image = global::Slip_through.Properties.Resources.archer;
+            this.pictureBoxArcher.Location = new System.Drawing.Point(0, 50);
             this.pictureBoxArcher.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxArcher.Name = "pictureBoxArcher";
             this.pictureBoxArcher.Size = new System.Drawing.Size(50, 50);
@@ -709,7 +710,7 @@
             // 
             this.pictureBoxWizard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxWizard.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxWizard.Image = global::Slip_through.Properties.Resources.archer;
+            this.pictureBoxWizard.Image = global::Slip_through.Properties.Resources.wizard;
             this.pictureBoxWizard.Location = new System.Drawing.Point(50, 0);
             this.pictureBoxWizard.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxWizard.Name = "pictureBoxWizard";
@@ -746,7 +747,7 @@
             // 
             this.SlipBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SlipBox.AutoSize = true;
-            this.SlipBox.Location = new System.Drawing.Point(452, 606);
+            this.SlipBox.Location = new System.Drawing.Point(455, 606);
             this.SlipBox.Name = "SlipBox";
             this.SlipBox.Size = new System.Drawing.Size(45, 19);
             this.SlipBox.TabIndex = 18;
@@ -931,7 +932,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.Controls.Add(this.labelEnemyHitPoints, 3, 0);
-            this.tableLayoutPanel5.Controls.Add(this.labelEnemyEffectivness, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.labelEnemyEffectiveness, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.labelEnemyDefense, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.labelEnemyAttack, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.label17, 0, 1);
@@ -961,17 +962,17 @@
             this.labelEnemyHitPoints.Text = "0";
             this.labelEnemyHitPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelEnemyEffectivness
+            // labelEnemyEffectiveness
             // 
-            this.labelEnemyEffectivness.AutoSize = true;
-            this.labelEnemyEffectivness.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelEnemyEffectivness.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelEnemyEffectivness.Location = new System.Drawing.Point(99, 0);
-            this.labelEnemyEffectivness.Name = "labelEnemyEffectivness";
-            this.labelEnemyEffectivness.Size = new System.Drawing.Size(42, 26);
-            this.labelEnemyEffectivness.TabIndex = 27;
-            this.labelEnemyEffectivness.Text = "0";
-            this.labelEnemyEffectivness.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelEnemyEffectiveness.AutoSize = true;
+            this.labelEnemyEffectiveness.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEnemyEffectiveness.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelEnemyEffectiveness.Location = new System.Drawing.Point(99, 0);
+            this.labelEnemyEffectiveness.Name = "labelEnemyEffectiveness";
+            this.labelEnemyEffectiveness.Size = new System.Drawing.Size(42, 26);
+            this.labelEnemyEffectiveness.TabIndex = 27;
+            this.labelEnemyEffectiveness.Text = "0";
+            this.labelEnemyEffectiveness.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelEnemyDefense
             // 
@@ -1054,11 +1055,25 @@
             this.pictureBoxEnemy.TabIndex = 22;
             this.pictureBoxEnemy.TabStop = false;
             // 
+            // labelCombatLog
+            // 
+            this.labelCombatLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelCombatLog.AutoSize = true;
+            this.labelCombatLog.BackColor = System.Drawing.Color.Transparent;
+            this.labelCombatLog.Location = new System.Drawing.Point(501, 606);
+            this.labelCombatLog.Name = "labelCombatLog";
+            this.labelCombatLog.Size = new System.Drawing.Size(10, 15);
+            this.labelCombatLog.TabIndex = 27;
+            this.labelCombatLog.Text = " ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 627);
+            this.Controls.Add(this.labelCombatLog);
             this.Controls.Add(this.tableLayoutPanelEnemy);
             this.Controls.Add(this.tableLayoutPanelPlayer);
             this.Controls.Add(this.SlipBox);
@@ -1159,7 +1174,7 @@
         private TableLayoutPanel tableLayoutPanelEnemy;
         private TableLayoutPanel tableLayoutPanel5;
         private Label labelEnemyHitPoints;
-        private Label labelEnemyEffectivness;
+        private Label labelEnemyEffectiveness;
         private Label labelEnemyDefense;
         private Label labelEnemyAttack;
         private Label label17;
@@ -1167,5 +1182,6 @@
         private Label label19;
         private Label label20;
         private PictureBox pictureBoxEnemy;
+        private Label labelCombatLog;
     }
 }

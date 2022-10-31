@@ -17,12 +17,14 @@ namespace Slip_through
         PictureBox[] pictureBoxArray = System.Array.Empty<PictureBox>();    //resolves CA1825
         PictureBox currentPictureBox;
 
-        CombatCard WizardCard = new ("Wizard",3, 1, 1, 8, Properties.Resources.wizard);         //no need to create objects as: 
-        CombatCard WarriorCard = new ("Warrior", 2, 1, 2, 10, Properties.Resources.warrior);    //Cat cat = new Cat()
-        CombatCard ArcherCard = new ("Archer", 1, 1, 3, 9, Properties.Resources.archer);        //Cat cat = () is enough
-        CombatCard WolfCard = new ("Wolf", 3, 0, 2, 5, Properties.Resources.wolf);
-        CombatCard WerewolfCard = new ("Werewolf", 4, 2, 3, 10, Properties.Resources.werewolf);
-        CombatCard CerberusCard = new ("Cerberus", 5, 4, 4, 15, Properties.Resources.cerberus);
+        CombatCard WizardCard = new("Wizard", 3, 1, 1, 8, Properties.Resources.wizard);         //no need to create objects as: 
+        CombatCard WarriorCard = new("Warrior", 2, 1, 2, 10, Properties.Resources.warrior);    //Cat cat = new Cat()
+        CombatCard ArcherCard = new("Archer", 1, 1, 3, 9, Properties.Resources.archer);        //Cat cat = () is enough
+        CombatCard WolfCard = new("wolf", 3, 0, 2, 5, Properties.Resources.wolf);
+        CombatCard WerewolfCard = new("werewolf", 4, 2, 3, 10, Properties.Resources.werewolf);
+        CombatCard CerberusCard = new("cerberus", 5, 4, 4, 15, Properties.Resources.cerberus);
+        CombatCard player;
+        CombatCard enemy;
 
         public Form1()//working and complete (so far)
         {
@@ -32,9 +34,12 @@ namespace Slip_through
             tableLayoutPanelEnemy.Visible = false;
             pictureBoxWolf.Visible = false;
             pictureBoxWerewolf.Visible = false;
-            pictureBoxCerberus.Visible = false;   
+            pictureBoxCerberus.Visible = false;
+            labelCombatLog.Visible = false;
+            labelCombatLog.Visible = true;
+            player = WarriorCard;
             currentPictureBox = pictureBoxWarrior;
-            loadInfo();
+            loadPlayerInfo();
         }
         private void createArrays()//working and complete
         {
@@ -50,14 +55,14 @@ namespace Slip_through
             pictureBoxArray = new PictureBox[6]
             {
                 pictureBoxWarrior,
-                pictureBoxWizard,
                 pictureBoxArcher,
+                pictureBoxWizard,
                 pictureBoxWolf,
                 pictureBoxWerewolf,
                 pictureBoxCerberus,
             };
         }
-        private void moveThisBy(int steps)//working and complete
+        private void movementElement(int steps)//working and complete
         {
             panelName = currentPictureBox.Parent.Name.ToString();
             panelNumberString = Regex.Match(panelName, @"\d+").Value; //single numeric value in string form
@@ -66,7 +71,7 @@ namespace Slip_through
             {
                 for (int i = 0; i < steps; i++)
                 {
-                    Thread.Sleep(25);
+                    Thread.Sleep(100);
                     if (SlipBox.Checked == true && panelNumberInt % 5 == 0 && panelNumberInt >= 10) // that is wrong
                     {
                         panelNumberInt -= 9;
@@ -75,68 +80,91 @@ namespace Slip_through
                     {
                         panelNumberInt++; //mark next panel as destination
                     }
-                    currentPictureBox.Parent = panelArray[panelNumberInt - 1];
-                    //-1 is because panel1 has index 0 : x on x-1
+
+                    //place the player on destination tile, on it, and update it
+                    currentPictureBox.Parent = panelArray[panelNumberInt - 1]; //-1 is because panel1 has index 0 : x on x-1
                     currentPictureBox.BringToFront();
                     currentPictureBox.Update();
+
+                    //check for the end of the game
                     if (panelNumberInt == 30)
                     {
                         gameOver = true;
-                        label1.Text = CombatCard.currentCard.name + " won in " +
+                        label1.Text = player.name + " won in " +
                             turnCounter + " turns, with " +
-                            CombatCard.currentCard.deathCounter + " deaths.";
+                            player.deathCounter + " deaths.";
                     }
                 }
             }
         }
         private void combatElement()
         {
+            //chosing the enemy depending on how far the player is 
+            if (panelNumberInt <= 10)
+                enemy = WolfCard;
+            else if (panelNumberInt >= 11 && panelNumberInt <= 20)
+                enemy = WerewolfCard;
+            else
+                enemy = CerberusCard;
+
             //both lines are necessary to create a random integer between 1 and 6 including both
             Random random = new();
-            int randomNumber = random.Next(1,7);
+            int randomNumber = random.Next(1, 7);
 
-            if (randomNumber<=4)
+            if (panelNumberInt == 5) // just a test, change later to 1-4 dice throw
             {
-                CombatCard enemy;
-
-                //chosing the enemy depending on how far the player is 
-                if (panelNumberInt <= 10)
-                    enemy = WolfCard;
-                else if (panelNumberInt >= 11 && panelNumberInt <= 20)
-                    enemy = WerewolfCard;
-                else
-                    enemy = CerberusCard;
-
-                //executing combat as long as one of them is alive
-                if (CombatCard.currentCard.hitPoints > 0 && enemy.hitPoints > 0)
-                {
-                    int chosen_value = 3; // let player roll for a number or choose it, let's start with choosing for tests
-                    CombatCard.combatRound(CombatCard.currentCard, enemy, chosen_value);
-                }
-                else if (enemy.hitPoints <= 0)  //if enemy dies then you chose a reward
-                    CombatCard.choseReward();
-                else                            //if the player dies he revives with full healt 10 tiles back
-                {
-                    CombatCard.currentCard.deathCounter++;
-                    panelNumberInt -= 10;
-
-                    //ensure the player stays on the board
-                    if (panelNumberInt<0)
-                        panelNumberInt = 0;
-                    
-                    //move to the back that many tiles
-                    currentPictureBox.Parent = panelArray[panelNumberInt - 1];
-
-                    //get back all hit points
-                    if (CombatCard.currentCard.name == "Wizard")
-                        CombatCard.currentCard.hitPoints = 8;
-                    else if (CombatCard.currentCard.name == "Warrior")
-                        CombatCard.currentCard.hitPoints = 10;
-                    else if (CombatCard.currentCard.name == "Archer")
-                        CombatCard.currentCard.hitPoints = 9;
-                }
-
+                loadEnemyInfo();
+                setCombatText("A " + enemy.name + " attacks you. You have to fight it.");
+                randomNumber = random.Next(1, 7);
+                setCombatText("You attack. You roll= " + randomNumber + ". Your EFF + roll= " + (randomNumber + player.effectiveness));
             }
+
+            //labelCombatLog.Text = ""; //clear this label
+
+
+
+
+            //////////////////////////////////////////////
+            //pictureBoxArray[2].Parent //wolf's tile
+
+            
+
+            //if (randomNumber <= 4)
+            //{
+            //    CombatCard enemy;
+
+
+
+            //    //executing combat as long as one of them is alive
+            //    if (player.hitPoints > 0 && enemy.hitPoints > 0)
+            //    {
+            //        int chosen_value = 3; // let player roll for a number or choose it, let's start with choosing for tests
+            //        CombatCard.combatRound(player, enemy, chosen_value);
+            //    }
+            //    else if (enemy.hitPoints <= 0){  //if enemy dies then you chose a reward
+            //        tableLayoutPanelEnemy.Visible = false;
+            //        CombatCard.choseReward();
+            //    }
+            //    else                            //if the player dies he revives with full healt 10 tiles back
+            //    {
+            //        player.deathCounter++;
+            //        panelNumberInt -= 10;
+
+            //        //ensure the player stays on the board
+            //        if (panelNumberInt < 0)
+            //            panelNumberInt = 0;
+
+            //        //move to the back that many tiles
+            //        currentPictureBox.Parent = panelArray[panelNumberInt - 1];
+            //        //get back all hit points
+            //        if (player.name == "Wizard")
+            //            player.hitPoints = 8;
+            //        else if (player.name == "Warrior")
+            //            player.hitPoints = 10;
+            //        else if (player.name == "Archer")
+            //            player.hitPoints = 9;
+            //    }
+            //}
             //otherwise do nothing, you avoided the danger
         }
         private void nextPlayer()//working and complete
@@ -152,44 +180,51 @@ namespace Slip_through
 
             //assign the object of the card(player) whose turn it is now to the currentCard for easy - uniform access
             if (playerNr == 0)
-                CombatCard.currentCard = WarriorCard;
+                player = WarriorCard;
             else if (playerNr == 1)
-                CombatCard.currentCard = ArcherCard;
+                player = ArcherCard;
             else
-                CombatCard.currentCard = WizardCard;
+                player = WizardCard;
         }
-        private void loadInfo()//working and complete
+        private void loadPlayerInfo()//working and complete
         {
             //load that player's info to the window elements to be shown
-            pictureBoxPlayer.Image = CombatCard.currentCard.bitmapImage;                    //big main picture on the right
-            labelPlayerAttack.Text = CombatCard.currentCard.attack.ToString();              //following stats
-            labelPlayerDefense.Text = CombatCard.currentCard.defence.ToString();
-            labelPlayerEffectiveness.Text = CombatCard.currentCard.effectiveness.ToString();
-            labelPlayerHitPoints.Text = CombatCard.currentCard.hitPoints.ToString();
-            label1.Text = CombatCard.currentCard.name;                                      //name of the current player on the bottom of window
+            pictureBoxPlayer.Image = player.bitmapImage;                    //big main picture on the right
+            labelPlayerAttack.Text = player.attack.ToString();              //following stats
+            labelPlayerDefense.Text = player.defence.ToString();
+            labelPlayerEffectiveness.Text = player.effectiveness.ToString();
+            labelPlayerHitPoints.Text = player.hitPoints.ToString();
+            label1.Text = player.name;                                      //name of the current player on the bottom of window
 
             currentPictureBox = pictureBoxArray[playerNr];                                  //this is complicated
         }
+        private void loadEnemyInfo()
+        {
+            tableLayoutPanelEnemy.Visible = true;
+            pictureBoxEnemy.Image = enemy.bitmapImage;
+            labelEnemyAttack.Text = enemy.attack.ToString();
+            labelEnemyDefense.Text = enemy.defence.ToString();
+            labelEnemyEffectiveness.Text = enemy.effectiveness.ToString();
+            labelEnemyHitPoints.Text = enemy.hitPoints.ToString();
+            tableLayoutPanelEnemy.Update(); //absolutely neccessary
+        }
+        private void setCombatText(String message)
+        {
+            labelCombatLog.Text = message;
+            labelCombatLog.Update();
+            Thread.Sleep(3000);
+        }
         private void mainSequence(int diceThrow)
         {
-            moveThisBy(diceThrow);      //carry outh all actions relatet do just movement
+            movementElement(diceThrow);      //carry outh all actions relatet do just movement
             combatElement();
-            //labelEnemyHitPoints.Text = "83";
-            //tableLayoutPanelEnemy.Visible = true;
-            //execute combat
-            //fight(WarriorCard, WolfCard, 2); //example
-            //and when it;s ended
 
             nextPlayer();               //switch to the next player (should be at the end of sequence)
 
-            if(!gameOver)
-                loadInfo();
+            if (!gameOver)
+                loadPlayerInfo();
         }
 
-        private void gameIsOver()
-        {
-            label1.Text = "Game is over.";
-        }
         private void button1_Click(object sender, EventArgs e)
         {
             if (!gameOver)
