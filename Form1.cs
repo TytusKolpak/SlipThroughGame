@@ -13,6 +13,8 @@ namespace Slip_through
 
         //try to make the values of combat card cusomable for the player - both of them can be in menu bar or something
 
+        //test
+
         bool rewardEarned = false;
         bool gameOver = false;
         int iterationMs = 200;
