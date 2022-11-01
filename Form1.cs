@@ -10,7 +10,7 @@ namespace Slip_through
         bool rewardEarned = false;
         bool gameOver = false;
 
-        int iterationMs = 100;
+        int iterationMs = 200;
         int panelNumberInt = 0;
         int playerNr = 0;
         int turnCounter = 1;
@@ -22,12 +22,12 @@ namespace Slip_through
         PictureBox currentPlayerPictureBox;
         PictureBox currentEnemyPictureBox;
 
-        CombatCard WarriorCard = new("Warrior", 2, 1, 2, 10, Properties.Resources.warrior);
-        CombatCard ArcherCard = new("Archer", 1, 1, 3, 9, Properties.Resources.archer);
-        CombatCard WizardCard = new("Wizard", 3, 1, 1, 8, Properties.Resources.wizard);
-        CombatCard WolfCard = new("Wolf", 3, 0, 0, 5, Properties.Resources.wolf);
-        CombatCard WerewolfCard = new("Werewolf", 4, 2, 2, 10, Properties.Resources.werewolf);
-        CombatCard CerberusCard = new("Cerberus", 5, 4, 4, 15, Properties.Resources.cerberus);
+        CombatCard WarriorCard =    new("Warrior",  2, 1, 20, 10, Properties.Resources.warrior);
+        CombatCard ArcherCard =     new("Archer",   1, 1, 30, 9, Properties.Resources.archer);
+        CombatCard WizardCard =     new("Wizard",   3, 0, 20, 8, Properties.Resources.wizard);
+        CombatCard WolfCard =       new("Wolf",     3, 0, 5, 5, Properties.Resources.wolf);
+        CombatCard WerewolfCard =   new("Werewolf", 4, 1, 6, 7, Properties.Resources.werewolf);
+        CombatCard CerberusCard =   new("Cerberus", 5, 3, 8, 10, Properties.Resources.cerberus);
         CombatCard player;
         CombatCard enemy;
 
@@ -44,6 +44,7 @@ namespace Slip_through
             pictureBoxCerberus.Visible = false;
             labelCombatLog.Visible = false;
             labelCombatLog.Visible = true;
+            flowLayoutLongLog.Visible = false;
             setAddButtonsVisibility(false);
 
             player = WarriorCard;
@@ -81,26 +82,29 @@ namespace Slip_through
                 for (int i = 0; i < steps; i++)
                 {
                     Thread.Sleep(100);
-                    if (SlipBox.Checked == true && panelNumberInt % 5 == 0 && panelNumberInt >= 10) // that is wrong
+                    if (SlipBox.Checked == true && panelNumberInt % 5 == 0 && panelNumberInt >= 10)//enable at 10,15,20,25 rank, at 5 there is no up to go and at 30 you win
                     {
-                        panelNumberInt -= 9;
+                        panelNumberInt -= 9;                                    // that is going up a file
+
+                        //if player is here means he slips give bonuses
+                        if (player.name == "Wizard")                                //get class specific bonuses
+                            player.attack++;
+                        else if (player.name == "Warrior")
+                            player.defence++;
+                        else if (player.name == "Archer")
+                            player.effectiveness++;
+
+                        setCombatText(player.name + " slips and gains +1 point to their class' attribute");
                     }
                     else
                     {
-                        panelNumberInt++; //mark next panel as destination
+                        panelNumberInt++;                                       //just mark next panel as destination
                     }
 
                     //place the player on destination tile, on it, and update it
                     currentPlayerPictureBox.Parent = panelArray[panelNumberInt - 1]; //-1 is because panel1 has index 0 : x on x-1
                     currentPlayerPictureBox.BringToFront();
                     currentPlayerPictureBox.Update();
-
-                    //check for the end of the game
-                    if (panelNumberInt == 30)
-                    {
-                        gameOver = true;
-                        labelCombatLog.Text = player.name + " won. Turns: " + turnCounter + ". Deaths: " + player.deathCounter + ".";
-                    }
                 }
             }
         }
@@ -126,14 +130,18 @@ namespace Slip_through
 
             int diceRoll = random.Next(1, 7);
 
-            if (diceRoll <= steps)//if player rolls more than what they moved then they are not found out (move less -> less chance of a fight)
+            //if player rolls more than what they moved then they are not found out (move less -> less chance of a fight)
+            if (diceRoll < steps)// <= enables fighting at moving by 1 inf there is < then moving 1 is 100% safe
             {
+                flowLayoutLongLog.Visible = false;
                 currentEnemyPictureBox.Parent = panelArray[panelNumberInt - 1];
                 currentEnemyPictureBox.Visible = true;
                 currentEnemyPictureBox.Update();
 
+                labelLongLog.Text = "";
+
                 displayEnemyInfo();
-                setCombatText(enemy.name + " attacks you. You have to fight it.");
+                setCombatText(enemy.name + " attacks the " + player.name + ". They fight. \n");
 
                 while (player.hitPoints > 0 && enemy.hitPoints > 0)             //carry out full sequence until someone dies
                     fightSequence();
@@ -158,6 +166,8 @@ namespace Slip_through
                         player.hitPoints = 9;
                 }
 
+                flowLayoutLongLog.Visible = true;                           //It will contain all previouse combat history
+
                 enemy.hitPoints = enemy.maxHP;                              //Set health of the enemy back to max for next fight
                 currentEnemyPictureBox.Visible = false;                     //opponents either flee or die after a battle
                 tableLayoutPanelEnemy.Visible = false;                      //old enemies are never encountered again (idk if correct)
@@ -171,45 +181,43 @@ namespace Slip_through
             if (player.hitPoints > 0)                       //carry out player attack if they are alive
             {
                 diceRoll = random.Next(1, 7);
-                if (player.effectiveness + player.attack > enemy.effectiveness + diceRoll) //player manages to attack the enemy
+                if (player.effectiveness + diceRoll > enemy.effectiveness) //player manages to attack the enemy
                 {
                     damage = player.attack - enemy.defence;
                     damage = damage >= 0 ? damage : 0;      //it can only go down to 0, no lower
                     enemy.hitPoints -= damage;              //enemy loses health
                     displayEnemyInfo();                     //show changed stats and refresh the view
-                    setCombatText("You succesfully attacked");
+                    setCombatText(player.name + " succesfully attacked.\n");
                 }
                 else
-                    setCombatText("You failed to attack");
+                    setCombatText(player.name + " failed to attack.\n");
             }
 
             if (enemy.hitPoints > 0)                        //carry out enemy attack if they are alive
             {
                 diceRoll = random.Next(1, 7);
-                if (enemy.effectiveness + diceRoll > player.effectiveness) //enemy manages to attack the player
+                if (enemy.effectiveness - diceRoll >= player.effectiveness) //enemy manages to attack the player
                 {
                     damage = enemy.attack - player.defence;
                     damage = damage >= 0 ? damage : 0;
                     player.hitPoints -= damage;
                     displayPlayerInfo();                     //show changed stats and refresh the view
-                    setCombatText(enemy.name + " succesfully attacked");
+                    setCombatText(enemy.name + " succesfully attacked.\n");
                 }
                 else
-                    setCombatText(enemy.name + " failed to attack");
+                    setCombatText(enemy.name + " failed to attack.\n");
             }
         }
         private void nextPlayer()//working and complete
         {
-            //temporary change to 1 player for testing purposes
-
             //change player to the next one in a loop
-            //if (playerNr < 2)
-            //    playerNr++;
-            //else
-            //{
-            //    turnCounter++;
-            //    playerNr = 0;
-            //}
+            if (playerNr < 2)
+                    playerNr++;
+                else
+                {
+                    turnCounter++;
+                    playerNr = 0;
+                }
 
             //assign the object of the card(player) whose turn it is now to the currentCard for easy - uniform access
             if (playerNr == 0)
@@ -245,6 +253,7 @@ namespace Slip_through
         {
             labelCombatLog.Text = message;
             labelCombatLog.Update();
+            labelLongLog.Text += message;
             Thread.Sleep(iterationMs);             //slider can be setting this value, same as the sleep before / you can check every 1000ms if there was a click or something
         }
         private void getReward()
@@ -283,11 +292,19 @@ namespace Slip_through
 
             combatElement(distanceChoice);              //carry out all actions related to combat
 
+
+            //check for the end of the game, shoud be somewhere else
+            if (panelNumberInt == 30)
+            {
+                gameOver = true;
+                labelCombatLog.Text = player.name + " won. Turns: " + turnCounter + ". Deaths: " + player.deathCounter + ".";
+            }
+
             if (gameOver)
             {
                 setAddButtonsVisibility(false);
                 setMovementButtonsVisibility(false);
-                //set play again button isibility true?
+                //create play again button? - not necessary.
             }
             else
             {
@@ -332,10 +349,8 @@ namespace Slip_through
         {
             if (panelNumberInt <= 10)
                 player.attack += 1;
-            else if (panelNumberInt <= 20)
-                player.attack += 2;
             else
-                player.attack += 3;
+                player.attack += 2;
 
             endRewardCollection();
         }
@@ -343,10 +358,8 @@ namespace Slip_through
         {
             if (panelNumberInt <= 10)
                 player.defence += 1;
-            else if (panelNumberInt <= 20)
-                player.defence += 2;
             else
-                player.defence += 3;
+                player.defence += 2;
 
             endRewardCollection();
         }
@@ -354,10 +367,8 @@ namespace Slip_through
         {
             if (panelNumberInt <= 10)
                 player.effectiveness += 1;
-            else if (panelNumberInt <= 20)
-                player.effectiveness += 2;
             else
-                player.effectiveness += 3;
+                player.effectiveness += 2;
 
             endRewardCollection();
         }
