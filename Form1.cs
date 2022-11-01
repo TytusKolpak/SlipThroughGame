@@ -48,6 +48,7 @@ namespace Slip_through
             labelResults.Visible = true;
             flowLayoutLongLog.Visible = false;
             setAddButtonsVisibility(false);
+            buttonOK.Visible = false;
             labelResults.Text = "";
 
             player = WarriorCard;
@@ -80,6 +81,9 @@ namespace Slip_through
             panelName = currentPlayerPictureBox.Parent.Name.ToString();
             panelNumberString = Regex.Match(panelName, @"\d+").Value; //single numeric value in string form
             panelNumberInt = Int32.Parse(panelNumberString);//single numeric value in int form
+
+            labelResults.Text = " ";
+
             if (panelNumberInt + steps <= 30) //will have a place to end on
             {
                 for (int i = 0; i < steps; i++)
@@ -97,7 +101,7 @@ namespace Slip_through
                         else if (player.name == "Archer")
                             player.effectiveness++;
 
-                        labelResults.Text = player.name + " slips and gains +1 point to their class' attribute";
+                        labelResults.Text = player.name + " slipped and gains +1 point to their class' attribute";
                     }
                     else
                     {
@@ -142,9 +146,10 @@ namespace Slip_through
                 currentEnemyPictureBox.Visible = true;
                 currentEnemyPictureBox.Update();
 
+                combatText = "";
                 combatText += enemy.name + " attacks " + player.name + ".\n";
-                combatText += player.name + " (" + player.attack + ", " + player.defence + ", " + player.effectiveness + ", " + player.hitPoints + "). ";
-                combatText += enemy.name + " (" + enemy.attack + ", " + enemy.defence + ", " + enemy.effectiveness + ", " + enemy.hitPoints + ")\n";
+                combatText += player.name + " (" + player.attack + ", " + player.defence + ", " + player.effectiveness + ", " + player.hitPoints + ").\n";
+                combatText += enemy.name + " (" + enemy.attack + ", " + enemy.defence + ", " + enemy.effectiveness + ", " + enemy.hitPoints + ").\n";
                 combatText += "TurnOf|Roll|Cond|Result|HPb|HPa\n";
                 combatText += "------|----|----|------|---|---\n";
 
@@ -157,24 +162,27 @@ namespace Slip_through
 
                 if (enemy.hitPoints <= 0)                                       //enemy died - player won
                 {
-                    combatText += player.name + " killed the " + enemy.name; // int o long log 
                     labelResults.Update();
                     rewardEarned = true;                                        //enable adding stat points later on
+                    setCombatText(player.name + " killed the " + enemy.name + " and earned a stat boost.");
                 }
 
                 if (player.hitPoints <= 0)                                      //player died
                 {
-                    combatText += enemy.name + " killed the " + player.name;
+                    setCombatText(enemy.name + " killed the " + player.name + ". " + player.name + "'s max health lowers by 1");
+                    player.maxHP--;
                     labelResults.Update();
                     player.deathCounter++;                                      //keep track of how many deaths each player has
                     currentPlayerPictureBox.Parent = panelArray[0];             //move player to the first tile
 
                     if (player.name == "Wizard")                                //get back all hit points - heal to full
-                        player.hitPoints = 8;
+                        player.hitPoints = player.maxHP;
                     else if (player.name == "Warrior")
-                        player.hitPoints = 10;
+                        player.hitPoints = player.maxHP;
                     else if (player.name == "Archer")
-                        player.hitPoints = 9;
+                        player.hitPoints = player.maxHP;
+
+                    buttonOK.Visible = true;                                //confirm death (give player time to read combat log)
                 }
 
                 flowLayoutLongLog.Visible = true;                           //It will contain all previouse combat history
@@ -189,38 +197,69 @@ namespace Slip_through
             int diceRoll;
             int damage;
 
+
             if (player.hitPoints > 0)                       //carry out player attack if they are alive
             {
+                combatText = "";
                 diceRoll = random.Next(1, 7);
                 if (player.effectiveness + diceRoll > enemy.effectiveness) //player manages to attack the enemy
                 {
-                    setCombatText("player|" + diceRoll + "   |>" + (enemy.effectiveness - player.effectiveness) + "  |true  |" + enemy.hitPoints);
+                    combatText += "player|" + diceRoll + "   |>" + (enemy.effectiveness - player.effectiveness) + "  |true  |" + enemy.hitPoints;
+
+                    if (enemy.hitPoints < 10)
+                        combatText += " ";
+
                     damage = player.attack - enemy.defence;
                     damage = damage >= 0 ? damage : 0;      //it can only go down to 0, no lower
                     enemy.hitPoints -= damage;              //enemy loses health
 
-                    setCombatText("  |" +enemy.hitPoints +"\n");
+                    combatText += " |" + enemy.hitPoints + "\n";
+                    setCombatText(combatText);
+
                     displayEnemyInfo();                     //show changed stats and refresh the view
                 }
                 else
-                    setCombatText("player|" + diceRoll + "   |>" + (enemy.effectiveness - player.effectiveness) + "  |false |" + enemy.hitPoints +"  |" + enemy.hitPoints + "\n");
+                {
+                    combatText += "player|" + diceRoll + "   |>" + (enemy.effectiveness - player.effectiveness) + "  |false |" + enemy.hitPoints;
+
+                    if (enemy.hitPoints < 10)
+                        combatText += " ";
+
+                    combatText += " |" + enemy.hitPoints + "\n";
+                    setCombatText(combatText);
+                }
             }
 
             if (enemy.hitPoints > 0)                        //carry out enemy attack if they are alive
             {
+                combatText = "";
                 diceRoll = random.Next(1, 7);
                 if (enemy.effectiveness - diceRoll >= player.effectiveness) //enemy manages to attack the player
                 {
-                    setCombatText("enemy |" + diceRoll + "   |<=" + (enemy.effectiveness - player.effectiveness) + " |true  |" + player.hitPoints);
+                    combatText += "enemy |" + diceRoll + "   |<=" + (enemy.effectiveness - player.effectiveness) + " |true  |" + player.hitPoints;
+
+                    if (player.hitPoints < 10)
+                        combatText += " ";
+
                     damage = enemy.attack - player.defence;
                     damage = damage >= 0 ? damage : 0;
                     player.hitPoints -= damage;
 
-                    setCombatText("  |" + player.hitPoints + "\n");
+                    combatText += " |" + player.hitPoints + "\n";
+                    setCombatText(combatText);
+
                     displayPlayerInfo();                     //show changed stats and refresh the view
                 }
                 else
-                    setCombatText("enemy |" + diceRoll + "   |<=" + (enemy.effectiveness - player.effectiveness) + " |false |" + player.hitPoints + "  |" + player.hitPoints + "\n");
+                {
+                    combatText += "enemy |" + diceRoll + "   |<=" + (enemy.effectiveness - player.effectiveness) + " |false |" + player.hitPoints;
+
+                    if (player.hitPoints < 10)
+                        combatText += " ";
+
+                    combatText += " |" + player.hitPoints + "\n";
+                    setCombatText(combatText);
+                }
             }
         }
         private void nextPlayer()//working and complete
@@ -294,11 +333,11 @@ namespace Slip_through
             displayPlayerInfo();
             setAddButtonsVisibility(false);
             setMovementButtonsVisibility(true);
-            //Thread.Sleep(iterationMs);
-            Thread.Sleep(1000);
+            Thread.Sleep(iterationMs);
 
             nextPlayer();
             displayPlayerInfo();    //of the next player
+            flowLayoutLongLog.Visible = false;
         }
         private void mainSequence(int distanceChoice)
         {
@@ -318,6 +357,7 @@ namespace Slip_through
             if (gameOver)
             {
                 setAddButtonsVisibility(false);
+                buttonOK.Visible = false;                   //confirm death
                 setMovementButtonsVisibility(false);
                 //create play again button? - not necessary.
             }
@@ -366,7 +406,7 @@ namespace Slip_through
                 player.attack += 1;
             else
                 player.attack += 2;
-            
+
 
             endRewardCollection();
         }
@@ -387,6 +427,14 @@ namespace Slip_through
                 player.effectiveness += 2;
 
             endRewardCollection();
+        }
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            buttonOK.Visible = false;
+            setMovementButtonsVisibility(true);
+            nextPlayer();
+            displayPlayerInfo();    //of the next player
+            flowLayoutLongLog.Visible = false;
         }
     }
 }

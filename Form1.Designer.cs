@@ -101,6 +101,7 @@
             this.buttonAddEFF = new System.Windows.Forms.Button();
             this.flowLayoutLongLog = new System.Windows.Forms.FlowLayoutPanel();
             this.labelCombatLog = new System.Windows.Forms.Label();
+            this.buttonOK = new System.Windows.Forms.Button();
             this.tableBoard.SuspendLayout();
             this.panel25.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerberus)).BeginInit();
@@ -1097,12 +1098,12 @@
             // 
             // flowLayoutLongLog
             // 
-            this.flowLayoutLongLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutLongLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutLongLog.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutLongLog.Controls.Add(this.labelCombatLog);
-            this.flowLayoutLongLog.Location = new System.Drawing.Point(500, 302);
+            this.flowLayoutLongLog.Location = new System.Drawing.Point(500, 0);
             this.flowLayoutLongLog.Name = "flowLayoutLongLog";
-            this.flowLayoutLongLog.Size = new System.Drawing.Size(232, 297);
+            this.flowLayoutLongLog.Size = new System.Drawing.Size(233, 600);
             this.flowLayoutLongLog.TabIndex = 34;
             // 
             // labelCombatLog
@@ -1115,11 +1116,23 @@
             this.labelCombatLog.TabIndex = 31;
             this.labelCombatLog.Text = "labelCombatLog";
             // 
+            // buttonOK
+            // 
+            this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOK.Location = new System.Drawing.Point(680, 601);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(50, 23);
+            this.buttonOK.TabIndex = 35;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 627);
+            this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.flowLayoutLongLog);
             this.Controls.Add(this.buttonAddEFF);
             this.Controls.Add(this.buttonAddDEF);
@@ -1239,5 +1252,6 @@
         private Button buttonAddEFF;
         private FlowLayoutPanel flowLayoutLongLog;
         private Label labelCombatLog;
+        private Button buttonOK;
     }
 }
