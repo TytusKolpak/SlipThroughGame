@@ -8,9 +8,13 @@ namespace Slip_through
 {
     public partial class Form1 : Form
     {
+        //try let player choose a different amout of players like 1-8 (so that they will fill the board)
+        //with 1-3 players make tile 2x2, and 4-8 make it 3x3
+
+        //try to make the values of combat card cusomable for the player - both of them can be in menu bar or something
+
         bool rewardEarned = false;
         bool gameOver = false;
-
         int iterationMs = 200;
         int panelNumberInt = 0;
         int playerNr = 0;
@@ -18,12 +22,10 @@ namespace Slip_through
         string panelName = "panel1";
         string panelNumberString = "0";
         string combatText = "";
-
-        Panel[] panelArray = System.Array.Empty<Panel>();                   //resolves CA1825 (and now allocates less memory)
-        PictureBox[] pictureBoxArray = System.Array.Empty<PictureBox>();    //resolves CA1825
+        Panel[] panelArray = System.Array.Empty<Panel>(); 
+        PictureBox[] pictureBoxArray = System.Array.Empty<PictureBox>();
         PictureBox currentPlayerPictureBox;
         PictureBox currentEnemyPictureBox;
-
         CombatCard WarriorCard = new("Warrior", 2, 1, 2, 10, Properties.Resources.warrior);
         CombatCard ArcherCard = new("Archer", 1, 1, 3, 10, Properties.Resources.archer);
         CombatCard WizardCard = new("Wizard", 3, 0, 2, 10, Properties.Resources.wizard);
@@ -32,7 +34,6 @@ namespace Slip_through
         CombatCard CerberusCard = new("Cerberus", 5, 3, 8, 10, Properties.Resources.cerberus);
         CombatCard player;
         CombatCard enemy;
-
         Random random = new();
 
         public Form1()//working and complete (so far)
@@ -375,7 +376,6 @@ namespace Slip_through
                 rewardEarned = false;                       //to reset ability to access reward
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             mainSequence(1);
