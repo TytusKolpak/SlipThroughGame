@@ -1,0 +1,22 @@
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release\net6.0-windows\Slip through.exe
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release\net6.0-windows\Slip through.deps.json
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release\net6.0-windows\Slip through.runtimeconfig.json
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release\net6.0-windows\Slip through.dll
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release\net6.0-windows\Slip through.pdb
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.csproj.AssemblyReference.cache
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip_through.Form1.resources
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip_through.Properties.Resources.resources
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.csproj.GenerateResource.cache
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.GeneratedMSBuildEditorConfig.editorconfig
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.AssemblyInfoInputs.cache
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.AssemblyInfo.cs
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.csproj.CoreCompileInputs.cache
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.dll
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\refint\Slip through.dll
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.pdb
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.genruntimeconfig.cache
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\ref\Slip through.dll
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release\net6.0-windows\Slip through.dll.manifest
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release\net6.0-windows\Slip through.application
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.dll.manifest
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.application
