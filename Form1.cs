@@ -13,9 +13,11 @@ namespace Slip_through
 
         //try to make the values of combat card cusomable for the player - both of them can be in menu bar or something
 
-        //test
+        bool nowMovement = true;
+        // used to determine weather keyboard button presses should be registered as movement or ignored (when witing for player to collect reward)
 
-        bool rewardEarned = false;
+        bool died = false;
+        bool fought = false;
         bool gameOver = false;
         int iterationMs = 200;
         int panelNumberInt = 0;
@@ -24,7 +26,7 @@ namespace Slip_through
         string panelName = "panel1";
         string panelNumberString = "0";
         string combatText = "";
-        Panel[] panelArray = System.Array.Empty<Panel>(); 
+        Panel[] panelArray = System.Array.Empty<Panel>();
         PictureBox[] pictureBoxArray = System.Array.Empty<PictureBox>();
         PictureBox currentPlayerPictureBox;
         PictureBox currentEnemyPictureBox;
@@ -40,7 +42,6 @@ namespace Slip_through
 
         public Form1()//working and complete (so far)
         {
-            //function executes once in the beginning of the game
             InitializeComponent();
             createArrays();
             tableLayoutPanelEnemy.Visible = false;
@@ -81,23 +82,23 @@ namespace Slip_through
         }
         private void movementElement(int steps)//working and complete
         {
+            fought = false;
             panelName = currentPlayerPictureBox.Parent.Name.ToString();
-            panelNumberString = Regex.Match(panelName, @"\d+").Value; //single numeric value in string form
-            panelNumberInt = Int32.Parse(panelNumberString);//single numeric value in int form
+            panelNumberString = Regex.Match(panelName, @"\d+").Value;   //single numeric value in string form
+            panelNumberInt = Int32.Parse(panelNumberString);            //single numeric value in int form
 
             labelResults.Text = " ";
 
-            if (panelNumberInt + steps <= 30) //will have a place to end on
+            if (panelNumberInt + steps <= 30)                           //will have a place to end on
             {
                 for (int i = 0; i < steps; i++)
                 {
                     Thread.Sleep(100);
                     if (SlipBox.Checked == true && panelNumberInt % 5 == 0 && panelNumberInt >= 10)//enable at 10,15,20,25 rank, at 5 there is no up to go and at 30 you win
                     {
-                        panelNumberInt -= 9;                                    // that is going up a file
+                        panelNumberInt -= 9;                            // that is going up a file
 
-                        //if player is here means he slips give bonuses
-                        if (player.name == "Wizard")                                //get class specific bonuses
+                        if (player.name == "Wizard")                    //if player slips, then give class specific bonuses               
                             player.attack++;
                         else if (player.name == "Warrior")
                             player.defence++;
@@ -108,12 +109,11 @@ namespace Slip_through
                     }
                     else
                     {
-                        panelNumberInt++;                                       //just mark next panel as destination
+                        panelNumberInt++;                               //just mark next panel as destination
                     }
 
-                    //place the player on destination tile, on it, and update it
+                    //place the player on destination tile and update it
                     currentPlayerPictureBox.Parent = panelArray[panelNumberInt - 1]; //-1 is because panel1 has index 0 : x on x-1
-                    currentPlayerPictureBox.BringToFront();
                     currentPlayerPictureBox.Update();
                 }
             }
@@ -152,9 +152,9 @@ namespace Slip_through
                 combatText = "";
                 combatText += enemy.name + " attacks " + player.name + ".\n";
                 combatText += player.name + " (" + player.attack + ", " + player.defence + ", " + player.effectiveness + ", " + player.hitPoints + ").\n";
-                combatText += enemy.name + " (" + enemy.attack + ", " + enemy.defence + ", " + enemy.effectiveness + ", " + enemy.hitPoints + ").\n";
-                combatText += "TurnOf|Roll|Cond|Result|HPb|HPa\n";
-                combatText += "------|----|----|------|---|---\n";
+                combatText += enemy.name + " (" + enemy.attack + ", " + enemy.defence + ", " + enemy.effectiveness + ", " + enemy.hitPoints + ").\n\n";
+                combatText += "Attacked|Roll|Cond|Success|HP\n";
+                combatText += "--------|----|----|-------|--\n";
 
                 labelCombatLog.Text = combatText; //override previous that battle log
 
@@ -165,13 +165,20 @@ namespace Slip_through
 
                 if (enemy.hitPoints <= 0)                                       //enemy died - player won
                 {
-                    labelResults.Update();
-                    rewardEarned = true;                                        //enable adding stat points later on
+                    nowMovement = false;                                        //to disable player form clicking 1 on their keybaord multiple times
+                    fought = true;                                              //and also enable them to choose reward
+                    died = false;
+
+                    labelResults.Update();                                      //enable adding stat points later on
                     setCombatText(player.name + " killed the " + enemy.name + " and earned a stat boost.");
                 }
 
                 if (player.hitPoints <= 0)                                      //player died
                 {
+                    fought = true;
+                    died = true;
+                    nowMovement = false;                                        //same as if player wins, but for acknowledging death
+
                     setCombatText(enemy.name + " killed the " + player.name + ". " + player.name + "'s max health lowers by 1");
                     player.maxHP--;
                     labelResults.Update();
@@ -185,6 +192,7 @@ namespace Slip_through
                     else if (player.name == "Archer")
                         player.hitPoints = player.maxHP;
 
+                    setMovementButtonsVisibility(false);
                     buttonOK.Visible = true;                                //confirm death (give player time to read combat log)
                 }
 
@@ -207,28 +215,24 @@ namespace Slip_through
                 diceRoll = random.Next(1, 7);
                 if (player.effectiveness + diceRoll > enemy.effectiveness) //player manages to attack the enemy
                 {
-                    combatText += "player|" + diceRoll + "   |>" + (enemy.effectiveness - player.effectiveness) + "  |true  |" + enemy.hitPoints;
-
-                    if (enemy.hitPoints < 10)
-                        combatText += " ";
+                    combatText += "enemy   |" + diceRoll + "   |>" + (enemy.effectiveness - player.effectiveness) + "  |true   |";
 
                     damage = player.attack - enemy.defence;
-                    damage = damage >= 0 ? damage : 0;      //it can only go down to 0, no lower
+                    damage = damage >= 1 ? damage : 1;      //it can only go down to 1, no lower (to avoid infinite loops)
                     enemy.hitPoints -= damage;              //enemy loses health
 
-                    combatText += " |" + enemy.hitPoints + "\n";
+                    animatePlayerAttack();
+
+                    combatText += enemy.hitPoints + "\n";
                     setCombatText(combatText);
 
                     displayEnemyInfo();                     //show changed stats and refresh the view
                 }
                 else
                 {
-                    combatText += "player|" + diceRoll + "   |>" + (enemy.effectiveness - player.effectiveness) + "  |false |" + enemy.hitPoints;
+                    combatText += "enemy   |" + diceRoll + "   |>" + (enemy.effectiveness - player.effectiveness) + "  |false  |";
 
-                    if (enemy.hitPoints < 10)
-                        combatText += " ";
-
-                    combatText += " |" + enemy.hitPoints + "\n";
+                    combatText += enemy.hitPoints + "\n";
                     setCombatText(combatText);
                 }
             }
@@ -239,42 +243,74 @@ namespace Slip_through
                 diceRoll = random.Next(1, 7);
                 if (enemy.effectiveness - diceRoll >= player.effectiveness) //enemy manages to attack the player
                 {
-                    combatText += "enemy |" + diceRoll + "   |<=" + (enemy.effectiveness - player.effectiveness) + " |true  |" + player.hitPoints;
-
-                    if (player.hitPoints < 10)
-                        combatText += " ";
+                    combatText += "player  |" + diceRoll + "   |<=" + (enemy.effectiveness - player.effectiveness) + " |true   |";
 
                     damage = enemy.attack - player.defence;
-                    damage = damage >= 0 ? damage : 0;
+                    damage = damage >= 1 ? damage : 1;      //it can only go down to 1, no lower (to avoid infinite loops) same as for player
                     player.hitPoints -= damage;
 
-                    combatText += " |" + player.hitPoints + "\n";
+                    animateEnemyAttack();
+
+                    combatText += player.hitPoints + "\n";
                     setCombatText(combatText);
 
                     displayPlayerInfo();                     //show changed stats and refresh the view
                 }
                 else
                 {
-                    combatText += "enemy |" + diceRoll + "   |<=" + (enemy.effectiveness - player.effectiveness) + " |false |" + player.hitPoints;
+                    combatText += "player  |" + diceRoll + "   |<=" + (enemy.effectiveness - player.effectiveness) + " |false  |";
 
-                    if (player.hitPoints < 10)
-                        combatText += " ";
 
-                    combatText += " |" + player.hitPoints + "\n";
+                    combatText += player.hitPoints + "\n";
                     setCombatText(combatText);
                 }
             }
         }
+
+        private void animatePlayerAttack()
+        {   
+            //animate a kind of attack
+            tableLayoutPanelPlayer.BringToFront();
+            tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y + 100);
+            tableLayoutPanelPlayer.Update();
+            Thread.Sleep(50);
+            tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y + 50);
+            tableLayoutPanelPlayer.Update();
+            Thread.Sleep(100);
+            tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y - 50);
+            tableLayoutPanelPlayer.Update();
+            tableLayoutPanelEnemy.Update();
+            Thread.Sleep(25);
+            tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y - 100);
+            tableLayoutPanelPlayer.Update();
+            tableLayoutPanelEnemy.Update();
+        }
+        private void animateEnemyAttack()
+        {
+            //animate a kind of smoothish attack
+            tableLayoutPanelEnemy.BringToFront();
+            tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y - 100);
+            tableLayoutPanelEnemy.Update();
+            Thread.Sleep(50);
+            tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y - 50);
+            tableLayoutPanelEnemy.Update();
+            Thread.Sleep(100);
+            tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y + 50);
+            tableLayoutPanelEnemy.Update();
+            tableLayoutPanelPlayer.Update();
+            Thread.Sleep(25);
+            tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y + 100);
+            tableLayoutPanelEnemy.Update();
+            tableLayoutPanelPlayer.Update();
+        }
         private void nextPlayer()//working and complete
         {
+            turnCounter++;
             //change player to the next one in a loop
             if (playerNr < 2)
                 playerNr++;
             else
-            {
-                turnCounter++;
                 playerNr = 0;
-            }
 
             //assign the object of the card(player) whose turn it is now to the currentCard for easy - uniform access
             if (playerNr == 0)
@@ -294,7 +330,13 @@ namespace Slip_through
             labelPlayerHitPoints.Text = player.hitPoints.ToString();
             tableLayoutPanelPlayer.Update();
 
+            currentPlayerPictureBox.BorderStyle = BorderStyle.None;  //back to normal
+            currentPlayerPictureBox.Update();
+
             currentPlayerPictureBox = pictureBoxArray[playerNr];                                  //this is complicated
+
+            currentPlayerPictureBox.BorderStyle = BorderStyle.Fixed3D;      //make it special
+            currentPlayerPictureBox.Update();
         }
         private void displayEnemyInfo()
         {
@@ -314,6 +356,7 @@ namespace Slip_through
         private void getReward()
         {
             setAddButtonsVisibility(true);          //show the buttons related to increasing stats
+            buttonAddATT.Focus();                   //mark it as ready to be clicked, create a blue rectangle on the button
             setMovementButtonsVisibility(false);    //hide the buttons related to movement
         }
         private void setMovementButtonsVisibility(bool logicValue)
@@ -330,11 +373,15 @@ namespace Slip_through
             buttonAddATT.Visible = logicValue;
             buttonAddDEF.Visible = logicValue;
             buttonAddEFF.Visible = logicValue;
+            buttonAddATT.BringToFront();
+            buttonAddDEF.BringToFront();
+            buttonAddEFF.BringToFront();
         }
         private void endRewardCollection()
         {
-            displayPlayerInfo();
+            nowMovement = true;
             setAddButtonsVisibility(false);
+            displayPlayerInfo();
             setMovementButtonsVisibility(true);
             Thread.Sleep(iterationMs);
 
@@ -367,15 +414,25 @@ namespace Slip_through
             else
             {
                 //next player should load only after the due reward has been collected (it's due only after an enemy is defeated)
-                if (rewardEarned)
-                    getReward();                            //a chain of events leading to waiting for user's choice of reward
-                else                                        //the reward is not due, no need to wait for it's collection, load next player
+                if (fought)
+                {
+                    if (!died)          //fought and won
+                    {
+                        getReward();        //a chain of events leading to waiting for user's choice of reward
+                                            //the reward is not due, no need to wait for it's collection, load next player
+                    }
+                    else                //fought and lost - died (don't give reward, but don't load next character until player acknowledges death
+                    {
+                        buttonOK.Focus();   //mark it for quick confiration, but wait for that confirmation - player button click or key down
+                    }
+                }
+                else
                 {
                     nextPlayer();
                     displayPlayerInfo();
                 }
 
-                rewardEarned = false;                       //to reset ability to access reward
+                fought = false;                       //to reset ability to access reward
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -409,7 +466,6 @@ namespace Slip_through
             else
                 player.attack += 2;
 
-
             endRewardCollection();
         }
         private void buttonAddDEF_Click(object sender, EventArgs e)
@@ -437,6 +493,81 @@ namespace Slip_through
             nextPlayer();
             displayPlayerInfo();    //of the next player
             flowLayoutLongLog.Visible = false;
+            nowMovement = true;
+        }
+        private void MyKeyDown(object sender, KeyEventArgs e)
+        {
+            //taking care of character movement with keyoard 1-6 buttons instad of clicking buttons on the form1 (for conviniency)
+            //might substitute for the button1_Click and so on, but then the player might not be aware of possible movement restrictions
+
+            //check if program is in right sequence element (for example not waiting to choose reward)
+            if (nowMovement)
+            {
+                if (e.KeyValue >= 49 && e.KeyValue <= 54)  // keys between '1' and '6' 
+                {
+                    mainSequence(e.KeyValue - 48);
+                }
+
+                if (e.KeyValue == 83)                       // 'S' key, like Slip
+                {
+                    SlipBox.Checked = !SlipBox.Checked;
+                }
+            }
+            else //now program awaits reward collection only buttons in form and 3 keys are accepted  
+            {
+                switch (e.KeyValue)
+                {
+                    case 65:                                //'A' key, like Attack
+                        if (!died)
+                        {
+                            if (panelNumberInt <= 10)
+                                player.attack += 1;
+                            else
+                                player.attack += 2;
+                            endRewardCollection();
+                        }
+                        break;
+
+                    case 68:                                //'D' key, like Defence
+                        if (!died)
+                        {
+                            if (panelNumberInt <= 10)
+                                player.defence += 1;
+                            else
+                                player.defence += 2;
+                            endRewardCollection();
+                        }
+                        break;
+
+                    case 69:                                //'E' key, like Effectiveness
+                        if (!died)
+                        {
+                            if (panelNumberInt <= 10)
+                                player.effectiveness += 1;
+                            else
+                                player.effectiveness += 2;
+                            endRewardCollection();
+                        }
+                        break;
+
+
+                    case 79:                                //'O' key, like Ok (confirmation of death)
+                        if (died)
+                        {
+                            buttonOK.Visible = false;
+                            setMovementButtonsVisibility(true);
+                            nextPlayer();
+                            displayPlayerInfo();    //of the next player
+                            flowLayoutLongLog.Visible = false;
+                            nowMovement = true;
+                            died = false;
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

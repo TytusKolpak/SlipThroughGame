@@ -16,3 +16,4 @@ C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\De
 C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Debug\net6.0-windows\Slip through.genruntimeconfig.cache
 C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Debug\net6.0-windows\ref\Slip through.dll
 C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Debug\net6.0-windows\Slip_through.Properties.Resources.resources
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Debug\net6.0-windows\Slip_through.Form2.resources
