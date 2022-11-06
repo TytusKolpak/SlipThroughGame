@@ -83,11 +83,11 @@ namespace Slip_through
         public void createCardsFromTemplates() //once at the beginning
         {
             WarriorCardTemplate = new("Warrior", WATT, WDEF, WEFF, WHP, Properties.Resources.warrior);
-            ArcherCardTemplate = new("Archer", WATT, ADEF, AEFF, AHP, Properties.Resources.archer);
-            WizardCardTemplate = new("Wizard", WATT, WiDEF, WiEFF, WiHP, Properties.Resources.wizard);
-            WolfCardTemplate = new("Wolf", WATT, WoDEF, WoEFF, WoHP, Properties.Resources.wolf);
-            WerewolfCardTemplate = new("Werewolf", WATT, WeDEF, WeEFF, WeHP, Properties.Resources.werewolf);
-            CerberusCardTemplate = new("Cerberus", WATT, CDEF, CEFF, CHP, Properties.Resources.cerberus);
+            ArcherCardTemplate = new("Archer", AATT, ADEF, AEFF, AHP, Properties.Resources.archer);
+            WizardCardTemplate = new("Wizard", WiATT, WiDEF, WiEFF, WiHP, Properties.Resources.wizard);
+            WolfCardTemplate = new("Wolf", WoATT, WoDEF, WoEFF, WoHP, Properties.Resources.wolf);
+            WerewolfCardTemplate = new("Werewolf", WeATT, WeDEF, WeEFF, WeHP, Properties.Resources.werewolf);
+            CerberusCardTemplate = new("Cerberus", CATT, CDEF, CEFF, CHP, Properties.Resources.cerberus);
 
             //one object created based on another object, but one is used in a game, and other can be set outside of a game (customed by player)
             WarriorCard = new(WarriorCardTemplate);
@@ -226,17 +226,26 @@ namespace Slip_through
                     nowMovement = false;                                        //same as if player wins, but for acknowledging death
 
                     setCombatText(enemy.name + " killed the " + player.name + ". " + player.name + "'s max health lowers by 1");
-                    player.maxHP--;
                     labelResults.Update();
                     player.deathCounter++;                                      //keep track of how many deaths each player has
                     currentPlayerPictureBox.Parent = panelArray[0];             //move player to the first tile
 
-                    if (player.name == "Wizard")                                //get back all hit points - heal to full
-                        player.hitPoints = player.maxHP;
+                    //get back all hit points - heal to full
+                    if (player.name == "Wizard")
+                    {
+                        WizardCardTemplate.maxHP--;
+                        WizardCard.hitPoints = WizardCardTemplate.maxHP;
+                    }
                     else if (player.name == "Warrior")
-                        player.hitPoints = player.maxHP;
+                    {
+                        WarriorCardTemplate.maxHP--;
+                        WarriorCard.hitPoints = WarriorCardTemplate.maxHP;
+                    }
                     else if (player.name == "Archer")
-                        player.hitPoints = player.maxHP;
+                    {
+                        ArcherCardTemplate.maxHP--;
+                        ArcherCard.hitPoints = ArcherCardTemplate.maxHP;
+                    }
 
                     setMovementButtonsVisibility(false);
                     buttonOK.Visible = true;                                //confirm death (give player time to read combat log)
@@ -695,8 +704,7 @@ namespace Slip_through
 
             if (result == DialogResult.OK) // reset all data to intial values
             {
-                //MessageBox.Show("Rewinding now.","Accepted"); //not necessary
-                //reset counters
+                gameOver = false;
                 panelNumberInt = 0;
                 playerNr = 0;
                 turnCounter = 1;

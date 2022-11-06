@@ -11,8 +11,13 @@
         "version": "6.0.0"
       }
     ],
+    "additionalProbingPaths": [
+      "C:\\Users\\Acer\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Acer\\.nuget\\packages"
+    ],
     "configProperties": {
-      "System.Reflection.Metadata.MetadataUpdater.IsSupported": false
+      "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,
+      "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
     }
   }
 }
