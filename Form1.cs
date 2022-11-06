@@ -13,9 +13,7 @@ namespace Slip_through
 
         //try to make the values of combat card cusomable for the player - both of them can be in menu bar or something
 
-        bool nowMovement = true;
-        // used to determine weather keyboard button presses should be registered as movement or ignored (when witing for player to collect reward)
-
+        bool nowMovement = true; //should keyboard button presses be registered as movement or ignored (when witing for player to collect reward)
         bool died = false;
         bool fought = false;
         bool gameOver = false;
@@ -30,20 +28,47 @@ namespace Slip_through
         PictureBox[] pictureBoxArray = System.Array.Empty<PictureBox>();
         PictureBox currentPlayerPictureBox;
         PictureBox currentEnemyPictureBox;
-        CombatCard WarriorCard = new("Warrior", 2, 1, 2, 10, Properties.Resources.warrior);
-        CombatCard ArcherCard = new("Archer", 1, 1, 3, 10, Properties.Resources.archer);
-        CombatCard WizardCard = new("Wizard", 3, 0, 2, 10, Properties.Resources.wizard);
-        CombatCard WolfCard = new("Wolf", 3, 0, 5, 5, Properties.Resources.wolf);
-        CombatCard WerewolfCard = new("Werewolf", 4, 1, 6, 7, Properties.Resources.werewolf);
-        CombatCard CerberusCard = new("Cerberus", 5, 3, 8, 10, Properties.Resources.cerberus);
+
+        //assign default values: (short names not to repeat the same long names everywhere)
+        //last 3 letters (or 2 in HP) correspond to the stat that this value corresponds to
+        //first one (or 2 if there would be conflicts W Warrior and W Wizard? W for first starting with W and W+i for next WIzard) are for name
+
+        public int WATT = 2, WDEF = 1, WEFF = 2, WHP = 10;             //Warrior's stats
+        public int AATT = 1, ADEF = 1, AEFF = 3, AHP = 10;             //Archer's stats
+        public int WiATT = 3, WiDEF = 0, WiEFF = 2, WiHP = 10;         //Wizard's stats
+        public int WoATT = 3, WoDEF = 0, WoEFF = 5, WoHP = 5;          //Wolf's stats
+        public int WeATT = 4, WeDEF = 1, WeEFF = 6, WeHP = 7;          //Werewolf's stats
+        public int CATT = 5, CDEF = 3, CEFF = 8, CHP = 10;             //Cerberus' stats
+
+        //First create template objects for CombatCard templates
+        //templates are used to create card objects used in matches/games,
+        //but templates themselves can be customed in a special window, outside of a match/game
+        public CombatCardTemplate WarriorCardTemplate;
+        public CombatCardTemplate ArcherCardTemplate;
+        public CombatCardTemplate WizardCardTemplate;
+        public CombatCardTemplate WolfCardTemplate;
+        public CombatCardTemplate WerewolfCardTemplate;
+        public CombatCardTemplate CerberusCardTemplate;
+
+        CombatCard WarriorCard;
+        CombatCard ArcherCard;
+        CombatCard WizardCard;
+        CombatCard WolfCard;
+        CombatCard WerewolfCard;
+        CombatCard CerberusCard;
+
         CombatCard player;
         CombatCard enemy;
         Random random = new();
 
+        public static Form1 instance;   //for sending data between forms
+
         public Form1()//working and complete (so far)
         {
             InitializeComponent();
+            instance = this;            //for sending data between forms
             createArrays();
+            createCardsFromTemplates();
             tableLayoutPanelEnemy.Visible = false;
             pictureBoxWolf.Visible = false;
             pictureBoxWerewolf.Visible = false;
@@ -54,6 +79,24 @@ namespace Slip_through
             setAddButtonsVisibility(false);
             buttonOK.Visible = false;
             labelResults.Text = "";
+        }
+        public void createCardsFromTemplates() //once at the beginning
+        {
+            WarriorCardTemplate = new("Warrior", WATT, WDEF, WEFF, WHP, Properties.Resources.warrior);
+            ArcherCardTemplate = new("Archer", WATT, ADEF, AEFF, AHP, Properties.Resources.archer);
+            WizardCardTemplate = new("Wizard", WATT, WiDEF, WiEFF, WiHP, Properties.Resources.wizard);
+            WolfCardTemplate = new("Wolf", WATT, WoDEF, WoEFF, WoHP, Properties.Resources.wolf);
+            WerewolfCardTemplate = new("Werewolf", WATT, WeDEF, WeEFF, WeHP, Properties.Resources.werewolf);
+            CerberusCardTemplate = new("Cerberus", WATT, CDEF, CEFF, CHP, Properties.Resources.cerberus);
+
+            //one object created based on another object, but one is used in a game, and other can be set outside of a game (customed by player)
+            WarriorCard = new(WarriorCardTemplate);
+            ArcherCard = new(ArcherCardTemplate);
+            WizardCard = new(WizardCardTemplate);
+            WolfCard = new(WolfCardTemplate);
+            WerewolfCard = new(WerewolfCardTemplate);
+            CerberusCard = new(CerberusCardTemplate);
+            CerberusCard = new(CerberusCardTemplate);
 
             player = WarriorCard;
             currentPlayerPictureBox = pictureBoxWarrior;
@@ -124,16 +167,19 @@ namespace Slip_through
             if (panelNumberInt <= 10)
             {
                 currentEnemyPictureBox = pictureBoxArray[3];
+                WolfCard.hitPoints = WolfCardTemplate.maxHP;            //something of revive (reallly its like making a new one but less unnecessary operations since only hp changes)
                 enemy = WolfCard;
             }
             else if (panelNumberInt <= 20)
             {
                 currentEnemyPictureBox = pictureBoxArray[4];
+                WerewolfCard.hitPoints = WerewolfCardTemplate.maxHP;    //something of revive
                 enemy = WerewolfCard;
             }
             else
             {
                 currentEnemyPictureBox = pictureBoxArray[5];
+                CerberusCard.hitPoints = CerberusCardTemplate.maxHP;    //something of revive
                 enemy = CerberusCard;
             }
 
@@ -232,6 +278,8 @@ namespace Slip_through
                 {
                     combatText += "enemy   |" + diceRoll + "   |>" + (enemy.effectiveness - player.effectiveness) + "  |false  |";
 
+                    aniematePlayerAttackFail();
+
                     combatText += enemy.hitPoints + "\n";
                     setCombatText(combatText);
                 }
@@ -260,15 +308,15 @@ namespace Slip_through
                 {
                     combatText += "player  |" + diceRoll + "   |<=" + (enemy.effectiveness - player.effectiveness) + " |false  |";
 
+                    animateEnemyAttackFail();
 
                     combatText += player.hitPoints + "\n";
                     setCombatText(combatText);
                 }
             }
         }
-
         private void animatePlayerAttack()
-        {   
+        {
             //animate a kind of attack
             tableLayoutPanelPlayer.BringToFront();
             tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y + 100);
@@ -284,6 +332,33 @@ namespace Slip_through
             tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y - 100);
             tableLayoutPanelPlayer.Update();
             tableLayoutPanelEnemy.Update();
+        }
+        private void aniematePlayerAttackFail()
+        {
+            //animate both of the panels to signify a miss 
+            //imidiately move player out of the enemy's reach
+            tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y + 25);
+            tableLayoutPanelEnemy.Update();
+            Thread.Sleep(50);
+
+            //move 20px to the top and wait for a short while (wait lenght determines percieved speed of card's movement)
+            tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y + 20);
+            tableLayoutPanelPlayer.Update();
+            Thread.Sleep(50);
+
+            //move 5px up still, and wait more to look like the advance is slowing down
+            tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y + 5);
+            tableLayoutPanelPlayer.Update();
+            Thread.Sleep(100);
+
+            //return enemy to original position
+            tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y - 25);
+            tableLayoutPanelPlayer.Update();
+            Thread.Sleep(25);
+
+            //return player to original position a while after enemy has done so
+            tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y - 25);
+            tableLayoutPanelPlayer.Update();
         }
         private void animateEnemyAttack()
         {
@@ -301,6 +376,34 @@ namespace Slip_through
             Thread.Sleep(25);
             tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y + 100);
             tableLayoutPanelEnemy.Update();
+            tableLayoutPanelPlayer.Update();
+        }
+        private void animateEnemyAttackFail()
+        {
+            //animate both of the panels to signify a miss 
+            //imidiately move player out of the enemy's reach
+            tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y - 25);
+            tableLayoutPanelPlayer.Update();
+            Thread.Sleep(50);
+
+            //move 20px to the top and wait for a short while (wait lenght determines percieved speed of card's movement)
+            tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y - 20);
+            tableLayoutPanelEnemy.Update();
+            Thread.Sleep(50);
+            
+            //move 5px up still, and wait more to look like the advance is slowing down
+            tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y - 5);
+            tableLayoutPanelEnemy.Update(); 
+            Thread.Sleep(100);
+
+            //return enemy to original position
+            tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y + 25);
+            tableLayoutPanelEnemy.Update();
+            Thread.Sleep(25);
+
+            //return player to original position a while after enemy has done so
+            tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y + 25);
+            menuStrip1.Update();            //otherwise there would be remains of player card left on it
             tableLayoutPanelPlayer.Update();
         }
         private void nextPlayer()//working and complete
@@ -330,12 +433,12 @@ namespace Slip_through
             labelPlayerHitPoints.Text = player.hitPoints.ToString();
             tableLayoutPanelPlayer.Update();
 
-            currentPlayerPictureBox.BorderStyle = BorderStyle.None;  //back to normal
+            currentPlayerPictureBox.BorderStyle = BorderStyle.None;         //back to normal
             currentPlayerPictureBox.Update();
 
-            currentPlayerPictureBox = pictureBoxArray[playerNr];                                  //this is complicated
+            currentPlayerPictureBox = pictureBoxArray[playerNr];            //this is complicated
 
-            currentPlayerPictureBox.BorderStyle = BorderStyle.Fixed3D;      //make it special
+            currentPlayerPictureBox.BorderStyle = BorderStyle.Fixed3D;      //make it look special
             currentPlayerPictureBox.Update();
         }
         private void displayEnemyInfo()
@@ -494,6 +597,7 @@ namespace Slip_through
             displayPlayerInfo();    //of the next player
             flowLayoutLongLog.Visible = false;
             nowMovement = true;
+            died = false;
         }
         private void MyKeyDown(object sender, KeyEventArgs e)
         {
@@ -567,6 +671,67 @@ namespace Slip_through
                     default:
                         break;
                 }
+            }
+        }
+        private void gameInstructionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 Instruction = new Form2();
+            Instruction.Show();
+        }
+        private void gameControllsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 Controlls = new Form3();
+            Controlls.Show();
+        }
+        private void charactersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //load for each character their default values on entry too 
+            Characters Characters = new Characters();
+            Characters.Show();
+        }
+        private void playAgainToolStripMenuItem_Click(object sender, EventArgs e) //working
+        {//reload everything to start a new game
+            DialogResult result = MessageBox.Show("Do you really want to start again?", "Play again", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result == DialogResult.OK) // reset all data to intial values
+            {
+                //MessageBox.Show("Rewinding now.","Accepted"); //not necessary
+                //reset counters
+                panelNumberInt = 0;
+                playerNr = 0;
+                turnCounter = 1;
+
+                labelResults.Text = "";     //clear possible message about who slipped
+                SlipBox.Checked = false;    //uncheck if checked (in default it's unchecked)
+
+                //rewind picture boxes to 1 tile - where they begin
+                pictureBoxWarrior.Parent = panel1;
+                pictureBoxArcher.Parent = panel1;
+                pictureBoxWizard.Parent = panel1;
+                pictureBoxWarrior.Update();
+                pictureBoxArcher.Update();
+                pictureBoxWizard.Update();
+
+                //reset stats to default (reverse stat increases and hp drops) OR SET STATS TO NEWLY SET CUSTOM VALUES IN Characters WINDOW
+                WarriorCard = new(WarriorCardTemplate);
+                ArcherCard = new(ArcherCardTemplate);
+                WizardCard = new(WizardCardTemplate);
+                WolfCard = new(WolfCardTemplate);
+                WerewolfCard = new(WerewolfCardTemplate);
+                CerberusCard = new(CerberusCardTemplate);
+
+                //update player card in player's panel, so that it shows reseted stats and not the ones from previous game
+                currentPlayerPictureBox.BorderStyle = BorderStyle.None;  //back to normal
+                currentPlayerPictureBox.Update();
+                player = WarriorCard;
+                currentPlayerPictureBox = pictureBoxWarrior;
+                displayPlayerInfo();
+
+                //remove possible remains of previous unended turn 
+                flowLayoutLongLog.Visible = false;
+                nowMovement = true;
+                setAddButtonsVisibility(false);
+                setMovementButtonsVisibility(true);
             }
         }
     }

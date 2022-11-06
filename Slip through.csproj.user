@@ -4,10 +4,16 @@
     <_LastSelectedProfileId>C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\Properties\PublishProfiles\ClickOnceProfile1.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Characters.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form3.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
