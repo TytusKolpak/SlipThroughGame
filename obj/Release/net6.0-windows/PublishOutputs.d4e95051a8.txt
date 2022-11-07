@@ -1,0 +1,5 @@
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release v2\Slip through.exe
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release v2\Slip through.dll
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release v2\Slip through.deps.json
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release v2\Slip through.runtimeconfig.json
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release v2\Slip through.pdb

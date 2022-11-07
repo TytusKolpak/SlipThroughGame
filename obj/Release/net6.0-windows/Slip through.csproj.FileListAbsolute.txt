@@ -19,3 +19,7 @@ C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Re
 C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip_through.Characters.resources
 C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip_through.Form2.resources
 C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip_through.Form3.resources
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release\net6.0-windows\Slip through.dll.manifest
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\bin\Release\net6.0-windows\Slip through.application
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.dll.manifest
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Taka Gierka Autorska\Slip through\obj\Release\net6.0-windows\Slip through.application
