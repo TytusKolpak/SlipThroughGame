@@ -1,5 +1,6 @@
 # SlipThroughGame
-A simple C# Windows Forms boadlike game
+
+A simple C# Windows Forms boadlike game (latest exe files are in `bin/Release v2`)
 
 ## Game Instruction
 
