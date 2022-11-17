@@ -17,6 +17,9 @@ namespace Slip_through
         bool died = false;
         bool fought = false;
         bool gameOver = false;
+        bool warriorPlays = true;
+        bool archerPlays = true;
+        bool wizardPlays = true;
         int iterationMs = 200;
         int panelNumberInt = 0;
         int playerNr = 0;
@@ -417,17 +420,17 @@ namespace Slip_through
         }
         private void nextPlayer()//working and complete
         {
-            turnCounter++;
-            //change player to the next one in a loop
             if (playerNr < 2)
                 playerNr++;
-            else
+            else 
+            {
                 playerNr = 0;
+                turnCounter++;
+            }
 
-            //assign the object of the card(player) whose turn it is now to the currentCard for easy - uniform access
             if (playerNr == 0)
                 player = WarriorCard;
-            else if (playerNr == 1)
+            else if(playerNr == 1)
                 player = ArcherCard;
             else
                 player = WizardCard;
@@ -500,6 +503,16 @@ namespace Slip_through
             nextPlayer();
             displayPlayerInfo();    //of the next player
             flowLayoutLongLog.Visible = false;
+        }
+        private void Form1_Resize(object sender, System.EventArgs e)
+        {
+            //
+
+            int width = pictureBoxWarrior.Parent.Size.Width / 2;
+            int height = pictureBoxWarrior.Parent.Size.Height / 2;
+            pictureBoxWarrior.Size = new Size(width, height);
+
+            //
         }
         private void mainSequence(int distanceChoice)
         {

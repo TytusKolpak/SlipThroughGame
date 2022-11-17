@@ -14,6 +14,7 @@ namespace Slip_through
     {
         //initialized here to be able to be sent over to Form1.cs beginning so that there is only 1 source of those values
         public static Characters instance;
+        public bool warriorPlays = true, archerPlays = true, wizardPlays;
         public Characters()
         {
             InitializeComponent();
@@ -91,6 +92,25 @@ namespace Slip_through
             Form1.instance.CerberusCardTemplate = new("Cerberus", CATT, CDEF, CEFF, CHP, Properties.Resources.cerberus);
 
             MessageBox.Show("Values have been updated. To use newly created cards begin a new game.", "Customization", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void WarriorPlaysCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            //send info to Form1 about whoo plays
+            pictureBoxWarrior.Visible = !pictureBoxWarrior.Visible;
+            tableLayoutPanelWarriorStats.Visible = !tableLayoutPanelWarriorStats.Visible;
+            warriorPlays = !warriorPlays;
+        }
+        private void ArcherPlaysCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBoxArcher.Visible = !pictureBoxArcher.Visible;
+            tableLayoutPanelArcherStats.Visible = !tableLayoutPanelArcherStats.Visible;
+            archerPlays = !archerPlays; 
+        }
+        private void WizardPlaysCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBoxWizard.Visible = !pictureBoxWizard.Visible;
+            tableLayoutPanelWizardStats.Visible = !tableLayoutPanelWizardStats.Visible;
+            wizardPlays = !wizardPlays;   
         }
     }
 }
