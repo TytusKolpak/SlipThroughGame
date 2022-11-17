@@ -387,7 +387,7 @@
             // 
             this.pictureBoxPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxPlayer.Image = global::Slip_through.Properties.Resources.warrior;
+            this.pictureBoxPlayer.Image = global::Slip_through.Properties.Resources.knight;
             this.pictureBoxPlayer.Location = new System.Drawing.Point(3, 47);
             this.pictureBoxPlayer.Name = "pictureBoxPlayer";
             this.pictureBoxPlayer.Size = new System.Drawing.Size(242, 182);

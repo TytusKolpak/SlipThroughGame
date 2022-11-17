@@ -73,6 +73,16 @@ namespace Slip_through.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap archer_negate {
+            get {
+                object obj = ResourceManager.GetObject("archer_negate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap blood {
             get {
                 object obj = ResourceManager.GetObject("blood", resourceCulture);
@@ -113,6 +123,16 @@ namespace Slip_through.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap shaman_negate {
+            get {
+                object obj = ResourceManager.GetObject("shaman_negate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap trees {
             get {
                 object obj = ResourceManager.GetObject("trees", resourceCulture);
@@ -133,6 +153,16 @@ namespace Slip_through.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap warrior_negate {
+            get {
+                object obj = ResourceManager.GetObject("warrior_negate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap werewolf {
             get {
                 object obj = ResourceManager.GetObject("werewolf", resourceCulture);
@@ -146,6 +176,16 @@ namespace Slip_through.Properties {
         internal static System.Drawing.Bitmap wizard {
             get {
                 object obj = ResourceManager.GetObject("wizard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wizard_negate {
+            get {
+                object obj = ResourceManager.GetObject("wizard_negate", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
