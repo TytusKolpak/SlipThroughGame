@@ -233,7 +233,7 @@ namespace Slip_through
                     enemy.defence = player.defence - 1;
                 else
                     enemy.defence = 0;
-                enemy.effectiveness = player.effectiveness - 3;
+                enemy.effectiveness = player.effectiveness + 3;
                 enemy.hitPoints = 9;
             }
 
