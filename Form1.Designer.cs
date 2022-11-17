@@ -653,7 +653,7 @@
             // charactersToolStripMenuItem
             // 
             this.charactersToolStripMenuItem.Name = "charactersToolStripMenuItem";
-            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.charactersToolStripMenuItem.Text = "Characters\' stats";
             this.charactersToolStripMenuItem.Click += new System.EventHandler(this.charactersToolStripMenuItem_Click);
             // 
@@ -1171,7 +1171,7 @@
             this.pictureBoxWarrior.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxWarrior.Name = "pictureBoxWarrior";
             this.pictureBoxWarrior.Size = new System.Drawing.Size(48, 48);
-            this.pictureBoxWarrior.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxWarrior.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxWarrior.TabIndex = 13;
             this.pictureBoxWarrior.TabStop = false;
             // 
@@ -1190,6 +1190,7 @@
             // 
             // pictureBoxWizard
             // 
+            this.pictureBoxWizard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxWizard.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxWizard.Image = global::Slip_through.Properties.Resources.wizard;
             this.pictureBoxWizard.Location = new System.Drawing.Point(50, 0);
@@ -1427,6 +1428,7 @@
             this.MinimumSize = new System.Drawing.Size(766, 730);
             this.Name = "Form1";
             this.Text = "Slip through";
+            this.SizeChanged += new System.EventHandler(this.Form1_Resize);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MyKeyDown);
             this.tableLayoutPanelPlayer.ResumeLayout(false);
             this.tablePlayerStats.ResumeLayout(false);

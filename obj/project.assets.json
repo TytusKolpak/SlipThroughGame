@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\.STUDIA AGH\\WIMIIP IT\\SEMESTR 9\\Inne\\Taka Gierka Autorska\\Slip through\\Slip through.csproj",
+      "projectUniqueName": "C:\\.STUDIA AGH\\WIMIIP IT\\SEMESTR 9\\Inne\\Coding\\Taka Gierka Autorska\\Slip through - The game\\Slip through.csproj",
       "projectName": "Slip through",
-      "projectPath": "C:\\.STUDIA AGH\\WIMIIP IT\\SEMESTR 9\\Inne\\Taka Gierka Autorska\\Slip through\\Slip through.csproj",
+      "projectPath": "C:\\.STUDIA AGH\\WIMIIP IT\\SEMESTR 9\\Inne\\Coding\\Taka Gierka Autorska\\Slip through - The game\\Slip through.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "C:\\.STUDIA AGH\\WIMIIP IT\\SEMESTR 9\\Inne\\Taka Gierka Autorska\\Slip through\\obj\\",
+      "outputPath": "C:\\.STUDIA AGH\\WIMIIP IT\\SEMESTR 9\\Inne\\Coding\\Taka Gierka Autorska\\Slip through - The game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
