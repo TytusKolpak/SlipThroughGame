@@ -30,10 +30,8 @@ namespace Slip_through
         string combatText = "";
         Panel[] panelArray = System.Array.Empty<Panel>();
         PictureBox[] pictureBoxPlayerArray = System.Array.Empty<PictureBox>();
-        PictureBox[] pictureBoxEnemyArray = System.Array.Empty<PictureBox>();
         CombatCard[] playerCombatCardArray = System.Array.Empty<CombatCard>();
         PictureBox currentPlayerPictureBox;
-        PictureBox currentEnemyPictureBox;
 
         //assign default values: (short names not to repeat the same long names everywhere)
         //last 3 letters (or 2 in HP) correspond to the stat that this value corresponds to
@@ -41,11 +39,12 @@ namespace Slip_through
 
         public int WATT = 2, WDEF = 1, WEFF = 0, WHP = 10;             //Warrior's stats        //minHP = 6 
         public int AATT = 1, ADEF = 1, AEFF = 1, AHP = 10;             //Archer's stats         //minHP = 5 
-        public int WiATT = 3, WiDEF = 0, WiEFF = 0, WiHP = 10;         //Wizard's stats         //minHP = 4 
+        public int WiATT = 3, WiDEF = 0, WiEFF = 0, WiHP = 10;         //Wizard's stats     pp    //minHP = 4 
         //public int SATT = 3, SDEF = 0, SEFF = 0, SHP = 10;             //Shaman's stats         //minHP = 5  (4th character 
-        public int WoATT = 3, WoDEF = 0, WoEFF = 3, WoHP = 5;          //Wolf's stats
+        public int WoATT = 3, WoDEF = 0, WoEFF = 3, WoHP = 4;          //Wolf's stats
         public int WeATT = 4, WeDEF = 1, WeEFF = 5, WeHP = 7;          //Werewolf's stats
-        public int CATT = 5, CDEF = 3, CEFF = 8, CHP = 10;             //Cerberus' stats
+        public int CATT = 5, CDEF = 3, CEFF = 8, CHP = 11;             //Cerberus' stats
+        public int GATT = 1, GDEF = 1, GEFF = 1, GHP = 1;              //Ghost's stats (they change later)
 
         //First create template objects for CombatCard templates
         //templates are used to create card objects used in matches/games,
@@ -56,6 +55,9 @@ namespace Slip_through
         public CombatCardTemplate WolfCardTemplate;
         public CombatCardTemplate WerewolfCardTemplate;
         public CombatCardTemplate CerberusCardTemplate;
+        public CombatCardTemplate WarriorGhostCardTemplate;
+        public CombatCardTemplate ArcherGhostCardTemplate;
+        public CombatCardTemplate WizardGhostCardTemplate;
 
         CombatCard WarriorCard;
         CombatCard ArcherCard;
@@ -63,6 +65,9 @@ namespace Slip_through
         CombatCard WolfCard;
         CombatCard WerewolfCard;
         CombatCard CerberusCard;
+        CombatCard WarriorGhostCard;
+        CombatCard ArcherGhostCard;
+        CombatCard WizardGhostCard;
 
         CombatCard player;
         CombatCard enemy;
@@ -77,9 +82,6 @@ namespace Slip_through
             createArrays();
             createCardsFromTemplates();
             tableLayoutPanelEnemy.Visible = false;
-            pictureBoxWolf.Visible = false;
-            pictureBoxWerewolf.Visible = false;
-            pictureBoxCerberus.Visible = false;
             flowLayoutLongLog.Visible = false;
             setAddButtonsVisibility(false);
             buttonOK.Visible = false;
@@ -93,6 +95,9 @@ namespace Slip_through
             WolfCardTemplate = new("Wolf", WoATT, WoDEF, WoEFF, WoHP, Properties.Resources.wolf);
             WerewolfCardTemplate = new("Werewolf", WeATT, WeDEF, WeEFF, WeHP, Properties.Resources.werewolf);
             CerberusCardTemplate = new("Cerberus", CATT, CDEF, CEFF, CHP, Properties.Resources.cerberus);
+            WarriorGhostCardTemplate = new("Warrior's Ghost", GATT, GDEF, GEFF, GHP, Properties.Resources.warrior_negate);
+            ArcherGhostCardTemplate = new("Archer's Ghost", GATT, GDEF, GEFF, GHP, Properties.Resources.archer_negate);
+            WizardGhostCardTemplate = new("Wizard's Ghost", GATT, GDEF, GEFF, GHP, Properties.Resources.wizard_negate);
 
             //one object created based on another object, but one is used in a game, and other can be set outside of a game (customed by player)
             WarriorCard = new(WarriorCardTemplate);
@@ -102,12 +107,16 @@ namespace Slip_through
             WerewolfCard = new(WerewolfCardTemplate);
             CerberusCard = new(CerberusCardTemplate);
             CerberusCard = new(CerberusCardTemplate);
+            WarriorGhostCard = new(WarriorGhostCardTemplate);
+            ArcherGhostCard = new(ArcherGhostCardTemplate);
+            WizardGhostCard = new(WizardGhostCardTemplate);
 
             playerCombatCardArray = new CombatCard[3]           //it has to ber here for some reason
             {
                 WarriorCard,
                 ArcherCard,
                 WizardCard,
+                //ShamanCard,
             };
 
             player = playerCombatCardArray[0];
@@ -125,11 +134,13 @@ namespace Slip_through
                 panel21, panel22, panel23, panel24, panel25,
                 panel26, panel27, panel28, panel29, panel30,
             };
+
             pictureBoxPlayerArray = new PictureBox[3]
             {
                 pictureBoxWarrior,
                 pictureBoxArcher,
                 pictureBoxWizard,
+                //pictureBoxShaman,
             };
 
             //playerCombatCardArray = new CombatCard[3] // for some reason it doesn't work if it's here
@@ -138,14 +149,6 @@ namespace Slip_through
             //    ArcherCard,
             //    WizardCard,
             //};
-
-            pictureBoxEnemyArray = new PictureBox[3]
-            {
-                pictureBoxWolf,
-                pictureBoxWerewolf,
-                pictureBoxCerberus,
-            };
-
         }
         private void movementElement(int steps)//working and complete
         {
@@ -170,16 +173,19 @@ namespace Slip_through
                         {
                             player.attack++;
                             labelPlayerAttack.Text = player.attack.ToString();
+                            player.attack = player.attack >= 12 ? 12 : player.attack;      //it can only go up to 12, no higher (to avoid excessive shenenighans)
                         }
                         else if (player.name == "Warrior")
                         {
                             player.defence++;
                             labelPlayerDefense.Text = player.defence.ToString();
+                            player.defence = player.defence >= 12 ? 12 : player.defence;
                         }
                         else if (player.name == "Archer")
                         {
                             player.effectiveness++;
                             labelPlayerEffectiveness.Text = player.effectiveness.ToString();
+                            player.effectiveness = player.effectiveness >= 12 ? 12 : player.effectiveness;
                         }
 
                         tableLayoutPanelPlayer.Update(); //Show the change right after th eplayer slipped
@@ -196,36 +202,50 @@ namespace Slip_through
         private void combatElement(int steps)
         {
             //chosing the enemy depending on how far the player is 
-            if (panelNumberInt <= 10)
+            if (panelNumberInt <= 10) //1-10
             {
-                currentEnemyPictureBox = pictureBoxEnemyArray[0];
                 WolfCard.hitPoints = WolfCardTemplate.maxHP;            //something of revive (reallly its like making a new one but less unnecessary operations since only hp changes)
                 enemy = WolfCard;
             }
-            else if (panelNumberInt <= 20)
+            else if (panelNumberInt <= 20) //11-20
             {
-                currentEnemyPictureBox = pictureBoxEnemyArray[1];
                 WerewolfCard.hitPoints = WerewolfCardTemplate.maxHP;    //something of revive
                 enemy = WerewolfCard;
             }
-            else
+            else if (panelNumberInt <= 29) // 21-29
             {
-                currentEnemyPictureBox = pictureBoxEnemyArray[2];
                 CerberusCard.hitPoints = CerberusCardTemplate.maxHP;    //something of revive
                 enemy = CerberusCard;
+            }
+            else //if it's the last panel - you HAVE TO FIGHT and you have to fight a BOSS
+            {
+                if (player.name == "Warrior")
+                    enemy = WarriorGhostCard;
+                else if (player.name == "Archer")
+                    enemy = ArcherGhostCard;
+                else if (player.name == "Wizard")
+                    enemy = WizardGhostCard;
+
+                //there are templates if i wanted to set custom stats for each ghost
+                //#Boss stats
+                enemy.attack = player.attack - 1;
+                if (player.defence != 0)
+                    enemy.defence = player.defence - 1;
+                else
+                    enemy.defence = 0;
+                enemy.effectiveness = player.effectiveness - 3;
+                enemy.hitPoints = 9;
             }
 
 
             int diceRoll = random.Next(1, 7);
 
             //if player rolls more than what they moved then they are not found out (move less -> less chance of a fight)
-            if (diceRoll < steps)// <= enables fighting at moving by 1 inf there is < then moving 1 is 100% safe
+            //also if they step onto the last tile there is always a fight with a boss
+            if (diceRoll < steps || panelNumberInt == 30)// <= enables fighting at moving by 1 inf there is < then moving 1 is 100% safe
             {
                 //FIGHT
                 flowLayoutLongLog.Visible = false;
-                currentEnemyPictureBox.Parent = panelArray[panelNumberInt - 1];
-                currentEnemyPictureBox.Visible = true;
-                currentEnemyPictureBox.Update();
 
                 combatText = "";
                 combatText += enemy.name + " attacks " + player.name + ".\n";
@@ -252,6 +272,7 @@ namespace Slip_through
 
                 if (player.hitPoints <= 0)                                      //player died
                 {
+                    panelNumberInt = 1;                                         //here for end of panel scope detection purposes
                     fought = true;
                     died = true;
                     nowMovement = false;                                        //same as if player wins, but for acknowledging death
@@ -284,7 +305,6 @@ namespace Slip_through
                 flowLayoutLongLog.Visible = true;                           //It will contain all previouse combat history
 
                 enemy.hitPoints = enemy.maxHP;                              //Set health of the enemy back to max for next fight
-                currentEnemyPictureBox.Visible = false;                     //opponents either flee or die after a battle
                 tableLayoutPanelEnemy.Visible = false;                      //old enemies are never encountered again (idk if correct)
             }
         }
@@ -299,7 +319,7 @@ namespace Slip_through
                 combatText = "";
                 diceRoll = random.Next(1, 7);
 
-                int condition1 = 0;
+                int condition1;
 
                 if (enemy.effectiveness - player.effectiveness < 0)
                     condition1 = 0;
@@ -648,6 +668,8 @@ namespace Slip_through
             else
                 player.attack += 2;
 
+            player.attack = player.attack >= 12 ? 12 : player.attack;      //it can only go up to 12, no higher (to avoid excessive shenenighans)
+
             endRewardCollection();
         }
         private void buttonAddDEF_Click(object sender, EventArgs e)
@@ -657,6 +679,8 @@ namespace Slip_through
             else
                 player.defence += 2;
 
+            player.defence = player.defence >= 12 ? 12 : player.defence;
+
             endRewardCollection();
         }
         private void buttonAddEFF_Click(object sender, EventArgs e)
@@ -665,6 +689,8 @@ namespace Slip_through
                 player.effectiveness += 1;
             else
                 player.effectiveness += 2;
+
+            player.effectiveness = player.effectiveness >= 12 ? 12 : player.effectiveness;
 
             endRewardCollection();
         }

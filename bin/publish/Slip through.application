@@ -7,7 +7,7 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Slip through.dll.manifest" size="5172">
+    <dependentAssembly dependencyType="install" codebase="Application Files\Slip through_1_3_0_0\Slip through.dll.manifest" size="5172">
       <assemblyIdentity name="Slip through.exe" version="1.3.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>

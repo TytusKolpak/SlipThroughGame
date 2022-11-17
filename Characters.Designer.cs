@@ -412,7 +412,7 @@
             this.nUDWarriorHP.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWarriorHP.Location = new System.Drawing.Point(159, 3);
             this.nUDWarriorHP.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -430,7 +430,7 @@
             this.nUDWarriorEFF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWarriorEFF.Location = new System.Drawing.Point(107, 3);
             this.nUDWarriorEFF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -448,7 +448,7 @@
             this.nUDWarriorDEF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWarriorDEF.Location = new System.Drawing.Point(55, 3);
             this.nUDWarriorDEF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -517,7 +517,7 @@
             this.nUDWarriorATT.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWarriorATT.Location = new System.Drawing.Point(3, 3);
             this.nUDWarriorATT.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -596,7 +596,7 @@
             this.nUDArcherATT.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDArcherATT.Location = new System.Drawing.Point(3, 3);
             this.nUDArcherATT.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -614,7 +614,7 @@
             this.nUDArcherHP.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDArcherHP.Location = new System.Drawing.Point(159, 3);
             this.nUDArcherHP.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -632,7 +632,7 @@
             this.nUDArcherEFF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDArcherEFF.Location = new System.Drawing.Point(107, 3);
             this.nUDArcherEFF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -650,7 +650,7 @@
             this.nUDArcherDEF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDArcherDEF.Location = new System.Drawing.Point(55, 3);
             this.nUDArcherDEF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -778,7 +778,7 @@
             this.nUDWizardATT.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWizardATT.Location = new System.Drawing.Point(3, 3);
             this.nUDWizardATT.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -796,7 +796,7 @@
             this.nUDWizardHP.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWizardHP.Location = new System.Drawing.Point(159, 3);
             this.nUDWizardHP.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -814,7 +814,7 @@
             this.nUDWizardEFF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWizardEFF.Location = new System.Drawing.Point(107, 3);
             this.nUDWizardEFF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -832,7 +832,7 @@
             this.nUDWizardDEF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWizardDEF.Location = new System.Drawing.Point(55, 3);
             this.nUDWizardDEF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -959,7 +959,7 @@
             this.nUDWolfHP.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWolfHP.Location = new System.Drawing.Point(159, 3);
             this.nUDWolfHP.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -977,7 +977,7 @@
             this.nUDWolfATT.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWolfATT.Location = new System.Drawing.Point(3, 3);
             this.nUDWolfATT.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -995,7 +995,7 @@
             this.nUDWolfEFF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWolfEFF.Location = new System.Drawing.Point(107, 3);
             this.nUDWolfEFF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -1013,7 +1013,7 @@
             this.nUDWolfDEF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWolfDEF.Location = new System.Drawing.Point(55, 3);
             this.nUDWolfDEF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -1138,7 +1138,7 @@
             this.nUDWerewolfATT.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWerewolfATT.Location = new System.Drawing.Point(3, 3);
             this.nUDWerewolfATT.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -1156,7 +1156,7 @@
             this.nUDWerewolfHP.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWerewolfHP.Location = new System.Drawing.Point(159, 3);
             this.nUDWerewolfHP.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -1174,7 +1174,7 @@
             this.nUDWerewolfEFF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWerewolfEFF.Location = new System.Drawing.Point(107, 3);
             this.nUDWerewolfEFF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -1192,7 +1192,7 @@
             this.nUDWerewolfDEF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWerewolfDEF.Location = new System.Drawing.Point(55, 3);
             this.nUDWerewolfDEF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -1317,7 +1317,7 @@
             this.nUDCerberusATT.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDCerberusATT.Location = new System.Drawing.Point(3, 3);
             this.nUDCerberusATT.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -1335,7 +1335,7 @@
             this.nUDCerberusHP.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDCerberusHP.Location = new System.Drawing.Point(159, 3);
             this.nUDCerberusHP.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -1353,7 +1353,7 @@
             this.nUDCerberusEFF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDCerberusEFF.Location = new System.Drawing.Point(107, 3);
             this.nUDCerberusEFF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
@@ -1371,7 +1371,7 @@
             this.nUDCerberusDEF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDCerberusDEF.Location = new System.Drawing.Point(55, 3);
             this.nUDCerberusDEF.Maximum = new decimal(new int[] {
-            99,
+            12,
             0,
             0,
             0});
