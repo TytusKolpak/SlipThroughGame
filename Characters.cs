@@ -14,7 +14,7 @@ namespace Slip_through
     {
         //initialized here to be able to be sent over to Form1.cs beginning so that there is only 1 source of those values
         public static Characters instance;
-        public bool warriorPlays = true, archerPlays = true, wizardPlays;
+        public bool warriorPlays = true, archerPlays = true, wizardPlays = true;
         public Characters()
         {
             InitializeComponent();

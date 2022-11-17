@@ -67,7 +67,6 @@
             this.gameInstructionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gameControllsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customizingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.charactersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playAgainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableBoard = new System.Windows.Forms.TableLayoutPanel();
             this.panel30 = new System.Windows.Forms.Panel();
@@ -558,9 +557,9 @@
             this.labelResults.BackColor = System.Drawing.Color.Transparent;
             this.labelResults.Location = new System.Drawing.Point(364, 651);
             this.labelResults.Name = "labelResults";
-            this.labelResults.Size = new System.Drawing.Size(75, 15);
+            this.labelResults.Size = new System.Drawing.Size(72, 15);
             this.labelResults.TabIndex = 27;
-            this.labelResults.Text = " LabelResults";
+            this.labelResults.Text = "LabelResults";
             // 
             // buttonAddATT
             // 
@@ -644,18 +643,10 @@
             // 
             // customizingToolStripMenuItem
             // 
-            this.customizingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.charactersToolStripMenuItem});
             this.customizingToolStripMenuItem.Name = "customizingToolStripMenuItem";
             this.customizingToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.customizingToolStripMenuItem.Text = "Customizing";
-            // 
-            // charactersToolStripMenuItem
-            // 
-            this.charactersToolStripMenuItem.Name = "charactersToolStripMenuItem";
-            this.charactersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.charactersToolStripMenuItem.Text = "Characters\' stats";
-            this.charactersToolStripMenuItem.Click += new System.EventHandler(this.charactersToolStripMenuItem_Click);
+            this.customizingToolStripMenuItem.Click += new System.EventHandler(this.customizingToolStripMenuItem_Click);
             // 
             // playAgainToolStripMenuItem
             // 
@@ -1503,7 +1494,6 @@
         private ToolStripMenuItem gameInstructionToolStripMenuItem;
         private ToolStripMenuItem gameControllsToolStripMenuItem;
         private ToolStripMenuItem customizingToolStripMenuItem;
-        private ToolStripMenuItem charactersToolStripMenuItem;
         private ToolStripMenuItem playAgainToolStripMenuItem;
         private TableLayoutPanel tableBoard;
         private Panel panel30;
