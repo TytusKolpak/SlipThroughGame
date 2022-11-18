@@ -37,14 +37,15 @@ namespace Slip_through
         //last 3 letters (or 2 in HP) correspond to the stat that this value corresponds to
         //first one (or 2 if there would be conflicts W Warrior and W Wizard? W for first starting with W and W+i for next WIzard) are for name
 
-        public int WATT = 2, WDEF = 1, WEFF = 0, WHP = 10;             //Warrior's stats        //minHP = 6 
-        public int AATT = 1, ADEF = 1, AEFF = 1, AHP = 10;             //Archer's stats         //minHP = 5 
-        public int WiATT = 3, WiDEF = 0, WiEFF = 0, WiHP = 10;         //Wizard's stats     pp    //minHP = 4 
-        //public int SATT = 3, SDEF = 0, SEFF = 0, SHP = 10;             //Shaman's stats         //minHP = 5  (4th character 
-        public int WoATT = 3, WoDEF = 0, WoEFF = 3, WoHP = 4;          //Wolf's stats
-        public int WeATT = 4, WeDEF = 1, WeEFF = 5, WeHP = 7;          //Werewolf's stats
-        public int CATT = 5, CDEF = 3, CEFF = 8, CHP = 11;             //Cerberus' stats
-        public int GATT = 1, GDEF = 1, GEFF = 1, GHP = 1;              //Ghost's stats (they change later)
+
+        public int  WATT = 2, mWATT = 6,    WDEF = 1, mWDEF = 12,   WEFF = 0, mWEFF = 0,    WHP = 10, minWHP = 6;            //Warrior's stats        //minHP = 6 
+        public int  AATT = 1, mAATT = 6,    ADEF = 1, mADEF = 6,    AEFF = 1, mAEFF = 1,    AHP = 9,  minAHP = 5;            //Archer's stats         //minHP = 5 
+        public int WiATT = 3,mWiATT = 12,  WiDEF = 0,mWiDEF = 6,   WiEFF = 0,mWiEFF = 0,   WiHP = 8, minWiHP = 4;        //Wizard's stats     pp    //minHP = 4 
+      //public int  SATT = 3, mSATT = 6,    SDEF = 0, mSDEF = 0,    SEFF = 0, mSEFF = 0,    SHP = 7,  minSHP = 5;          //Shaman's stats         //minHP = 5  (4th character 
+        public int WoATT = 3,mWoATT = 0,   WoDEF = 0,mWoDEF = 0,   WoEFF = 3,mWoEFF = 0,   WoHP = 4, minWoHP = 0;         //Wolf's stats
+        public int WeATT = 4,mWeATT = 0,   WeDEF = 1,mWeDEF = 0,   WeEFF = 5,mWeEFF = 0,   WeHP = 7, minWeHP = 0;         //Werewolf's stats
+        public int  CATT = 5, mCATT = 0,    CDEF = 3, mCDEF = 0,    CEFF = 8, mCEFF = 0,    CHP = 11, minCHP = 0;            //Cerberus' stats
+        public int  GATT = 0, mGATT = 0,    GDEF = 0, mGDEF = 0,    GEFF = 0, mGEFF = 0,    GHP = 0,  minGHP = 0;             //Ghost's stats (they change later)
 
         //First create template objects for CombatCard templates
         //templates are used to create card objects used in matches/games,
@@ -88,15 +89,15 @@ namespace Slip_through
         }
         public void createCardsFromTemplates() //once at the beginning
         {
-            WarriorCardTemplate = new("Warrior", WATT, WDEF, WEFF, WHP, Properties.Resources.warrior);
-            ArcherCardTemplate = new("Archer", AATT, ADEF, AEFF, AHP, Properties.Resources.archer);
-            WizardCardTemplate = new("Wizard", WiATT, WiDEF, WiEFF, WiHP, Properties.Resources.wizard);
-            WolfCardTemplate = new("Wolf", WoATT, WoDEF, WoEFF, WoHP, Properties.Resources.wolf);
-            WerewolfCardTemplate = new("Werewolf", WeATT, WeDEF, WeEFF, WeHP, Properties.Resources.werewolf);
-            CerberusCardTemplate = new("Cerberus", CATT, CDEF, CEFF, CHP, Properties.Resources.cerberus);
-            WarriorGhostCardTemplate = new("Warrior's Ghost", GATT, GDEF, GEFF, GHP, Properties.Resources.warrior_negate);
-            ArcherGhostCardTemplate = new("Archer's Ghost", GATT, GDEF, GEFF, GHP, Properties.Resources.archer_negate);
-            WizardGhostCardTemplate = new("Wizard's Ghost", GATT, GDEF, GEFF, GHP, Properties.Resources.wizard_negate);
+            WarriorCardTemplate = new("Warrior",              WATT, mWATT,  WDEF, mWDEF,  WEFF, mWEFF,  WHP, minWHP, Properties.Resources.warrior);
+            ArcherCardTemplate = new("Archer",                AATT, mAATT,  ADEF, mADEF,  AEFF, mAEFF,  AHP, minAHP, Properties.Resources.archer);
+            WizardCardTemplate = new("Wizard",               WiATT,mWiATT, WiDEF,mWiDEF, WiEFF,mWiEFF, WiHP,minWiHP, Properties.Resources.wizard);
+            WolfCardTemplate = new("Wolf",                   WoATT,mWoATT, WoDEF,mWoDEF, WoEFF,mWoEFF, WoHP,minWoHP, Properties.Resources.wolf);
+            WerewolfCardTemplate = new("Werewolf",           WeATT,mWeATT, WeDEF,mWeDEF, WeEFF,mWeEFF, WeHP,minWeHP, Properties.Resources.werewolf);
+            CerberusCardTemplate = new("Cerberus",            CATT, mCATT,  CDEF, mCDEF,  CEFF, mCEFF,  CHP, minCHP, Properties.Resources.cerberus);
+            WarriorGhostCardTemplate = new("Warrior's Ghost", GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, Properties.Resources.warrior_negate);
+            ArcherGhostCardTemplate = new("Archer's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, Properties.Resources.archer_negate);
+            WizardGhostCardTemplate = new("Wizard's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, Properties.Resources.wizard_negate);
 
             //one object created based on another object, but one is used in a game, and other can be set outside of a game (customed by player)
             WarriorCard = new(WarriorCardTemplate);
@@ -172,19 +173,19 @@ namespace Slip_through
                         {
                             player.attack++;
                             labelPlayerAttack.Text = player.attack.ToString();
-                            player.attack = player.attack >= 12 ? 12 : player.attack;      //it can only go up to 12, no higher (to avoid excessive shenenighans)
-                        }
+                            //it can only go up to WizardCard.maxAttack (12), no higher (to avoid excessive shenenighans)
+                            player.attack = player.attack >= WizardCard.maxAttack ? WizardCard.maxAttack : player.attack;      }
                         else if (player.name == "Warrior")
                         {
                             player.defence++;
                             labelPlayerDefense.Text = player.defence.ToString();
-                            player.defence = player.defence >= 12 ? 12 : player.defence;
+                            player.defence = player.defence >= WarriorCard.maxDefence ? WarriorCard.maxDefence : player.defence;
                         }
                         else if (player.name == "Archer")
                         {
                             player.effectiveness++;
                             labelPlayerEffectiveness.Text = player.effectiveness.ToString();
-                            player.effectiveness = player.effectiveness >= 12 ? 12 : player.effectiveness;
+                            player.effectiveness = player.effectiveness >= ArcherCard.maxEffectiveness ? ArcherCard.maxEffectiveness : player.effectiveness;
                         }
 
                         tableLayoutPanelPlayer.Update(); //Show the change right after th eplayer slipped
@@ -280,22 +281,9 @@ namespace Slip_through
                     player.deathCounter++;                                      //keep track of how many deaths each player has
                     currentPlayerPictureBox.Parent = panelArray[0];             //move player to the first tile
 
-                    //get back all hit points - heal to full
-                    if (player.name == "Wizard")
-                    {
-                        WizardCardTemplate.maxHP--;
-                        WizardCard.hitPoints = WizardCardTemplate.maxHP;
-                    }
-                    else if (player.name == "Warrior")
-                    {
-                        WarriorCardTemplate.maxHP--;
-                        WarriorCard.hitPoints = WarriorCardTemplate.maxHP;
-                    }
-                    else if (player.name == "Archer")
-                    {
-                        ArcherCardTemplate.maxHP--;
-                        ArcherCard.hitPoints = ArcherCardTemplate.maxHP;
-                    }
+                    //dont go lower than minHp
+                    player.maxHP--;
+                    player.hitPoints = player.maxHP < player.minHP ? player.minHP : player.maxHP;
 
                     setMovementButtonsVisibility(false);
                     buttonOK.Visible = true;                                //confirm death (give player time to read combat log)
@@ -668,8 +656,10 @@ namespace Slip_through
             else
                 player.attack += 2;
 
-            player.attack = player.attack >= 12 ? 12 : player.attack;      //it can only go up to 12, no higher (to avoid excessive shenenighans)
-
+            //it can only go up to 12, no higher (to avoid excessive shenenighans)
+            //check who is it is not neccessary since player.maxAttack is adaptive
+            player.attack = player.attack >= player.maxAttack ? player.maxAttack : player.attack;     
+            
             endRewardCollection();
         }
         private void buttonAddDEF_Click(object sender, EventArgs e)
@@ -679,7 +669,7 @@ namespace Slip_through
             else
                 player.defence += 2;
 
-            player.defence = player.defence >= 12 ? 12 : player.defence;
+            player.defence = player.defence >= player.maxDefence ? player.maxDefence : player.defence;
 
             endRewardCollection();
         }
@@ -690,7 +680,7 @@ namespace Slip_through
             else
                 player.effectiveness += 2;
 
-            player.effectiveness = player.effectiveness >= 12 ? 12 : player.effectiveness;
+            player.effectiveness = player.effectiveness >= player.maxEffectiveness ? player.maxEffectiveness : player.effectiveness;
 
             endRewardCollection();
         }
@@ -734,6 +724,11 @@ namespace Slip_through
                                 player.attack += 1;
                             else
                                 player.attack += 2;
+
+                            //it can only go up to 12, no higher (to avoid excessive shenenighans)
+                            //check who is it is not neccessary since player.maxAttack is adaptive
+                            player.attack = player.attack >= player.maxAttack ? player.maxAttack : player.attack;
+
                             endRewardCollection();
                         }
                         break;
@@ -745,6 +740,9 @@ namespace Slip_through
                                 player.defence += 1;
                             else
                                 player.defence += 2;
+
+                            player.defence = player.defence >= player.maxDefence ? player.maxDefence : player.defence;
+
                             endRewardCollection();
                         }
                         break;
@@ -756,6 +754,9 @@ namespace Slip_through
                                 player.effectiveness += 1;
                             else
                                 player.effectiveness += 2;
+
+                            player.effectiveness = player.effectiveness >= player.maxEffectiveness ? player.maxEffectiveness : player.effectiveness;
+
                             endRewardCollection();
                         }
                         break;

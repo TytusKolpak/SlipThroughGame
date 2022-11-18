@@ -53,17 +53,17 @@ Along the path there are increasingly difficult to defeat enemies trying to kill
 
 ### Statistics
 
-Each instance begins with the same amount of predefined statistics: attack, defence, effectiveness, health. Each value can go up to 12 points max.
+Each instance begins with the same amount of predefined statistics: attack, defence, effectiveness, health. Each value can go up only to it's max value and down to it's min value.
 
-|Name      |ATT  |DEF  |EFF  |HP   |
-|---------:|:---:|:---:|:---:|:---:|
-|Warrior   |2    |1    |0    |10   |
-|Archer    |1    |1    |1    |10   |
-|Wizard    |3    |0    |0    |10   |
-|Wolf      |3    |0    |3    |5    |
-|Werewolf  |4    |1    |5    |7    |
-|Cerberus  |5    |3    |8    |10   |
-|Ghost     |p-1  |p-1  |p+3  |10   |
+|Name      |ATT  |maxATT|DEF  |maxDEF|EFF  |maxEFF|HP   |minHp|
+|---------:|:---:|:----:|:---:|:----:|:---:|:----:|:---:|:---:|
+|Warrior   |2    |6     |1    |12    |0    |6     |10   |6    |
+|Archer    |1    |6     |1    |6     |1    |12    |9    |5    |
+|Wizard    |3    |12    |0    |6     |0    |6     |8    |4    |
+|Wolf      |3    |-     |0    |-     |3    |-     |5    |-    |
+|Werewolf  |4    |-     |1    |-     |5    |-     |7    |-    |
+|Cerberus  |5    |-     |3    |-     |8    |-     |10   |-    |
+|Ghost     |p-1  |-     |p-1  |-     |p+3  |-     |10   |-    |
 
 Ghost's statistics are defined by the character who attacks it. It's attack is always equal to that of the character and decreased by 1. The same applies to defence. Effectiveness is increased by 3.
  

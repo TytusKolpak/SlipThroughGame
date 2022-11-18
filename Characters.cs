@@ -84,12 +84,14 @@ namespace Slip_through
 
             //send WarriorCardTemplate in / create a WarriorCardTemplate for Form1 to use (is used when new game is called)
             //can be accessed in Form1 simply by "WarriorCardTemplate"
-            Form1.instance.WarriorCardTemplate = new("Warrior", WATT, WDEF, WEFF, WHP, Properties.Resources.warrior);
-            Form1.instance.ArcherCardTemplate = new("Archer", AATT, ADEF, AEFF, AHP, Properties.Resources.archer);
-            Form1.instance.WizardCardTemplate = new("Wizard", WiATT, WiDEF, WiEFF, WiHP, Properties.Resources.wizard);
-            Form1.instance.WolfCardTemplate = new("Wolf", WoATT, WoDEF, WoEFF, WoHP, Properties.Resources.wolf);
-            Form1.instance.WerewolfCardTemplate = new("Werewolf", WeATT, WeDEF, WeEFF, WeHP, Properties.Resources.werewolf);
-            Form1.instance.CerberusCardTemplate = new("Cerberus", CATT, CDEF, CEFF, CHP, Properties.Resources.cerberus);
+            //has to be here, because the editing of values is carried out in characters window
+            //                                        name,       att, maxAtt, def, maxDef, eff, maxEff, hp, minHp, picture
+            Form1.instance.WarriorCardTemplate =  new("Warrior",  WATT,  6,    WDEF,  12,  WEFF,  6,     WHP,  6,  Properties.Resources.warrior);
+            Form1.instance.ArcherCardTemplate =   new("Archer",   AATT,  6,    ADEF,  6,   AEFF,  12,    AHP,  5,   Properties.Resources.archer);
+            Form1.instance.WizardCardTemplate =   new("Wizard",   WiATT, 12,   WiDEF, 6,   WiEFF, 6,     WiHP, 4,   Properties.Resources.wizard);
+            Form1.instance.WolfCardTemplate =     new("Wolf",     WoATT, 0,    WoDEF, 0,   WoEFF, 0,     WoHP, 5,   Properties.Resources.wolf);
+            Form1.instance.WerewolfCardTemplate = new("Werewolf", WeATT, 0,    WeDEF, 0,   WeEFF, 0,     WeHP, 0,   Properties.Resources.werewolf);
+            Form1.instance.CerberusCardTemplate = new("Cerberus", CATT,  0,    CDEF,  0,   CEFF,  0,     CHP,  0,   Properties.Resources.cerberus);
 
             MessageBox.Show("Values have been updated. To use newly created cards begin a new game.", "Customization", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
