@@ -85,7 +85,6 @@ namespace Slip_through
             flowLayoutLongLog.Visible = false;
             setAddButtonsVisibility(false);
             buttonOK.Visible = false;
-            labelResults.Visible = false;
         }
         public void createCardsFromTemplates() //once at the beginning
         {
@@ -489,6 +488,7 @@ namespace Slip_through
             {
                 playerNr = 0;
                 turnCounter++;
+                labelResults.Text = "Turn: " + turnCounter;
             }
 
             if (playerNr == 0)
@@ -555,14 +555,12 @@ namespace Slip_through
             buttonAddDEF.BringToFront();
             buttonAddEFF.BringToFront();
         }
-
         private void customizingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //load for each character their default values on entry too 
             Characters Characters = new Characters();
             Characters.Show();
         }
-
         private void endRewardCollection()
         {
             nowMovement = true;
@@ -577,13 +575,16 @@ namespace Slip_through
         }
         private void Form1_Resize(object sender, System.EventArgs e)
         {
-            //
-
+            //make them approximately half of the tile - always, and start form the 0,0 or 0,y/2 or x/2,0 point
+            //where x,y are the width and height of the tile they are on
             int width = pictureBoxWarrior.Parent.Size.Width / 2;
             int height = pictureBoxWarrior.Parent.Size.Height / 2;
             pictureBoxWarrior.Size = new Size(width, height);
-
-            //
+            pictureBoxWarrior.Location = new Point(0, 0);
+            pictureBoxArcher.Size = new Size(width, height);
+            pictureBoxArcher.Location = new Point(0, height+2);
+            pictureBoxWizard.Size = new Size(width, height);
+            pictureBoxWizard.Location = new Point(width + 2, 0);
         }
         private void mainSequence(int distanceChoice)
         {
@@ -596,7 +597,6 @@ namespace Slip_through
             if (panelNumberInt == 30)
             {
                 gameOver = true;
-                labelResults.Visible = true;
                 labelResults.Text = player.name + " won in " + turnCounter + " turns and " + player.deathCounter + " deaths.";
                 labelResults.Update();
             }
