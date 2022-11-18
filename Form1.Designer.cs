@@ -79,7 +79,6 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel24 = new System.Windows.Forms.Panel();
             this.panel25 = new System.Windows.Forms.Panel();
-            this.pictureBoxCerberus = new System.Windows.Forms.PictureBox();
             this.panel20 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -90,9 +89,7 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.pictureBoxWerewolf = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.pictureBoxWolf = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -127,12 +124,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEnemy)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tableBoard.SuspendLayout();
-            this.panel25.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerberus)).BeginInit();
-            this.panel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWerewolf)).BeginInit();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWolf)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarrior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArcher)).BeginInit();
@@ -557,9 +548,9 @@
             this.labelResults.BackColor = System.Drawing.Color.Transparent;
             this.labelResults.Location = new System.Drawing.Point(364, 651);
             this.labelResults.Name = "labelResults";
-            this.labelResults.Size = new System.Drawing.Size(72, 15);
+            this.labelResults.Size = new System.Drawing.Size(43, 15);
             this.labelResults.TabIndex = 27;
-            this.labelResults.Text = "LabelResults";
+            this.labelResults.Text = "Turn: 1";
             // 
             // buttonAddATT
             // 
@@ -844,23 +835,11 @@
             this.panel25.AutoSize = true;
             this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(150)))), ((int)(((byte)(116)))));
             this.panel25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel25.Controls.Add(this.pictureBoxCerberus);
             this.panel25.Location = new System.Drawing.Point(400, 402);
             this.panel25.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(100, 98);
             this.panel25.TabIndex = 60;
-            // 
-            // pictureBoxCerberus
-            // 
-            this.pictureBoxCerberus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxCerberus.Image = global::Slip_through.Properties.Resources.cerberus;
-            this.pictureBoxCerberus.Location = new System.Drawing.Point(-52, 44);
-            this.pictureBoxCerberus.Name = "pictureBoxCerberus";
-            this.pictureBoxCerberus.Size = new System.Drawing.Size(48, 48);
-            this.pictureBoxCerberus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCerberus.TabIndex = 2;
-            this.pictureBoxCerberus.TabStop = false;
             // 
             // panel20
             // 
@@ -996,47 +975,23 @@
             this.panel15.AutoSize = true;
             this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(233)))), ((int)(((byte)(131)))));
             this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel15.Controls.Add(this.pictureBoxWerewolf);
             this.panel15.Location = new System.Drawing.Point(400, 202);
             this.panel15.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(100, 98);
             this.panel15.TabIndex = 50;
             // 
-            // pictureBoxWerewolf
-            // 
-            this.pictureBoxWerewolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxWerewolf.Image = global::Slip_through.Properties.Resources.werewolf;
-            this.pictureBoxWerewolf.Location = new System.Drawing.Point(-52, 44);
-            this.pictureBoxWerewolf.Name = "pictureBoxWerewolf";
-            this.pictureBoxWerewolf.Size = new System.Drawing.Size(48, 48);
-            this.pictureBoxWerewolf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxWerewolf.TabIndex = 0;
-            this.pictureBoxWerewolf.TabStop = false;
-            // 
             // panel5
             // 
             this.panel5.AutoSize = true;
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(202)))), ((int)(((byte)(125)))));
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.pictureBoxWolf);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(400, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(100, 100);
             this.panel5.TabIndex = 49;
-            // 
-            // pictureBoxWolf
-            // 
-            this.pictureBoxWolf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxWolf.Image = global::Slip_through.Properties.Resources.wolf;
-            this.pictureBoxWolf.Location = new System.Drawing.Point(-53, 48);
-            this.pictureBoxWolf.Name = "pictureBoxWolf";
-            this.pictureBoxWolf.Size = new System.Drawing.Size(48, 48);
-            this.pictureBoxWolf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxWolf.TabIndex = 1;
-            this.pictureBoxWolf.TabStop = false;
             // 
             // panel9
             // 
@@ -1156,6 +1111,7 @@
             // 
             // pictureBoxWarrior
             // 
+            this.pictureBoxWarrior.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxWarrior.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxWarrior.Image = global::Slip_through.Properties.Resources.warrior;
             this.pictureBoxWarrior.Location = new System.Drawing.Point(0, 0);
@@ -1168,7 +1124,7 @@
             // 
             // pictureBoxArcher
             // 
-            this.pictureBoxArcher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxArcher.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxArcher.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxArcher.Image = global::Slip_through.Properties.Resources.archer;
             this.pictureBoxArcher.Location = new System.Drawing.Point(0, 50);
@@ -1181,7 +1137,7 @@
             // 
             // pictureBoxWizard
             // 
-            this.pictureBoxWizard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxWizard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxWizard.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxWizard.Image = global::Slip_through.Properties.Resources.wizard;
             this.pictureBoxWizard.Location = new System.Drawing.Point(50, 0);
@@ -1433,12 +1389,6 @@
             this.menuStrip1.PerformLayout();
             this.tableBoard.ResumeLayout(false);
             this.tableBoard.PerformLayout();
-            this.panel25.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCerberus)).EndInit();
-            this.panel15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWerewolf)).EndInit();
-            this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWolf)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarrior)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArcher)).EndInit();
@@ -1506,7 +1456,6 @@
         private Panel panel23;
         private Panel panel24;
         private Panel panel25;
-        private PictureBox pictureBoxCerberus;
         private Panel panel20;
         private Panel panel19;
         private Panel panel18;
@@ -1517,9 +1466,7 @@
         private Panel panel13;
         private Panel panel14;
         private Panel panel15;
-        private PictureBox pictureBoxWerewolf;
         private Panel panel5;
-        private PictureBox pictureBoxWolf;
         private Panel panel9;
         private Panel panel8;
         private Panel panel7;
