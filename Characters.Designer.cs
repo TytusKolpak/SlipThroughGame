@@ -1116,7 +1116,7 @@
             // 
             this.pictureBoxDruid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxDruid.Image = global::Slip_through.Properties.Resources.shaman;
+            this.pictureBoxDruid.Image = global::Slip_through.Properties.Resources.druid;
             this.pictureBoxDruid.Location = new System.Drawing.Point(3, 47);
             this.pictureBoxDruid.Name = "pictureBoxDruid";
             this.pictureBoxDruid.Size = new System.Drawing.Size(242, 182);
@@ -1663,7 +1663,7 @@
             // 
             // buttonSetCustom
             // 
-            this.buttonSetCustom.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonSetCustom.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.buttonSetCustom.FlatAppearance.BorderSize = 2;
             this.buttonSetCustom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSetCustom.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
