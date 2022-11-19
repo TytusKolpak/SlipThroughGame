@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Slip through.exe" version="1.3.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Slip through.exe" version="1.3.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="sword.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -15,16 +15,16 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
-          Opcje manifestu kontroli konta użytkownika
-          Jeśli chcesz zmienić poziom kontroli konta użytkownika systemu Windows, zastąp węzeł 
-          requestedExecutionLevel jednym z następujących.
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         Jeśli chcesz użyć wirtualizacji plików i rejestru do celów zgodności wstecznej, 
-         usuń węzeł requestedExecutionLevel.
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -63,22 +63,22 @@
       <dsig:DigestValue>ldGJrC1lkvBi+WGmGJajCUbM1m2mROd9qyXjZhDFkpU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Slip through.dll" size="1093632">
+  <file name="Slip through.dll" size="1312256">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>n0t3KggoolruckGCySgf+to1SqDMQnvLNP6p8R0vAek=</dsig:DigestValue>
+      <dsig:DigestValue>z9ULO4q87uzloywSYY9Bb/0JCRLVqivSDmzSSH9olvU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Slip through.exe" size="160256">
+  <file name="Slip through.exe" size="160768">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>J5o8pj5bgD4ncwXvbisoW8B3R8jvH+7wkSrJKHl3LRI=</dsig:DigestValue>
+      <dsig:DigestValue>C+j+0LEfW/oCLS19qGATN7lugqUAkz9wnU8a3wNBLN4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Slip through.runtimeconfig.json" size="372">
