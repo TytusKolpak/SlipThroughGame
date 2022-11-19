@@ -13,13 +13,14 @@ namespace Slip_through
         public int attack, defence, effectiveness, maxHP;
         public Bitmap bitmapImage;
         public int maxAttack, maxDefence, maxEffectiveness, minHP;
+        public bool[] wallsSlippedThrough;
 
         //this is a constructor for object that is a template for a different object
         //from CombatCardTemplate the class you make WarriorCardTemplate the object
         //then you can use the WarriorCardTemplate to affect new WarriorCard objects
         //which is usefull if the player wants to customize his warrior and others
         public CombatCardTemplate(String name, int attack, int maxAttack, int defence, int maxDefence,
-            int effectiveness, int maxEffectiveness, int maxHP, int minHP, Bitmap bitmapImage)
+            int effectiveness, int maxEffectiveness, int maxHP, int minHP, bool[] wallsSlippedThrough, Bitmap bitmapImage)
         {
             this.name = name;
             this.attack = attack;
@@ -30,6 +31,7 @@ namespace Slip_through
             this.maxEffectiveness = maxEffectiveness;
             this.maxHP = maxHP;
             this.minHP = minHP;
+            this.wallsSlippedThrough = wallsSlippedThrough;
             this.bitmapImage = bitmapImage;
         }
     }

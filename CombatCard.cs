@@ -12,6 +12,7 @@ namespace Slip_through
         public int attack, defence, effectiveness, hitPoints, maxHP, deathCounter;
         public Bitmap bitmapImage;
         public int maxAttack, maxDefence, maxEffectiveness, minHP;
+        public bool[] wallsSlippedThrough;
 
         public CombatCard(CombatCardTemplate template)
         {
@@ -26,6 +27,7 @@ namespace Slip_through
             this.maxHP = template.maxHP;
             this.hitPoints = template.maxHP;
             this.minHP = template.minHP;
+            this.wallsSlippedThrough = template.wallsSlippedThrough;
             this.bitmapImage = template.bitmapImage;
         }
     }

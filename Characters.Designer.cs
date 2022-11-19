@@ -74,6 +74,17 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.pictureBoxWizard = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanelShamanX = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelDruidStats = new System.Windows.Forms.TableLayoutPanel();
+            this.nUDDruidATT = new System.Windows.Forms.NumericUpDown();
+            this.nUDDruidHP = new System.Windows.Forms.NumericUpDown();
+            this.nUDDruidEFF = new System.Windows.Forms.NumericUpDown();
+            this.nUDDruidDEF = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.pictureBoxDruid = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelEnemy = new System.Windows.Forms.TableLayoutPanel();
             this.tableEnemyStats = new System.Windows.Forms.TableLayoutPanel();
             this.nUDWolfHP = new System.Windows.Forms.NumericUpDown();
@@ -133,6 +144,18 @@
             this.WarriorPlaysCheckBox = new System.Windows.Forms.CheckBox();
             this.ArcherPlaysCheckBox = new System.Windows.Forms.CheckBox();
             this.WizardPlaysCheckBox = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.DruidPlaysCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPlayer.SuspendLayout();
             this.tablePlayerStats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayer)).BeginInit();
@@ -158,6 +181,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDWizardEFF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDWizardDEF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWizard)).BeginInit();
+            this.tableLayoutPanelShamanX.SuspendLayout();
+            this.tableLayoutPanelDruidStats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDDruidATT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDDruidHP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDDruidEFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDDruidDEF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDruid)).BeginInit();
             this.tableLayoutPanelEnemy.SuspendLayout();
             this.tableEnemyStats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDWolfHP)).BeginInit();
@@ -185,6 +215,13 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelPlayer
@@ -347,6 +384,7 @@
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel3);
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel7);
+            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanelShamanX);
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanelEnemy);
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel9);
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel13);
@@ -354,7 +392,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(763, 652);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1017, 612);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -430,12 +468,12 @@
             this.nUDWarriorEFF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWarriorEFF.Location = new System.Drawing.Point(107, 3);
             this.nUDWarriorEFF.Maximum = new decimal(new int[] {
-            12,
+            6,
             0,
             0,
             0});
             this.nUDWarriorEFF.Name = "nUDWarriorEFF";
-            this.nUDWarriorEFF.Size = new System.Drawing.Size(44, 25);
+            this.nUDWarriorEFF.Size = new System.Drawing.Size(35, 25);
             this.nUDWarriorEFF.TabIndex = 31;
             this.nUDWarriorEFF.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -448,12 +486,12 @@
             this.nUDWarriorDEF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWarriorDEF.Location = new System.Drawing.Point(55, 3);
             this.nUDWarriorDEF.Maximum = new decimal(new int[] {
-            12,
+            6,
             0,
             0,
             0});
             this.nUDWarriorDEF.Name = "nUDWarriorDEF";
-            this.nUDWarriorDEF.Size = new System.Drawing.Size(44, 25);
+            this.nUDWarriorDEF.Size = new System.Drawing.Size(35, 25);
             this.nUDWarriorDEF.TabIndex = 30;
             this.nUDWarriorDEF.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -517,12 +555,12 @@
             this.nUDWarriorATT.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWarriorATT.Location = new System.Drawing.Point(3, 3);
             this.nUDWarriorATT.Maximum = new decimal(new int[] {
-            12,
+            6,
             0,
             0,
             0});
             this.nUDWarriorATT.Name = "nUDWarriorATT";
-            this.nUDWarriorATT.Size = new System.Drawing.Size(44, 25);
+            this.nUDWarriorATT.Size = new System.Drawing.Size(35, 25);
             this.nUDWarriorATT.TabIndex = 29;
             this.nUDWarriorATT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -596,12 +634,12 @@
             this.nUDArcherATT.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDArcherATT.Location = new System.Drawing.Point(3, 3);
             this.nUDArcherATT.Maximum = new decimal(new int[] {
-            12,
+            6,
             0,
             0,
             0});
             this.nUDArcherATT.Name = "nUDArcherATT";
-            this.nUDArcherATT.Size = new System.Drawing.Size(44, 25);
+            this.nUDArcherATT.Size = new System.Drawing.Size(35, 25);
             this.nUDArcherATT.TabIndex = 33;
             this.nUDArcherATT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -614,12 +652,12 @@
             this.nUDArcherHP.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDArcherHP.Location = new System.Drawing.Point(159, 3);
             this.nUDArcherHP.Maximum = new decimal(new int[] {
-            12,
+            9,
             0,
             0,
             0});
             this.nUDArcherHP.Name = "nUDArcherHP";
-            this.nUDArcherHP.Size = new System.Drawing.Size(44, 25);
+            this.nUDArcherHP.Size = new System.Drawing.Size(35, 25);
             this.nUDArcherHP.TabIndex = 32;
             this.nUDArcherHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -650,12 +688,12 @@
             this.nUDArcherDEF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDArcherDEF.Location = new System.Drawing.Point(55, 3);
             this.nUDArcherDEF.Maximum = new decimal(new int[] {
-            12,
+            3,
             0,
             0,
             0});
             this.nUDArcherDEF.Name = "nUDArcherDEF";
-            this.nUDArcherDEF.Size = new System.Drawing.Size(44, 25);
+            this.nUDArcherDEF.Size = new System.Drawing.Size(35, 25);
             this.nUDArcherDEF.TabIndex = 30;
             this.nUDArcherDEF.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -796,12 +834,12 @@
             this.nUDWizardHP.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWizardHP.Location = new System.Drawing.Point(159, 3);
             this.nUDWizardHP.Maximum = new decimal(new int[] {
-            12,
+            8,
             0,
             0,
             0});
             this.nUDWizardHP.Name = "nUDWizardHP";
-            this.nUDWizardHP.Size = new System.Drawing.Size(44, 25);
+            this.nUDWizardHP.Size = new System.Drawing.Size(35, 25);
             this.nUDWizardHP.TabIndex = 32;
             this.nUDWizardHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -814,12 +852,12 @@
             this.nUDWizardEFF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWizardEFF.Location = new System.Drawing.Point(107, 3);
             this.nUDWizardEFF.Maximum = new decimal(new int[] {
-            12,
+            6,
             0,
             0,
             0});
             this.nUDWizardEFF.Name = "nUDWizardEFF";
-            this.nUDWizardEFF.Size = new System.Drawing.Size(44, 25);
+            this.nUDWizardEFF.Size = new System.Drawing.Size(35, 25);
             this.nUDWizardEFF.TabIndex = 31;
             this.nUDWizardEFF.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -832,12 +870,12 @@
             this.nUDWizardDEF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDWizardDEF.Location = new System.Drawing.Point(55, 3);
             this.nUDWizardDEF.Maximum = new decimal(new int[] {
-            12,
+            3,
             0,
             0,
             0});
             this.nUDWizardDEF.Name = "nUDWizardDEF";
-            this.nUDWizardDEF.Size = new System.Drawing.Size(44, 25);
+            this.nUDWizardDEF.Size = new System.Drawing.Size(35, 25);
             this.nUDWizardDEF.TabIndex = 30;
             this.nUDWizardDEF.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -904,6 +942,188 @@
             this.pictureBoxWizard.TabIndex = 22;
             this.pictureBoxWizard.TabStop = false;
             // 
+            // tableLayoutPanelShamanX
+            // 
+            this.tableLayoutPanelShamanX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanelShamanX.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanelShamanX.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanelShamanX.BackgroundImage")));
+            this.tableLayoutPanelShamanX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanelShamanX.ColumnCount = 1;
+            this.tableLayoutPanelShamanX.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelShamanX.Controls.Add(this.tableLayoutPanelDruidStats, 0, 1);
+            this.tableLayoutPanelShamanX.Controls.Add(this.pictureBoxDruid, 0, 0);
+            this.tableLayoutPanelShamanX.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanelShamanX.Location = new System.Drawing.Point(765, 3);
+            this.tableLayoutPanelShamanX.Name = "tableLayoutPanelShamanX";
+            this.tableLayoutPanelShamanX.RowCount = 2;
+            this.tableLayoutPanelShamanX.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.33334F));
+            this.tableLayoutPanelShamanX.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.66667F));
+            this.tableLayoutPanelShamanX.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelShamanX.Size = new System.Drawing.Size(248, 300);
+            this.tableLayoutPanelShamanX.TabIndex = 28;
+            // 
+            // tableLayoutPanelDruidStats
+            // 
+            this.tableLayoutPanelDruidStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(130)))), ((int)(((byte)(82)))));
+            this.tableLayoutPanelDruidStats.ColumnCount = 4;
+            this.tableLayoutPanelDruidStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelDruidStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelDruidStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelDruidStats.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanelDruidStats.Controls.Add(this.nUDDruidATT, 0, 0);
+            this.tableLayoutPanelDruidStats.Controls.Add(this.nUDDruidHP, 3, 0);
+            this.tableLayoutPanelDruidStats.Controls.Add(this.nUDDruidEFF, 2, 0);
+            this.tableLayoutPanelDruidStats.Controls.Add(this.nUDDruidDEF, 1, 0);
+            this.tableLayoutPanelDruidStats.Controls.Add(this.label13, 0, 1);
+            this.tableLayoutPanelDruidStats.Controls.Add(this.label14, 1, 1);
+            this.tableLayoutPanelDruidStats.Controls.Add(this.label15, 2, 1);
+            this.tableLayoutPanelDruidStats.Controls.Add(this.label16, 3, 1);
+            this.tableLayoutPanelDruidStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelDruidStats.Location = new System.Drawing.Point(20, 232);
+            this.tableLayoutPanelDruidStats.Margin = new System.Windows.Forms.Padding(20, 0, 20, 20);
+            this.tableLayoutPanelDruidStats.Name = "tableLayoutPanelDruidStats";
+            this.tableLayoutPanelDruidStats.RowCount = 2;
+            this.tableLayoutPanelDruidStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelDruidStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelDruidStats.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelDruidStats.Size = new System.Drawing.Size(208, 48);
+            this.tableLayoutPanelDruidStats.TabIndex = 23;
+            // 
+            // nUDDruidATT
+            // 
+            this.nUDDruidATT.AutoSize = true;
+            this.nUDDruidATT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(130)))), ((int)(((byte)(82)))));
+            this.nUDDruidATT.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nUDDruidATT.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.nUDDruidATT.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.nUDDruidATT.Location = new System.Drawing.Point(3, 3);
+            this.nUDDruidATT.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.nUDDruidATT.Name = "nUDDruidATT";
+            this.nUDDruidATT.Size = new System.Drawing.Size(35, 25);
+            this.nUDDruidATT.TabIndex = 33;
+            this.nUDDruidATT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // nUDDruidHP
+            // 
+            this.nUDDruidHP.AutoSize = true;
+            this.nUDDruidHP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(130)))), ((int)(((byte)(82)))));
+            this.nUDDruidHP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nUDDruidHP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.nUDDruidHP.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.nUDDruidHP.Location = new System.Drawing.Point(159, 3);
+            this.nUDDruidHP.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.nUDDruidHP.Name = "nUDDruidHP";
+            this.nUDDruidHP.Size = new System.Drawing.Size(35, 25);
+            this.nUDDruidHP.TabIndex = 32;
+            this.nUDDruidHP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // nUDDruidEFF
+            // 
+            this.nUDDruidEFF.AutoSize = true;
+            this.nUDDruidEFF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(130)))), ((int)(((byte)(82)))));
+            this.nUDDruidEFF.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nUDDruidEFF.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.nUDDruidEFF.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.nUDDruidEFF.Location = new System.Drawing.Point(107, 3);
+            this.nUDDruidEFF.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.nUDDruidEFF.Name = "nUDDruidEFF";
+            this.nUDDruidEFF.Size = new System.Drawing.Size(35, 25);
+            this.nUDDruidEFF.TabIndex = 31;
+            this.nUDDruidEFF.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // nUDDruidDEF
+            // 
+            this.nUDDruidDEF.AutoSize = true;
+            this.nUDDruidDEF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(130)))), ((int)(((byte)(82)))));
+            this.nUDDruidDEF.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nUDDruidDEF.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.nUDDruidDEF.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.nUDDruidDEF.Location = new System.Drawing.Point(55, 3);
+            this.nUDDruidDEF.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.nUDDruidDEF.Name = "nUDDruidDEF";
+            this.nUDDruidDEF.Size = new System.Drawing.Size(35, 25);
+            this.nUDDruidDEF.TabIndex = 30;
+            this.nUDDruidDEF.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(3, 24);
+            this.label13.Name = "label13";
+            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label13.Size = new System.Drawing.Size(46, 24);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "ATT";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(55, 24);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(46, 24);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "DEF";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(107, 24);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(46, 24);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "EFF";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(159, 24);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(46, 24);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "HP";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBoxDruid
+            // 
+            this.pictureBoxDruid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxDruid.Image = global::Slip_through.Properties.Resources.shaman;
+            this.pictureBoxDruid.Location = new System.Drawing.Point(3, 47);
+            this.pictureBoxDruid.Name = "pictureBoxDruid";
+            this.pictureBoxDruid.Size = new System.Drawing.Size(242, 182);
+            this.pictureBoxDruid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDruid.TabIndex = 22;
+            this.pictureBoxDruid.TabStop = false;
+            // 
             // tableLayoutPanelEnemy
             // 
             this.tableLayoutPanelEnemy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -922,7 +1142,7 @@
             this.tableLayoutPanelEnemy.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanelEnemy.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelEnemy.Size = new System.Drawing.Size(248, 300);
-            this.tableLayoutPanelEnemy.TabIndex = 28;
+            this.tableLayoutPanelEnemy.TabIndex = 29;
             // 
             // tableEnemyStats
             // 
@@ -1101,7 +1321,7 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(248, 300);
-            this.tableLayoutPanel9.TabIndex = 29;
+            this.tableLayoutPanel9.TabIndex = 30;
             // 
             // tableLayoutPanel10
             // 
@@ -1280,7 +1500,7 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(248, 300);
-            this.tableLayoutPanel13.TabIndex = 30;
+            this.tableLayoutPanel13.TabIndex = 31;
             // 
             // tableLayoutPanel14
             // 
@@ -1443,16 +1663,16 @@
             // 
             // buttonSetCustom
             // 
+            this.buttonSetCustom.BackColor = System.Drawing.SystemColors.Control;
             this.buttonSetCustom.FlatAppearance.BorderSize = 2;
             this.buttonSetCustom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSetCustom.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSetCustom.Location = new System.Drawing.Point(3, 615);
+            this.buttonSetCustom.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonSetCustom.Location = new System.Drawing.Point(765, 309);
             this.buttonSetCustom.Name = "buttonSetCustom";
-            this.buttonSetCustom.Size = new System.Drawing.Size(756, 33);
-            this.buttonSetCustom.TabIndex = 31;
+            this.buttonSetCustom.Size = new System.Drawing.Size(248, 300);
+            this.buttonSetCustom.TabIndex = 32;
             this.buttonSetCustom.Text = "Apply custom settings";
-            this.buttonSetCustom.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonSetCustom.UseVisualStyleBackColor = true;
+            this.buttonSetCustom.UseVisualStyleBackColor = false;
             this.buttonSetCustom.Click += new System.EventHandler(this.buttonSetCustom_Click);
             // 
             // tableLayoutPanel5
@@ -1768,7 +1988,7 @@
             this.WarriorPlaysCheckBox.AutoSize = true;
             this.WarriorPlaysCheckBox.Checked = true;
             this.WarriorPlaysCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.WarriorPlaysCheckBox.Location = new System.Drawing.Point(95, 10);
+            this.WarriorPlaysCheckBox.Location = new System.Drawing.Point(102, 10);
             this.WarriorPlaysCheckBox.Name = "WarriorPlaysCheckBox";
             this.WarriorPlaysCheckBox.Size = new System.Drawing.Size(53, 19);
             this.WarriorPlaysCheckBox.TabIndex = 1;
@@ -1781,7 +2001,7 @@
             this.ArcherPlaysCheckBox.AutoSize = true;
             this.ArcherPlaysCheckBox.Checked = true;
             this.ArcherPlaysCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ArcherPlaysCheckBox.Location = new System.Drawing.Point(355, 10);
+            this.ArcherPlaysCheckBox.Location = new System.Drawing.Point(356, 10);
             this.ArcherPlaysCheckBox.Name = "ArcherPlaysCheckBox";
             this.ArcherPlaysCheckBox.Size = new System.Drawing.Size(53, 19);
             this.ArcherPlaysCheckBox.TabIndex = 2;
@@ -1794,7 +2014,7 @@
             this.WizardPlaysCheckBox.AutoSize = true;
             this.WizardPlaysCheckBox.Checked = true;
             this.WizardPlaysCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.WizardPlaysCheckBox.Location = new System.Drawing.Point(615, 10);
+            this.WizardPlaysCheckBox.Location = new System.Drawing.Point(610, 10);
             this.WizardPlaysCheckBox.Name = "WizardPlaysCheckBox";
             this.WizardPlaysCheckBox.Size = new System.Drawing.Size(53, 19);
             this.WizardPlaysCheckBox.TabIndex = 3;
@@ -1802,11 +2022,203 @@
             this.WizardPlaysCheckBox.UseVisualStyleBackColor = true;
             this.WizardPlaysCheckBox.CheckedChanged += new System.EventHandler(this.WizardPlaysCheckBox_CheckedChanged);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel2.BackgroundImage")));
+            this.tableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 1);
+            this.tableLayoutPanel2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 100);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(130)))), ((int)(((byte)(82)))));
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.Controls.Add(this.numericUpDown1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.numericUpDown2, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.numericUpDown3, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.numericUpDown4, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label2, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label3, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.label4, 3, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(20, 0);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(20, 0, 20, 20);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(160, 80);
+            this.tableLayoutPanel4.TabIndex = 23;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.AutoSize = true;
+            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(130)))), ((int)(((byte)(82)))));
+            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown1.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.numericUpDown1.Location = new System.Drawing.Point(3, 3);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(34, 25);
+            this.numericUpDown1.TabIndex = 33;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.AutoSize = true;
+            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(130)))), ((int)(((byte)(82)))));
+            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown2.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.numericUpDown2.Location = new System.Drawing.Point(123, 3);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(34, 25);
+            this.numericUpDown2.TabIndex = 32;
+            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.AutoSize = true;
+            this.numericUpDown3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(130)))), ((int)(((byte)(82)))));
+            this.numericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown3.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.numericUpDown3.Location = new System.Drawing.Point(83, 3);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(34, 25);
+            this.numericUpDown3.TabIndex = 31;
+            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.AutoSize = true;
+            this.numericUpDown4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(130)))), ((int)(((byte)(82)))));
+            this.numericUpDown4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown4.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.numericUpDown4.Location = new System.Drawing.Point(43, 3);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(34, 25);
+            this.numericUpDown4.TabIndex = 30;
+            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(3, 40);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(34, 40);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ATT";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(43, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 40);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "DEF";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(83, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 40);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "EFF";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(123, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 40);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "HP";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::Slip_through.Properties.Resources.wizard;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(194, 182);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
+            // DruidPlaysCheckBox
+            // 
+            this.DruidPlaysCheckBox.AutoSize = true;
+            this.DruidPlaysCheckBox.Checked = true;
+            this.DruidPlaysCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.DruidPlaysCheckBox.Location = new System.Drawing.Point(864, 10);
+            this.DruidPlaysCheckBox.Name = "DruidPlaysCheckBox";
+            this.DruidPlaysCheckBox.Size = new System.Drawing.Size(53, 19);
+            this.DruidPlaysCheckBox.TabIndex = 4;
+            this.DruidPlaysCheckBox.Text = "Plays";
+            this.DruidPlaysCheckBox.UseVisualStyleBackColor = true;
+            this.DruidPlaysCheckBox.CheckedChanged += new System.EventHandler(this.DruidPlaysCheckBox_CheckedChanged);
+            // 
             // Characters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 652);
+            this.ClientSize = new System.Drawing.Size(1017, 612);
+            this.Controls.Add(this.DruidPlaysCheckBox);
             this.Controls.Add(this.WizardPlaysCheckBox);
             this.Controls.Add(this.ArcherPlaysCheckBox);
             this.Controls.Add(this.WarriorPlaysCheckBox);
@@ -1843,6 +2255,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDWizardEFF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDWizardDEF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWizard)).EndInit();
+            this.tableLayoutPanelShamanX.ResumeLayout(false);
+            this.tableLayoutPanelDruidStats.ResumeLayout(false);
+            this.tableLayoutPanelDruidStats.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDDruidATT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDDruidHP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDDruidEFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDDruidDEF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDruid)).EndInit();
             this.tableLayoutPanelEnemy.ResumeLayout(false);
             this.tableEnemyStats.ResumeLayout(false);
             this.tableEnemyStats.PerformLayout();
@@ -1875,6 +2295,14 @@
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1986,5 +2414,28 @@
         private CheckBox WarriorPlaysCheckBox;
         private CheckBox ArcherPlaysCheckBox;
         private CheckBox WizardPlaysCheckBox;
+        private TableLayoutPanel tableLayoutPanelShamanX;
+        private TableLayoutPanel tableLayoutPanelDruidStats;
+        private NumericUpDown nUDDruidATT;
+        private NumericUpDown nUDDruidHP;
+        private NumericUpDown nUDDruidEFF;
+        private NumericUpDown nUDDruidDEF;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private PictureBox pictureBoxDruid;
+        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel4;
+        private NumericUpDown numericUpDown1;
+        private NumericUpDown numericUpDown2;
+        private NumericUpDown numericUpDown3;
+        private NumericUpDown numericUpDown4;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private PictureBox pictureBox1;
+        private CheckBox DruidPlaysCheckBox;
     }
 }

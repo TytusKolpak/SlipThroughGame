@@ -20,11 +20,12 @@ namespace Slip_through
         bool warriorPlays = true;
         bool archerPlays = true;
         bool wizardPlays = true;
+        bool druidPlays = true;
         int iterationMs = 200;
         int panelNumberInt = 0;
         int playerNr = 0;
         int turnCounter = 1;
-        int numberOfPlayers = 3;
+        int numberOfPlayers;
         string panelName = "panel1";
         string panelNumberString = "0";
         string combatText = "";
@@ -38,14 +39,21 @@ namespace Slip_through
         //first one (or 2 if there would be conflicts W Warrior and W Wizard? W for first starting with W and W+i for next WIzard) are for name
 
 
-        public int  WATT = 2, mWATT = 6,    WDEF = 1, mWDEF = 12,   WEFF = 0, mWEFF = 0,    WHP = 10, minWHP = 6;            //Warrior's stats        //minHP = 6 
-        public int  AATT = 1, mAATT = 6,    ADEF = 1, mADEF = 6,    AEFF = 1, mAEFF = 1,    AHP = 9,  minAHP = 5;            //Archer's stats         //minHP = 5 
-        public int WiATT = 3,mWiATT = 12,  WiDEF = 0,mWiDEF = 6,   WiEFF = 0,mWiEFF = 0,   WiHP = 8, minWiHP = 4;        //Wizard's stats     pp    //minHP = 4 
-      //public int  SATT = 3, mSATT = 6,    SDEF = 0, mSDEF = 0,    SEFF = 0, mSEFF = 0,    SHP = 7,  minSHP = 5;          //Shaman's stats         //minHP = 5  (4th character 
-        public int WoATT = 3,mWoATT = 0,   WoDEF = 0,mWoDEF = 0,   WoEFF = 3,mWoEFF = 0,   WoHP = 4, minWoHP = 0;         //Wolf's stats
-        public int WeATT = 4,mWeATT = 0,   WeDEF = 1,mWeDEF = 0,   WeEFF = 5,mWeEFF = 0,   WeHP = 7, minWeHP = 0;         //Werewolf's stats
-        public int  CATT = 5, mCATT = 0,    CDEF = 3, mCDEF = 0,    CEFF = 8, mCEFF = 0,    CHP = 11, minCHP = 0;            //Cerberus' stats
-        public int  GATT = 0, mGATT = 0,    GDEF = 0, mGDEF = 0,    GEFF = 0, mGEFF = 0,    GHP = 0,  minGHP = 0;             //Ghost's stats (they change later)
+        public int  WATT = 2, mWATT = 6,    WDEF = 1, mWDEF = 6,    WEFF = 0, mWEFF = 6,    WHP = 12, minWHP = 7;//Warrior's 
+        public int  AATT = 1, mAATT = 6,    ADEF = 1, mADEF = 3,    AEFF = 1,mAEFF = 12,    AHP = 9,  minAHP = 5;//Archer's 
+        public int WiATT = 3,mWiATT = 12,  WiDEF = 0,mWiDEF = 3,   WiEFF = 0,mWiEFF = 6,   WiHP = 8, minWiHP = 4;//Wizard's stats     
+        public int  DATT = 1, mDATT = 6,    DDEF = 2, mDDEF = 3,    DEFF = 0, mDEFF = 6,    DHP = 9,  minDHP = 6;//Druid's 
+        public int WoATT = 2,mWoATT = 0,   WoDEF = 0,mWoDEF = 0,   WoEFF = 3,mWoEFF = 0,   WoHP = 5, minWoHP = 0;//Wolf's stats
+        public int WeATT = 4,mWeATT = 0,   WeDEF = 1,mWeDEF = 0,   WeEFF = 5,mWeEFF = 0,   WeHP = 7, minWeHP = 0;//Werewolf's stats
+        public int  CATT = 5, mCATT = 0,    CDEF = 3, mCDEF = 0,    CEFF = 8, mCEFF = 0,    CHP = 11, minCHP = 0;//Cerberus' stats
+        public int  GATT = 0, mGATT = 0,    GDEF = 0, mGDEF = 0,    GEFF = 0, mGEFF = 0,    GHP = 0,  minGHP = 0;//Ghost's stats (they change later)
+        public bool[] WarriorwST = new bool[4] { false, false, false, false };
+        public bool[] ArcherwST = new bool[4] { false, false, false, false };
+        public bool[] WizardwST = new bool[4] { false, false, false, false };
+        public bool[] DruidwST = new bool[4] { false, false, false, false };
+        public bool[] filler = new bool[4] { false, false, false, false }; //never used in reality
+        //Everybody has the same pattern of walls Slipped Through - player can slpi only if they have not done it yet.
+        //In the beginning none is slipped and when a player slips it changes to true
 
         //First create template objects for CombatCard templates
         //templates are used to create card objects used in matches/games,
@@ -53,22 +61,26 @@ namespace Slip_through
         public CombatCardTemplate WarriorCardTemplate;
         public CombatCardTemplate ArcherCardTemplate;
         public CombatCardTemplate WizardCardTemplate;
+        public CombatCardTemplate DruidCardTemplate;
         public CombatCardTemplate WolfCardTemplate;
         public CombatCardTemplate WerewolfCardTemplate;
         public CombatCardTemplate CerberusCardTemplate;
         public CombatCardTemplate WarriorGhostCardTemplate;
         public CombatCardTemplate ArcherGhostCardTemplate;
         public CombatCardTemplate WizardGhostCardTemplate;
+        public CombatCardTemplate DruidGhostCardTemplate;
 
         CombatCard WarriorCard;
         CombatCard ArcherCard;
         CombatCard WizardCard;
+        CombatCard DruidCard;
         CombatCard WolfCard;
         CombatCard WerewolfCard;
         CombatCard CerberusCard;
         CombatCard WarriorGhostCard;
         CombatCard ArcherGhostCard;
         CombatCard WizardGhostCard;
+        CombatCard DruidGhostCard;
 
         CombatCard player;
         CombatCard enemy;
@@ -89,20 +101,23 @@ namespace Slip_through
         }
         public void createCardsFromTemplates() //once at the beginning
         {
-            WarriorCardTemplate = new("Warrior",              WATT, mWATT,  WDEF, mWDEF,  WEFF, mWEFF,  WHP, minWHP, Properties.Resources.warrior);
-            ArcherCardTemplate = new("Archer",                AATT, mAATT,  ADEF, mADEF,  AEFF, mAEFF,  AHP, minAHP, Properties.Resources.archer);
-            WizardCardTemplate = new("Wizard",               WiATT,mWiATT, WiDEF,mWiDEF, WiEFF,mWiEFF, WiHP,minWiHP, Properties.Resources.wizard);
-            WolfCardTemplate = new("Wolf",                   WoATT,mWoATT, WoDEF,mWoDEF, WoEFF,mWoEFF, WoHP,minWoHP, Properties.Resources.wolf);
-            WerewolfCardTemplate = new("Werewolf",           WeATT,mWeATT, WeDEF,mWeDEF, WeEFF,mWeEFF, WeHP,minWeHP, Properties.Resources.werewolf);
-            CerberusCardTemplate = new("Cerberus",            CATT, mCATT,  CDEF, mCDEF,  CEFF, mCEFF,  CHP, minCHP, Properties.Resources.cerberus);
-            WarriorGhostCardTemplate = new("Warrior's Ghost", GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, Properties.Resources.warrior_negate);
-            ArcherGhostCardTemplate = new("Archer's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, Properties.Resources.archer_negate);
-            WizardGhostCardTemplate = new("Wizard's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, Properties.Resources.wizard_negate);
+            WarriorCardTemplate = new("Warrior",              WATT, mWATT,  WDEF, mWDEF,  WEFF, mWEFF,  WHP, minWHP, WarriorwST,Properties.Resources.warrior);
+            ArcherCardTemplate = new("Archer",                AATT, mAATT,  ADEF, mADEF,  AEFF, mAEFF,  AHP, minAHP, ArcherwST, Properties.Resources.archer);
+            WizardCardTemplate = new("Wizard",               WiATT,mWiATT, WiDEF,mWiDEF, WiEFF,mWiEFF, WiHP,minWiHP, WizardwST, Properties.Resources.wizard);
+            DruidCardTemplate = new("Druid",                  DATT, mDATT,  DDEF, mDDEF,  DEFF, mDEFF,  DHP, minDHP, DruidwST, Properties.Resources.druid);
+            WolfCardTemplate = new("Wolf",                   WoATT,mWoATT, WoDEF,mWoDEF, WoEFF,mWoEFF, WoHP,minWoHP, filler,    Properties.Resources.wolf);
+            WerewolfCardTemplate = new("Werewolf",           WeATT,mWeATT, WeDEF,mWeDEF, WeEFF,mWeEFF, WeHP,minWeHP, filler,    Properties.Resources.werewolf);
+            CerberusCardTemplate = new("Cerberus",            CATT, mCATT,  CDEF, mCDEF,  CEFF, mCEFF,  CHP, minCHP, filler,    Properties.Resources.cerberus);
+            WarriorGhostCardTemplate = new("Warrior's Ghost", GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.warrior_negate);
+            ArcherGhostCardTemplate = new("Archer's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.archer_negate);
+            WizardGhostCardTemplate = new("Wizard's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.wizard_negate);
+            DruidGhostCardTemplate = new("Druid's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.druid_negate);
 
             //one object created based on another object, but one is used in a game, and other can be set outside of a game (customed by player)
             WarriorCard = new(WarriorCardTemplate);
             ArcherCard = new(ArcherCardTemplate);
             WizardCard = new(WizardCardTemplate);
+            DruidCard = new(DruidCardTemplate);
             WolfCard = new(WolfCardTemplate);
             WerewolfCard = new(WerewolfCardTemplate);
             CerberusCard = new(CerberusCardTemplate);
@@ -110,18 +125,24 @@ namespace Slip_through
             WarriorGhostCard = new(WarriorGhostCardTemplate);
             ArcherGhostCard = new(ArcherGhostCardTemplate);
             WizardGhostCard = new(WizardGhostCardTemplate);
+            DruidGhostCard = new(DruidGhostCardTemplate);
 
-            playerCombatCardArray = new CombatCard[3]           //it has to ber here for some reason
+            playerCombatCardArray = new CombatCard[4]           //it has to ber here for some reason
             {
                 WarriorCard,
                 ArcherCard,
                 WizardCard,
-                //ShamanCard,
+                DruidCard,
             };
+
+            numberOfPlayers = playerCombatCardArray.Length;
 
             player = playerCombatCardArray[0];
             currentPlayerPictureBox = pictureBoxPlayerArray[0];
             displayPlayerInfo();
+
+            currentPlayerPictureBox.BorderStyle = BorderStyle.Fixed3D;      //make it look special
+            currentPlayerPictureBox.Update();
         }
         private void createArrays()//working and complete
         {
@@ -135,20 +156,13 @@ namespace Slip_through
                 panel26, panel27, panel28, panel29, panel30,
             };
 
-            pictureBoxPlayerArray = new PictureBox[3]
+            pictureBoxPlayerArray = new PictureBox[4]
             {
                 pictureBoxWarrior,
                 pictureBoxArcher,
                 pictureBoxWizard,
-                //pictureBoxShaman,
+                pictureBoxDruid,
             };
-
-            //playerCombatCardArray = new CombatCard[3] // for some reason it doesn't work if it's here
-            //{
-            //    WarriorCard,
-            //    ArcherCard,
-            //    WizardCard,
-            //};
         }
         private void movementElement(int steps)//working and complete
         {
@@ -161,12 +175,39 @@ namespace Slip_through
             {
                 for (int i = 0; i < steps; i++)
                 {
-                    Thread.Sleep(100);
+                    Thread.Sleep(100); //make movement slower to indicate real displacement of the figurine by hand
 
-                    //slipped
-                    if (SlipBox.Checked == true && panelNumberInt % 5 == 0 && panelNumberInt >= 10)//enable at 10,15,20,25 rank, at 5 there is no up to go and at 30 you win
+                    bool slipThrough = false;
+
+                    if (SlipBox.Checked == true)
                     {
-                        panelNumberInt -= 9;                            // that is going up a file
+                        if (panelNumberInt == 10 && !player.wallsSlippedThrough[0])// ()
+                        {
+                            slipThrough = true;
+                            player.wallsSlippedThrough[0] = true;
+                        }
+                        else if (panelNumberInt == 15 && !player.wallsSlippedThrough[1])
+                        {
+                            slipThrough = true;
+                            player.wallsSlippedThrough[1] = true;
+                        }
+                        else if (panelNumberInt == 20 && !player.wallsSlippedThrough[2])
+                        {
+                            slipThrough = true;
+                            player.wallsSlippedThrough[2] = true;
+                        }
+                        else if (panelNumberInt == 25 && !player.wallsSlippedThrough[3])
+                        {
+                            slipThrough = true;
+                            player.wallsSlippedThrough[3] = true;
+                        }
+                    }
+
+                    //managed to slip through
+                    //enable at 10,15,20,25 rank, at 5 there is no up to go and at 30 you win
+                    if (slipThrough)
+                    {
+                        panelNumberInt -= 9;                            // that is going back 9 tiles, which is going up 1 file
 
                         //if player slips, then give class specific bonuses  
                         if (player.name == "Wizard")
@@ -174,7 +215,8 @@ namespace Slip_through
                             player.attack++;
                             labelPlayerAttack.Text = player.attack.ToString();
                             //it can only go up to WizardCard.maxAttack (12), no higher (to avoid excessive shenenighans)
-                            player.attack = player.attack >= WizardCard.maxAttack ? WizardCard.maxAttack : player.attack;      }
+                            player.attack = player.attack >= WizardCard.maxAttack ? WizardCard.maxAttack : player.attack;
+                        }
                         else if (player.name == "Warrior")
                         {
                             player.defence++;
@@ -186,6 +228,12 @@ namespace Slip_through
                             player.effectiveness++;
                             labelPlayerEffectiveness.Text = player.effectiveness.ToString();
                             player.effectiveness = player.effectiveness >= ArcherCard.maxEffectiveness ? ArcherCard.maxEffectiveness : player.effectiveness;
+                        }
+                        else if (player.name == "Druid")
+                        {//add something for totems mby for now it's eff
+                            player.effectiveness++;
+                            labelPlayerEffectiveness.Text = player.effectiveness.ToString();
+                            player.effectiveness = player.effectiveness >= DruidCard.maxEffectiveness ? DruidCard.maxEffectiveness : player.effectiveness;
                         }
 
                         tableLayoutPanelPlayer.Update(); //Show the change right after th eplayer slipped
@@ -225,9 +273,11 @@ namespace Slip_through
                     enemy = ArcherGhostCard;
                 else if (player.name == "Wizard")
                     enemy = WizardGhostCard;
+                else if (player.name == "Druid")
+                    enemy = DruidGhostCard;
 
                 //there are templates if i wanted to set custom stats for each ghost
-                //#Boss stats
+                //#Boss stats (over all - jsut a bit weaker than you, with 50% chance for att and def and high hp)
                 enemy.attack = player.attack - 1;
                 if (player.defence != 0)
                     enemy.defence = player.defence - 1;
@@ -242,7 +292,7 @@ namespace Slip_through
 
             //if player rolls more than what they moved then they are not found out (move less -> less chance of a fight)
             //also if they step onto the last tile there is always a fight with a boss
-            if (diceRoll < steps || panelNumberInt == 30)// <= enables fighting at moving by 1 inf there is < then moving 1 is 100% safe
+            if (diceRoll < steps || panelNumberInt == 30)// <= moving  by 1 is 100% safe, by 6 is 17% safe, entering last tile is 0% safe no matter the movement length
             {
                 //FIGHT
                 flowLayoutLongLog.Visible = false;
@@ -344,7 +394,7 @@ namespace Slip_through
                 combatText = "";
                 diceRoll = random.Next(1, 7);
 
-                int condition2 = 0;
+                int condition2;
 
                 if (enemy.effectiveness - player.effectiveness < 0)
                     condition2 = 0;
@@ -468,8 +518,11 @@ namespace Slip_through
             menuStrip1.Update();            //otherwise there would be remains of player card left on it
             tableLayoutPanelPlayer.Update();
         }
-        private void nextPlayer()//working and complete
+        private void nextPlayer()//working and complete, adaptive to any number of players below 3
         {
+            currentPlayerPictureBox.BorderStyle = BorderStyle.None;         //back to normal
+            currentPlayerPictureBox.Update();
+
             if (playerNr < numberOfPlayers - 1)
                 playerNr++;
             else
@@ -483,8 +536,15 @@ namespace Slip_through
                 player = playerCombatCardArray[0]; //was WarriorCard
             else if (playerNr == 1)
                 player = playerCombatCardArray[1];
-            else
+            else if (playerNr == 2)
                 player = playerCombatCardArray[2];
+            else if (playerNr == 3)
+                player = playerCombatCardArray[3];
+
+            currentPlayerPictureBox = pictureBoxPlayerArray[playerNr];      //this is complicated
+
+            currentPlayerPictureBox.BorderStyle = BorderStyle.Fixed3D;      //make it look special
+            currentPlayerPictureBox.Update();
         }
         private void displayPlayerInfo()//working and complete
         {
@@ -495,14 +555,6 @@ namespace Slip_through
             labelPlayerEffectiveness.Text = player.effectiveness.ToString();
             labelPlayerHitPoints.Text = player.hitPoints.ToString();
             tableLayoutPanelPlayer.Update();
-
-            currentPlayerPictureBox.BorderStyle = BorderStyle.None;         //back to normal
-            currentPlayerPictureBox.Update();
-
-            currentPlayerPictureBox = pictureBoxPlayerArray[playerNr];      //this is complicated
-
-            currentPlayerPictureBox.BorderStyle = BorderStyle.Fixed3D;      //make it look special
-            currentPlayerPictureBox.Update();
         }
         private void displayEnemyInfo()
         {
@@ -533,6 +585,7 @@ namespace Slip_through
             button4.Visible = logicValue;
             button5.Visible = logicValue;
             button6.Visible = logicValue;
+            button7.Visible = logicValue;
         }
         private void setAddButtonsVisibility(bool logicValue)
         {
@@ -573,6 +626,8 @@ namespace Slip_through
             pictureBoxArcher.Location = new Point(0, height+2);
             pictureBoxWizard.Size = new Size(width, height);
             pictureBoxWizard.Location = new Point(width + 2, 0);
+            pictureBoxDruid.Size = new Size(width, height);
+            pictureBoxDruid.Location = new Point(width + 2, height + 2);
         }
         private void mainSequence(int distanceChoice)
         {
@@ -582,17 +637,19 @@ namespace Slip_through
 
 
             //check for the end of the game, shoud be somewhere else
-            if (panelNumberInt == 30)
+            if (panelNumberInt == 30) //#Changing now if(wonTheGame)
             {
+                SlipBox.Visible = false;
+                labelResults.Visible = true;
                 gameOver = true;
-                labelResults.Text = player.name + " won in " + turnCounter + " turns and " + player.deathCounter + " deaths.";
+                labelResults.Text = player.name + " won in " + turnCounter + " turns and with " + player.deathCounter + " deaths.";
                 labelResults.Update();
             }
 
             if (gameOver)
             {
                 setAddButtonsVisibility(false);
-                buttonOK.Visible = false;                   //confirm death
+                buttonOK.Visible = false;
                 setMovementButtonsVisibility(false);
                 //create play again button? - not necessary.
             }
@@ -602,14 +659,10 @@ namespace Slip_through
                 if (fought)
                 {
                     if (!died)          //fought and won
-                    {
                         getReward();        //a chain of events leading to waiting for user's choice of reward
                                             //the reward is not due, no need to wait for it's collection, load next player
-                    }
                     else                //fought and lost - died (don't give reward, but don't load next character until player acknowledges death
-                    {
                         buttonOK.Focus();   //mark it for quick confiration, but wait for that confirmation - player button click or key down
-                    }
                 }
                 else
                 {
@@ -623,32 +676,41 @@ namespace Slip_through
         private void button1_Click(object sender, EventArgs e)
         {
             mainSequence(1);
-        }
+        }//move by 1
         private void button2_Click(object sender, EventArgs e)
         {
             if (panelNumberInt <= 28)
                 mainSequence(2);
-        }
+        }//move by 2
         private void button3_Click(object sender, EventArgs e)
         {
             if (panelNumberInt <= 27)
                 mainSequence(3);
-        }
+        }//move by 3
         private void button4_Click(object sender, EventArgs e)
         {
             if (panelNumberInt <= 26)
                 mainSequence(4);
-        }
+        }//move by 4
         private void button5_Click(object sender, EventArgs e)
         {
             if (panelNumberInt <= 25)
                 mainSequence(5);
-        }
+        }//move by 5
         private void button6_Click(object sender, EventArgs e)
         {
             if (panelNumberInt <= 24)
                 mainSequence(6);
-        }
+        }//move by 6
+        private void button7_Click(object sender, EventArgs e)
+        {
+            player.hitPoints += 4;
+            player.hitPoints = player.hitPoints > player.maxHP ? player.maxHP : player.hitPoints;
+            //it can only go up to maxHP (no need to show how it changes in the same player turn)
+
+            nextPlayer();
+            displayPlayerInfo();
+        }//rest
         private void buttonAddATT_Click(object sender, EventArgs e)
         {
             if (panelNumberInt <= 10)
@@ -761,7 +823,6 @@ namespace Slip_through
                         }
                         break;
 
-
                     case 79:                                //'O' key, like Ok (confirmation of death)
                         if (died)
                         {
@@ -772,6 +833,18 @@ namespace Slip_through
                             flowLayoutLongLog.Visible = false;
                             nowMovement = true;
                             died = false;
+                        }
+                        break;
+
+                    case 82:                                //'R' key, like rest
+                        if (died)
+                        {
+                            player.hitPoints += 4;
+                            player.hitPoints = player.hitPoints > player.maxHP ? player.maxHP : player.hitPoints;
+                            //it can only go up to maxHP (no need to show how it changes in the same player turn)
+
+                            nextPlayer();
+                            displayPlayerInfo();
                         }
                         break;
 
@@ -812,6 +885,7 @@ namespace Slip_through
                     warriorPlays = Characters.instance.warriorPlays;
                     archerPlays = Characters.instance.archerPlays;
                     wizardPlays = Characters.instance.wizardPlays;
+                    druidPlays = Characters.instance.druidPlays;
                 }
 
                 //adapting to possible different number og players
@@ -867,6 +941,21 @@ namespace Slip_through
                 else
                     pictureBoxWizard.Visible = false;
 
+                if (druidPlays)
+                {
+                    numberOfPlayers++;
+                    pictureBoxDruid.Parent = panel1;
+                    pictureBoxDruid.Update();
+                    DruidCard = new(DruidCardTemplate);
+                    Array.Resize(ref pictureBoxPlayerArray, pictureBoxPlayerArray.Length + 1);
+                    pictureBoxPlayerArray[pictureBoxPlayerArray.GetUpperBound(0)] = pictureBoxDruid;
+                    Array.Resize(ref playerCombatCardArray, playerCombatCardArray.Length + 1);
+                    playerCombatCardArray[playerCombatCardArray.GetUpperBound(0)] = DruidCard;
+                    pictureBoxDruid.Visible = true;
+                }
+                else
+                    pictureBoxDruid.Visible = false;
+
                 WolfCard = new(WolfCardTemplate);
                 WerewolfCard = new(WerewolfCardTemplate);
                 CerberusCard = new(CerberusCardTemplate);
@@ -890,6 +979,12 @@ namespace Slip_through
                     player = WizardCard;
                     currentPlayerPictureBox = pictureBoxWizard;
                 }
+                else if (druidPlays)
+                {
+                    player = DruidCard;
+                    currentPlayerPictureBox = pictureBoxDruid;
+                }
+
                 displayPlayerInfo();
 
                 //remove possible remains of previous unended turn 
@@ -897,6 +992,9 @@ namespace Slip_through
                 nowMovement = true;
                 setAddButtonsVisibility(false);
                 setMovementButtonsVisibility(true);
+
+                currentPlayerPictureBox.BorderStyle = BorderStyle.Fixed3D;      //make it look special
+                currentPlayerPictureBox.Update();
             }
         }
     }

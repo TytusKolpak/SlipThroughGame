@@ -98,6 +98,7 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBoxDruid = new System.Windows.Forms.PictureBox();
             this.pictureBoxWarrior = new System.Windows.Forms.PictureBox();
             this.pictureBoxArcher = new System.Windows.Forms.PictureBox();
             this.pictureBoxWizard = new System.Windows.Forms.PictureBox();
@@ -116,6 +117,7 @@
             this.flowLayoutLongLog = new System.Windows.Forms.FlowLayoutPanel();
             this.labelCombatLog = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.tableLayoutPanelPlayer.SuspendLayout();
             this.tablePlayerStats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayer)).BeginInit();
@@ -125,6 +127,7 @@
             this.menuStrip1.SuspendLayout();
             this.tableBoard.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDruid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarrior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArcher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWizard)).BeginInit();
@@ -222,7 +225,7 @@
             // 
             this.SlipBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SlipBox.AutoSize = true;
-            this.SlipBox.Location = new System.Drawing.Point(313, 650);
+            this.SlipBox.Location = new System.Drawing.Point(388, 652);
             this.SlipBox.Name = "SlipBox";
             this.SlipBox.Size = new System.Drawing.Size(45, 19);
             this.SlipBox.TabIndex = 18;
@@ -546,7 +549,7 @@
             this.labelResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelResults.AutoSize = true;
             this.labelResults.BackColor = System.Drawing.Color.Transparent;
-            this.labelResults.Location = new System.Drawing.Point(364, 651);
+            this.labelResults.Location = new System.Drawing.Point(439, 653);
             this.labelResults.Name = "labelResults";
             this.labelResults.Size = new System.Drawing.Size(43, 15);
             this.labelResults.TabIndex = 27;
@@ -1100,6 +1103,7 @@
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(190)))), ((int)(((byte)(123)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pictureBoxDruid);
             this.panel1.Controls.Add(this.pictureBoxWarrior);
             this.panel1.Controls.Add(this.pictureBoxArcher);
             this.panel1.Controls.Add(this.pictureBoxWizard);
@@ -1108,6 +1112,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(100, 98);
             this.panel1.TabIndex = 5;
+            // 
+            // pictureBoxDruid
+            // 
+            this.pictureBoxDruid.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxDruid.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxDruid.Image = global::Slip_through.Properties.Resources.druid;
+            this.pictureBoxDruid.Location = new System.Drawing.Point(50, 50);
+            this.pictureBoxDruid.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxDruid.Name = "pictureBoxDruid";
+            this.pictureBoxDruid.Size = new System.Drawing.Size(48, 48);
+            this.pictureBoxDruid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDruid.TabIndex = 42;
+            this.pictureBoxDruid.TabStop = false;
             // 
             // pictureBoxWarrior
             // 
@@ -1349,11 +1366,26 @@
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
+            // button7
+            // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button7.FlatAppearance.BorderSize = 2;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button7.Location = new System.Drawing.Point(306, 637);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(76, 42);
+            this.button7.TabIndex = 41;
+            this.button7.Text = "Rest";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 691);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.flowLayoutLongLog);
             this.Controls.Add(this.tableBoard);
             this.Controls.Add(this.buttonAddEFF);
@@ -1390,6 +1422,7 @@
             this.tableBoard.ResumeLayout(false);
             this.tableBoard.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDruid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarrior)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArcher)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWizard)).EndInit();
@@ -1493,5 +1526,7 @@
         private FlowLayoutPanel flowLayoutLongLog;
         private Label labelCombatLog;
         private Button buttonOK;
+        private Button button7;
+        private PictureBox pictureBoxDruid;
     }
 }
