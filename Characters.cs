@@ -38,7 +38,7 @@ namespace Slip_through
             nUDDruidATT.Value = Form1.instance.DATT;
             nUDDruidDEF.Value = Form1.instance.DDEF;
             nUDDruidEFF.Value = Form1.instance.DEFF;
-            nUDDruidHP.Value =  Form1.instance.DHP;
+            nUDDruidHP.Value = Form1.instance.DHP;
 
             nUDWolfATT.Value = Form1.instance.WoATT;
             nUDWolfDEF.Value = Form1.instance.WoDEF;
@@ -57,25 +57,41 @@ namespace Slip_through
         }
         private void buttonSetCustom_Click(object sender, EventArgs e)
         {
-            int WATT = (int)nUDWarriorATT.Value;
-            int WDEF = (int)nUDWarriorDEF.Value;
-            int WEFF = (int)nUDWarriorEFF.Value;
-            int WHP = (int)nUDWarriorHP.Value;
+            int WATT = (int)nUDWarriorATT.Value;    //changable in Characters window
+            int WDEF = (int)nUDWarriorDEF.Value;    //-||-
+            int WEFF = (int)nUDWarriorEFF.Value;    //-||-
+            int WHP = (int)nUDWarriorHP.Value;      //-||-
+            int mWATT = Form1.instance.mWATT;       //set for good in top of Form1
+            int mWDEF = Form1.instance.mWDEF;       //-||-
+            int mWEFF = Form1.instance.mWEFF;       //-||-
+            int minWHP = Form1.instance.minWHP;     //-||-
 
             int AATT = (int)nUDArcherATT.Value;
             int ADEF = (int)nUDArcherDEF.Value;
             int AEFF = (int)nUDArcherEFF.Value;
             int AHP = (int)nUDArcherHP.Value;
+            int mAATT = Form1.instance.mAATT;
+            int mADEF = Form1.instance.mADEF;
+            int mAEFF = Form1.instance.mAEFF;
+            int minAHP = Form1.instance.minAHP;
 
             int WiATT = (int)nUDWizardATT.Value;
             int WiDEF = (int)nUDWizardDEF.Value;
             int WiEFF = (int)nUDWizardEFF.Value;
             int WiHP = (int)nUDWizardHP.Value;
+            int mWiATT = Form1.instance.mWiATT;
+            int mWiDEF = Form1.instance.mWiDEF;
+            int mWiEFF = Form1.instance.mWiEFF;
+            int minWiHP = Form1.instance.minWiHP;
 
             int DATT = (int)nUDDruidATT.Value;
             int DDEF = (int)nUDDruidDEF.Value;
             int DEFF = (int)nUDDruidEFF.Value;
-            int DHP =  (int)nUDDruidHP.Value;
+            int DHP = (int)nUDDruidHP.Value;
+            int mDATT = Form1.instance.mDATT;
+            int mDDEF = Form1.instance.mDDEF;
+            int mDEFF = Form1.instance.mDEFF;
+            int minDHP = Form1.instance.minDHP;
 
             int WoATT = (int)nUDWolfATT.Value;
             int WoDEF = (int)nUDWolfDEF.Value;
@@ -97,13 +113,14 @@ namespace Slip_through
             //can be accessed in Form1 simply by "WarriorCardTemplate"
             //has to be here, because the editing of values is carried out in characters window
             //                                        name,       att, maxAtt, def, maxDef, eff, maxEff, hp, minHp, walls, picture
-            Form1.instance.WarriorCardTemplate =  new("Warrior",  WATT,  6,    WDEF,  12,  WEFF,  6,     WHP,  7,    wSP, Properties.Resources.warrior);
-            Form1.instance.ArcherCardTemplate =   new("Archer",   AATT,  6,    ADEF,  6,   AEFF,  12,    AHP,  5,    wSP, Properties.Resources.archer);
-            Form1.instance.WizardCardTemplate =   new("Wizard",   WiATT, 12,   WiDEF, 6,   WiEFF, 6,     WiHP, 4,    wSP, Properties.Resources.wizard);
-            Form1.instance.DruidCardTemplate =    new("Druid",    DATT,  6,    DDEF,  3,   DEFF,  6,     DHP,  5,    wSP, Properties.Resources.druid);
-            Form1.instance.WolfCardTemplate =     new("Wolf",     WoATT, 0,    WoDEF, 0,   WoEFF, 0,     WoHP, 5,    wSP, Properties.Resources.wolf);
-            Form1.instance.WerewolfCardTemplate = new("Werewolf", WeATT, 0,    WeDEF, 0,   WeEFF, 0,     WeHP, 0,    wSP, Properties.Resources.werewolf);
-            Form1.instance.CerberusCardTemplate = new("Cerberus", CATT,  0,    CDEF,  0,   CEFF,  0,     CHP,  0,    wSP, Properties.Resources.cerberus);
+            //this value is leading - is overrithing the one from Form1 after a change was done.\
+            Form1.instance.WarriorCardTemplate = new("Warrior", WATT, mWATT, WDEF, mWDEF, WEFF, mWEFF, WHP, minWHP, wSP, Properties.Resources.warrior);
+            Form1.instance.ArcherCardTemplate = new("Archer", AATT, mAATT, ADEF, mADEF, AEFF, mAEFF, AHP, minAHP, wSP, Properties.Resources.archer);
+            Form1.instance.WizardCardTemplate = new("Wizard", WiATT, mWiATT, WiDEF, mWiDEF, WiEFF, mWiEFF, WiHP, minWiHP, wSP, Properties.Resources.wizard);
+            Form1.instance.DruidCardTemplate = new("Druid", DATT, mDATT, DDEF, mDDEF, DEFF, mDEFF, DHP, minDHP, wSP, Properties.Resources.druid);
+            Form1.instance.WolfCardTemplate = new("Wolf", WoATT, 0, WoDEF, 0, WoEFF, 0, WoHP, 5, wSP, Properties.Resources.wolf);
+            Form1.instance.WerewolfCardTemplate = new("Werewolf", WeATT, 0, WeDEF, 0, WeEFF, 0, WeHP, 0, wSP, Properties.Resources.werewolf);
+            Form1.instance.CerberusCardTemplate = new("Cerberus", CATT, 0, CDEF, 0, CEFF, 0, CHP, 0, wSP, Properties.Resources.cerberus);
 
             MessageBox.Show("Values have been updated. To use newly created cards begin a new game.", "Customization", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

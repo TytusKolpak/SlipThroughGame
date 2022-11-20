@@ -104,14 +104,14 @@ namespace Slip_through
             WarriorCardTemplate = new("Warrior",              WATT, mWATT,  WDEF, mWDEF,  WEFF, mWEFF,  WHP, minWHP, WarriorwST,Properties.Resources.warrior);
             ArcherCardTemplate = new("Archer",                AATT, mAATT,  ADEF, mADEF,  AEFF, mAEFF,  AHP, minAHP, ArcherwST, Properties.Resources.archer);
             WizardCardTemplate = new("Wizard",               WiATT,mWiATT, WiDEF,mWiDEF, WiEFF,mWiEFF, WiHP,minWiHP, WizardwST, Properties.Resources.wizard);
-            DruidCardTemplate = new("Druid",                  DATT, mDATT,  DDEF, mDDEF,  DEFF, mDEFF,  DHP, minDHP, DruidwST, Properties.Resources.druid);
+            DruidCardTemplate = new("Druid",                  DATT, mDATT,  DDEF, mDDEF,  DEFF, mDEFF,  DHP, minDHP, DruidwST,  Properties.Resources.druid);
             WolfCardTemplate = new("Wolf",                   WoATT,mWoATT, WoDEF,mWoDEF, WoEFF,mWoEFF, WoHP,minWoHP, filler,    Properties.Resources.wolf);
             WerewolfCardTemplate = new("Werewolf",           WeATT,mWeATT, WeDEF,mWeDEF, WeEFF,mWeEFF, WeHP,minWeHP, filler,    Properties.Resources.werewolf);
             CerberusCardTemplate = new("Cerberus",            CATT, mCATT,  CDEF, mCDEF,  CEFF, mCEFF,  CHP, minCHP, filler,    Properties.Resources.cerberus);
             WarriorGhostCardTemplate = new("Warrior's Ghost", GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.warrior_negate);
             ArcherGhostCardTemplate = new("Archer's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.archer_negate);
             WizardGhostCardTemplate = new("Wizard's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.wizard_negate);
-            DruidGhostCardTemplate = new("Druid's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.druid_negate);
+            DruidGhostCardTemplate = new("Druid's Ghost",    GATT, mGATT,   GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.druid_negate);
 
             //one object created based on another object, but one is used in a game, and other can be set outside of a game (customed by player)
             WarriorCard = new(WarriorCardTemplate);
@@ -213,28 +213,29 @@ namespace Slip_through
                         if (player.name == "Wizard")
                         {
                             player.attack++;
-                            labelPlayerAttack.Text = player.attack.ToString();
                             //it can only go up to WizardCard.maxAttack (12), no higher (to avoid excessive shenenighans)
                             player.attack = player.attack >= WizardCard.maxAttack ? WizardCard.maxAttack : player.attack;
+                            labelPlayerAttack.Text = player.attack.ToString();
                         }
                         else if (player.name == "Warrior")
                         {
                             player.defence++;
-                            labelPlayerDefense.Text = player.defence.ToString();
                             player.defence = player.defence >= WarriorCard.maxDefence ? WarriorCard.maxDefence : player.defence;
+                            labelPlayerDefense.Text = player.defence.ToString();
                         }
                         else if (player.name == "Archer")
                         {
                             player.effectiveness++;
-                            labelPlayerEffectiveness.Text = player.effectiveness.ToString();
                             player.effectiveness = player.effectiveness >= ArcherCard.maxEffectiveness ? ArcherCard.maxEffectiveness : player.effectiveness;
+                            labelPlayerEffectiveness.Text = player.effectiveness.ToString();
                         }
                         else if (player.name == "Druid")
                         {//add something for totems mby for now it's eff
                             player.effectiveness++;
-                            labelPlayerEffectiveness.Text = player.effectiveness.ToString();
                             player.effectiveness = player.effectiveness >= DruidCard.maxEffectiveness ? DruidCard.maxEffectiveness : player.effectiveness;
+                            labelPlayerEffectiveness.Text = player.effectiveness.ToString();
                         }
+
 
                         tableLayoutPanelPlayer.Update(); //Show the change right after th eplayer slipped
                     }
