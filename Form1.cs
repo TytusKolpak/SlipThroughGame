@@ -51,7 +51,9 @@ namespace Slip_through
         public bool[] ArcherwST = new bool[4] { false, false, false, false };
         public bool[] WizardwST = new bool[4] { false, false, false, false };
         public bool[] DruidwST = new bool[4] { false, false, false, false };
-        public bool[] filler = new bool[4] { false, false, false, false }; //never used in reality
+        public bool[] filler = new bool[4] { false, false, false, false }; 
+        //never used in reality by some player
+        
         //Everybody has the same pattern of walls Slipped Through - player can slpi only if they have not done it yet.
         //In the beginning none is slipped and when a player slips it changes to true
 
@@ -318,11 +320,14 @@ namespace Slip_through
                     fought = true;                                              //and also enable them to choose reward
                     died = false;
 
-                    setCombatText(player.name + " killed the " + enemy.name + " and earned a stat boost.");
+                    setCombatText(player.name + " killed the " + enemy.name);
                 }
 
                 if (player.hitPoints <= 0)                                      //player died
                 {
+                    for (int i = 0; i < player.wallsSlippedThrough.Length; i++) //reset all the walls to allow this player through
+                        player.wallsSlippedThrough[i] = false;
+
                     panelNumberInt = 1;                                         //here for end of panel scope detection purposes
                     fought = true;
                     died = true;
@@ -870,11 +875,11 @@ namespace Slip_through
 
             if (result == DialogResult.OK) // reset all data to intial values
             {
-                labelResults.Visible = false;
+                labelResults.Text = "Turn: 1";
+                turnCounter = 1;
                 gameOver = false;
                 panelNumberInt = 0;
                 playerNr = 0;
-                turnCounter = 1;
                 numberOfPlayers = 0;
                 pictureBoxPlayerArray = new PictureBox[0];
                 playerCombatCardArray = new CombatCard[0];

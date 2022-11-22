@@ -1052,7 +1052,7 @@
             this.nUDDruidDEF.ImeMode = System.Windows.Forms.ImeMode.On;
             this.nUDDruidDEF.Location = new System.Drawing.Point(55, 3);
             this.nUDDruidDEF.Maximum = new decimal(new int[] {
-            6,
+            3,
             0,
             0,
             0});
