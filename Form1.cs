@@ -39,21 +39,21 @@ namespace Slip_through
         //first one (or 2 if there would be conflicts W Warrior and W Wizard? W for first starting with W and W+i for next WIzard) are for name
 
 
-        public int  WATT = 2, mWATT = 6,    WDEF = 1, mWDEF = 6,    WEFF = 0, mWEFF = 6,    WHP = 12, minWHP = 7;//Warrior's 
-        public int  AATT = 1, mAATT = 6,    ADEF = 1, mADEF = 3,    AEFF = 1,mAEFF = 12,    AHP = 9,  minAHP = 5;//Archer's 
-        public int WiATT = 3,mWiATT = 12,  WiDEF = 0,mWiDEF = 3,   WiEFF = 0,mWiEFF = 6,   WiHP = 8, minWiHP = 4;//Wizard's stats     
-        public int  DATT = 1, mDATT = 6,    DDEF = 2, mDDEF = 3,    DEFF = 0, mDEFF = 6,    DHP = 9,  minDHP = 6;//Druid's 
-        public int WoATT = 2,mWoATT = 0,   WoDEF = 0,mWoDEF = 0,   WoEFF = 3,mWoEFF = 0,   WoHP = 5, minWoHP = 0;//Wolf's stats
-        public int WeATT = 4,mWeATT = 0,   WeDEF = 1,mWeDEF = 0,   WeEFF = 5,mWeEFF = 0,   WeHP = 7, minWeHP = 0;//Werewolf's stats
-        public int  CATT = 5, mCATT = 0,    CDEF = 3, mCDEF = 0,    CEFF = 8, mCEFF = 0,    CHP = 11, minCHP = 0;//Cerberus' stats
-        public int  GATT = 0, mGATT = 0,    GDEF = 0, mGDEF = 0,    GEFF = 0, mGEFF = 0,    GHP = 0,  minGHP = 0;//Ghost's stats (they change later)
+        public int WATT = 2, mWATT = 6, WDEF = 1, mWDEF = 6, WEFF = 0, mWEFF = 6, WHP = 12, minWHP = 7;//Warrior's 
+        public int AATT = 1, mAATT = 6, ADEF = 1, mADEF = 3, AEFF = 1, mAEFF = 12, AHP = 9, minAHP = 5;//Archer's 
+        public int WiATT = 3, mWiATT = 12, WiDEF = 0, mWiDEF = 3, WiEFF = 0, mWiEFF = 6, WiHP = 8, minWiHP = 4;//Wizard's stats     
+        public int DATT = 1, mDATT = 6, DDEF = 2, mDDEF = 3, DEFF = 0, mDEFF = 6, DHP = 9, minDHP = 6;//Druid's 
+        public int WoATT = 2, mWoATT = 0, WoDEF = 0, mWoDEF = 0, WoEFF = 3, mWoEFF = 0, WoHP = 5, minWoHP = 0;//Wolf's stats
+        public int WeATT = 4, mWeATT = 0, WeDEF = 1, mWeDEF = 0, WeEFF = 5, mWeEFF = 0, WeHP = 7, minWeHP = 0;//Werewolf's stats
+        public int CATT = 5, mCATT = 0, CDEF = 3, mCDEF = 0, CEFF = 8, mCEFF = 0, CHP = 11, minCHP = 0;//Cerberus' stats
+        public int GATT = 0, mGATT = 0, GDEF = 0, mGDEF = 0, GEFF = 0, mGEFF = 0, GHP = 0, minGHP = 0;//Ghost's stats (they change later)
         public bool[] WarriorwST = new bool[4] { false, false, false, false };
         public bool[] ArcherwST = new bool[4] { false, false, false, false };
         public bool[] WizardwST = new bool[4] { false, false, false, false };
         public bool[] DruidwST = new bool[4] { false, false, false, false };
-        public bool[] filler = new bool[4] { false, false, false, false }; 
+        public bool[] filler = new bool[4] { false, false, false, false };
         //never used in reality by some player
-        
+
         //Everybody has the same pattern of walls Slipped Through - player can slpi only if they have not done it yet.
         //In the beginning none is slipped and when a player slips it changes to true
 
@@ -103,17 +103,17 @@ namespace Slip_through
         }
         public void createCardsFromTemplates() //once at the beginning
         {
-            WarriorCardTemplate = new("Warrior",              WATT, mWATT,  WDEF, mWDEF,  WEFF, mWEFF,  WHP, minWHP, WarriorwST,Properties.Resources.warrior);
-            ArcherCardTemplate = new("Archer",                AATT, mAATT,  ADEF, mADEF,  AEFF, mAEFF,  AHP, minAHP, ArcherwST, Properties.Resources.archer);
-            WizardCardTemplate = new("Wizard",               WiATT,mWiATT, WiDEF,mWiDEF, WiEFF,mWiEFF, WiHP,minWiHP, WizardwST, Properties.Resources.wizard);
-            DruidCardTemplate = new("Druid",                  DATT, mDATT,  DDEF, mDDEF,  DEFF, mDEFF,  DHP, minDHP, DruidwST,  Properties.Resources.druid);
-            WolfCardTemplate = new("Wolf",                   WoATT,mWoATT, WoDEF,mWoDEF, WoEFF,mWoEFF, WoHP,minWoHP, filler,    Properties.Resources.wolf);
-            WerewolfCardTemplate = new("Werewolf",           WeATT,mWeATT, WeDEF,mWeDEF, WeEFF,mWeEFF, WeHP,minWeHP, filler,    Properties.Resources.werewolf);
-            CerberusCardTemplate = new("Cerberus",            CATT, mCATT,  CDEF, mCDEF,  CEFF, mCEFF,  CHP, minCHP, filler,    Properties.Resources.cerberus);
-            WarriorGhostCardTemplate = new("Warrior's Ghost", GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.warrior_negate);
-            ArcherGhostCardTemplate = new("Archer's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.archer_negate);
-            WizardGhostCardTemplate = new("Wizard's Ghost",   GATT, mGATT,  GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.wizard_negate);
-            DruidGhostCardTemplate = new("Druid's Ghost",    GATT, mGATT,   GDEF, mGDEF,  GEFF, mGEFF,  GHP, minGHP, filler,    Properties.Resources.druid_negate);
+            WarriorCardTemplate = new("Warrior", WATT, mWATT, WDEF, mWDEF, WEFF, mWEFF, WHP, minWHP, WarriorwST, Properties.Resources.warrior);
+            ArcherCardTemplate = new("Archer", AATT, mAATT, ADEF, mADEF, AEFF, mAEFF, AHP, minAHP, ArcherwST, Properties.Resources.archer);
+            WizardCardTemplate = new("Wizard", WiATT, mWiATT, WiDEF, mWiDEF, WiEFF, mWiEFF, WiHP, minWiHP, WizardwST, Properties.Resources.wizard);
+            DruidCardTemplate = new("Druid", DATT, mDATT, DDEF, mDDEF, DEFF, mDEFF, DHP, minDHP, DruidwST, Properties.Resources.druid);
+            WolfCardTemplate = new("Wolf", WoATT, mWoATT, WoDEF, mWoDEF, WoEFF, mWoEFF, WoHP, minWoHP, filler, Properties.Resources.wolf);
+            WerewolfCardTemplate = new("Werewolf", WeATT, mWeATT, WeDEF, mWeDEF, WeEFF, mWeEFF, WeHP, minWeHP, filler, Properties.Resources.werewolf);
+            CerberusCardTemplate = new("Cerberus", CATT, mCATT, CDEF, mCDEF, CEFF, mCEFF, CHP, minCHP, filler, Properties.Resources.cerberus);
+            WarriorGhostCardTemplate = new("Warrior's Ghost", GATT, mGATT, GDEF, mGDEF, GEFF, mGEFF, GHP, minGHP, filler, Properties.Resources.warrior_negate);
+            ArcherGhostCardTemplate = new("Archer's Ghost", GATT, mGATT, GDEF, mGDEF, GEFF, mGEFF, GHP, minGHP, filler, Properties.Resources.archer_negate);
+            WizardGhostCardTemplate = new("Wizard's Ghost", GATT, mGATT, GDEF, mGDEF, GEFF, mGEFF, GHP, minGHP, filler, Properties.Resources.wizard_negate);
+            DruidGhostCardTemplate = new("Druid's Ghost", GATT, mGATT, GDEF, mGDEF, GEFF, mGEFF, GHP, minGHP, filler, Properties.Resources.druid_negate);
 
             //one object created based on another object, but one is used in a game, and other can be set outside of a game (customed by player)
             WarriorCard = new(WarriorCardTemplate);
@@ -211,6 +211,7 @@ namespace Slip_through
                     {
                         panelNumberInt -= 9;                            // that is going back 9 tiles, which is going up 1 file
 
+                        //might change later for player.main stat or something as a pointer to e.g. player.attack and .maxAttack
                         //if player slips, then give class specific bonuses  
                         if (player.name == "Wizard")
                         {
@@ -301,9 +302,9 @@ namespace Slip_through
                 flowLayoutLongLog.Visible = false;
 
                 combatText = "";
-                combatText += enemy.name + " attacks " + player.name + ".\n";
-                combatText += player.name + " (" + player.attack + ", " + player.defence + ", " + player.effectiveness + ", " + player.hitPoints + ").\n";
-                combatText += enemy.name + " (" + enemy.attack + ", " + enemy.defence + ", " + enemy.effectiveness + ", " + enemy.hitPoints + ").\n\n";
+                combatText += $"{enemy.name} attacks {player.name}.\n";
+                combatText += $"{player.name} ({player.attack},{player.defence},{player.effectiveness},{player.hitPoints}).\n";
+                combatText += $"{enemy.name} ({enemy.attack},{enemy.defence},{enemy.effectiveness},{enemy.hitPoints}).\n\n";
                 combatText += "Attacked|Roll|Cond|Success|HP\n";
                 combatText += "--------|----|----|-------|--\n";
 
@@ -320,7 +321,7 @@ namespace Slip_through
                     fought = true;                                              //and also enable them to choose reward
                     died = false;
 
-                    setCombatText(player.name + " killed the " + enemy.name);
+                    setCombatText($"{player.name} killed the {enemy.name}");
                 }
 
                 if (player.hitPoints <= 0)                                      //player died
@@ -333,7 +334,7 @@ namespace Slip_through
                     died = true;
                     nowMovement = false;                                        //same as if player wins, but for acknowledging death
 
-                    setCombatText(enemy.name + " killed the " + player.name + ". " + player.name + "'s max health lowers by 1");
+                    setCombatText($"{enemy.name} killed the {player.name} .{player.name}'s max health lowers by 1");
                     player.deathCounter++;                                      //keep track of how many deaths each player has
                     currentPlayerPictureBox.Parent = panelArray[0];             //move player to the first tile
 
@@ -371,7 +372,7 @@ namespace Slip_through
 
                 if (player.effectiveness + diceRoll > enemy.effectiveness) //player manages to attack the enemy
                 {
-                    combatText += "enemy   |" + diceRoll + "   |>" + condition1 + "  |true   |";
+                    combatText += $"enemy   |{diceRoll}   |>{condition1}  |true   |";
 
                     damage = player.attack - enemy.defence;
                     damage = damage >= 1 ? damage : 1;      //it can only go down to 1, no lower (to avoid infinite loops)
@@ -379,18 +380,18 @@ namespace Slip_through
 
                     animatePlayerAttack();
 
-                    combatText += enemy.hitPoints + "\n";
+                    combatText += $"{enemy.hitPoints}\n";
                     setCombatText(combatText);
 
                     displayEnemyInfo();                     //show changed stats and refresh the view
                 }
                 else
                 {
-                    combatText += "enemy   |" + diceRoll + "   |>" + condition1 + "  |false  |";
+                    combatText += $"enemy   |{diceRoll}   |>{condition1}  |false  |";
 
                     aniematePlayerAttackFail();
 
-                    combatText += enemy.hitPoints + "\n";
+                    combatText += $"{enemy.hitPoints}\n";
                     setCombatText(combatText);
                 }
             }
@@ -409,7 +410,7 @@ namespace Slip_through
 
                 if (enemy.effectiveness - diceRoll >= player.effectiveness) //enemy manages to attack the player
                 {
-                    combatText += "player  |" + diceRoll + "   |<=" + condition2 + " |true   |";
+                    combatText += $"player  |{diceRoll}   |<={condition2} |true   |";
 
                     damage = enemy.attack - player.defence;
                     damage = damage >= 1 ? damage : 1;      //it can only go down to 1, no lower (to avoid infinite loops) same as for player
@@ -417,18 +418,18 @@ namespace Slip_through
 
                     animateEnemyAttack();
 
-                    combatText += player.hitPoints + "\n";
+                    combatText += $"{player.hitPoints}\n";
                     setCombatText(combatText);
 
                     displayPlayerInfo();                     //show changed stats and refresh the view
                 }
                 else
                 {
-                    combatText += "player  |" + diceRoll + "   |<=" + condition2 + " |false  |";
+                    combatText += $"player  |{diceRoll}   |<={condition2} |false  |";
 
                     animateEnemyAttackFail();
 
-                    combatText += player.hitPoints + "\n";
+                    combatText += $"{player.hitPoints}\n";
                     setCombatText(combatText);
                 }
             }
@@ -535,7 +536,7 @@ namespace Slip_through
             {
                 playerNr = 0;
                 turnCounter++;
-                labelResults.Text = "Turn: " + turnCounter;
+                labelResults.Text = $"Turn: {turnCounter}";
             }
 
             if (playerNr == 0)
@@ -629,7 +630,7 @@ namespace Slip_through
             pictureBoxWarrior.Size = new Size(width, height);
             pictureBoxWarrior.Location = new Point(0, 0);
             pictureBoxArcher.Size = new Size(width, height);
-            pictureBoxArcher.Location = new Point(0, height+2);
+            pictureBoxArcher.Location = new Point(0, height + 2);
             pictureBoxWizard.Size = new Size(width, height);
             pictureBoxWizard.Location = new Point(width + 2, 0);
             pictureBoxDruid.Size = new Size(width, height);
@@ -648,7 +649,7 @@ namespace Slip_through
                 SlipBox.Visible = false;
                 labelResults.Visible = true;
                 gameOver = true;
-                labelResults.Text = player.name + " won in " + turnCounter + " turns and with " + player.deathCounter + " deaths.";
+                labelResults.Text = $"{player.name} won in {turnCounter} turns and with {player.deathCounter} deaths.";
                 labelResults.Update();
             }
 
@@ -726,8 +727,8 @@ namespace Slip_through
 
             //it can only go up to 12, no higher (to avoid excessive shenenighans)
             //check who is it is not neccessary since player.maxAttack is adaptive
-            player.attack = player.attack >= player.maxAttack ? player.maxAttack : player.attack;     
-            
+            player.attack = player.attack >= player.maxAttack ? player.maxAttack : player.attack;
+
             endRewardCollection();
         }
         private void buttonAddDEF_Click(object sender, EventArgs e)
@@ -875,8 +876,8 @@ namespace Slip_through
 
             if (result == DialogResult.OK) // reset all data to intial values
             {
-                labelResults.Text = "Turn: 1";
                 turnCounter = 1;
+                labelResults.Text = $"Turn: {turnCounter}";
                 gameOver = false;
                 panelNumberInt = 0;
                 playerNr = 0;
