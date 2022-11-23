@@ -570,7 +570,7 @@ namespace Slip_through
             labelEnemyHitPoints.Text = enemy.hitPoints.ToString();
             tableLayoutPanelEnemy.Update(); //absolutely neccessary
         }
-        private void setCombatText(String message)
+        private void setCombatText(string message)
         {
             labelCombatLog.Text += message;        //this waiting is important for the feel of the fight to be somewhat natural
             Thread.Sleep(iterationMs);             //slider can be setting this value, same as the sleep before / you can check every 1000ms if there was a click or something
