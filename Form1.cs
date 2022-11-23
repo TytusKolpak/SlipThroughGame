@@ -302,9 +302,9 @@ namespace Slip_through
                 flowLayoutLongLog.Visible = false;
 
                 combatText = "";
-                combatText += $"{enemy.name} attacks {player.name}.\n";
-                combatText += $"{player.name} ({player.attack},{player.defence},{player.effectiveness},{player.hitPoints}).\n";
-                combatText += $"{enemy.name} ({enemy.attack},{enemy.defence},{enemy.effectiveness},{enemy.hitPoints}).\n\n";
+                combatText += $"{enemy.name} attacks {player.name}\n";
+                combatText += $"{player.name} ({player.attack},{player.defence},{player.effectiveness},{player.hitPoints})\n";
+                combatText += $"{enemy.name} ({enemy.attack},{enemy.defence},{enemy.effectiveness},{enemy.hitPoints})\n\n";
                 combatText += "Attacked|Roll|Cond|Success|HP\n";
                 combatText += "--------|----|----|-------|--\n";
 
@@ -321,7 +321,7 @@ namespace Slip_through
                     fought = true;                                              //and also enable them to choose reward
                     died = false;
 
-                    setCombatText($"{player.name} killed the {enemy.name}");
+                    setCombatText($"\n{player.name} killed the {enemy.name}!");
                 }
 
                 if (player.hitPoints <= 0)                                      //player died
