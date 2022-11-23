@@ -17,7 +17,7 @@ namespace Slip_through
         public bool warriorPlays = true, archerPlays = true, wizardPlays = true, druidPlays = true;
         public Characters()
         {
-            //o
+            //os
             InitializeComponent();
             instance = this;
             //nUD stands for numericUpDOwn, following lines constitute preparing values in the Characters window for each card
