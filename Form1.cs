@@ -4,7 +4,6 @@ namespace Slip_through
 {
     public partial class Form1 : Form
     {
-        //how about now my funk soul brotherS
         //try let player choose a different amout of players like 1-8 (so that they will fill the board)
         //with 1-3 players make tile 2x2, and 4-8 make it 3x3
 
