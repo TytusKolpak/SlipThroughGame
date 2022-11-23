@@ -1,22 +1,3 @@
-#Once you opern the project, these files are AUTO GENERATED and have no transparent use for me
 *.vsidx
-
-#I also never use those files and they are modified every time i run my app 
-#(e.g. to check if i implemented changes properly)
-#If they are the ones to cover for debugging which i do rarely, then let's say
-#I might do without them / get them back if necessary
-bin/Debug/net6.0-windows/*.dll
-bin/Debug/net6.0-windows/*.pdb
-obj/Debug/net6.0-windows/*.cache
-obj/Debug/net6.0-windows/*.dll
-obj/Debug/net6.0-windows/*.pdb
-
-#bin/publish or bin/Release are cool
-
-#This one seems to be unnecessary too
-.vs/Slip through/v17/ 
-
-
-#
-#Come on man.
-#
+bin/
+.vs/
