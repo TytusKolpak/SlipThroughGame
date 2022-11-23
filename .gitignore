@@ -5,8 +5,8 @@
 #(e.g. to check if i implemented changes properly)
 #If they are the ones to cover for debugging which i do rarely, then let's say
 #I might do without them / get them back if necessary
-bin/Debug
-obj/Debug
+bin/Debug/
+obj/Debug/
 
 #bin/publish or bin/Release are cool
 

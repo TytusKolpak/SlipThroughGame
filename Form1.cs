@@ -302,7 +302,7 @@ namespace Slip_through
                 //FIGHT
                 flowLayoutLongLog.Visible = false;
 
-                combatText = "";
+                combatText = "COMBAT LOG \n";
                 combatText += $"{enemy.name} attacks {player.name}\n";
                 combatText += $"{player.name} ({player.attack},{player.defence},{player.effectiveness},{player.hitPoints})\n";
                 combatText += $"{enemy.name} ({enemy.attack},{enemy.defence},{enemy.effectiveness},{enemy.hitPoints})\n\n";
