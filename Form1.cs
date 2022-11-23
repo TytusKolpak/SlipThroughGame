@@ -256,7 +256,8 @@ namespace Slip_through
             //chosing the enemy depending on how far the player is 
             if (panelNumberInt <= 10) //1-10
             {
-                WolfCard.hitPoints = WolfCardTemplate.maxHP;            //something of revive (reallly its like making a new one but less unnecessary operations since only hp changes)
+                WolfCard.hitPoints = WolfCardTemplate.maxHP;            
+                //something of revive (reallly its like making a new one but less unnecessary operations since only hp changes)
                 enemy = WolfCard;
             }
             else if (panelNumberInt <= 20) //11-20
