@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Slip_through
+﻿namespace Slip_through
 {
     //prototype for CombatCards, a CombatCardTemplate, ready to be changed in the custom character window 
     public class CombatCardTemplate

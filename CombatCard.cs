@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Slip_through
+﻿namespace Slip_through
 {
     public class CombatCard
     {
@@ -15,20 +9,19 @@ namespace Slip_through
         public bool[] wallsSlippedThrough;
 
         public CombatCard(CombatCardTemplate template)
-        {
-            // can "this." be removed? is it unnecessary?
-            this.name = template.name;
-            this.attack = template.attack;
-            this.maxAttack = template.maxAttack;
-            this.defence = template.defence;
-            this.maxDefence = template.maxDefence;
-            this.effectiveness = template.effectiveness;
-            this.maxEffectiveness = template.maxEffectiveness;
-            this.maxHP = template.maxHP;
-            this.hitPoints = template.maxHP;
-            this.minHP = template.minHP;
-            this.wallsSlippedThrough = template.wallsSlippedThrough;
-            this.bitmapImage = template.bitmapImage;
+        {//for some reason there is no need for this.
+            name = template.name;
+            attack = template.attack;
+            maxAttack = template.maxAttack;
+            defence = template.defence;
+            maxDefence = template.maxDefence;
+            effectiveness = template.effectiveness;
+            maxEffectiveness = template.maxEffectiveness;
+            maxHP = template.maxHP;
+            hitPoints = template.maxHP;
+            minHP = template.minHP;
+            wallsSlippedThrough = template.wallsSlippedThrough;
+            bitmapImage = template.bitmapImage;
         }
     }
 }

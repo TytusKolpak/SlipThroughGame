@@ -1,8 +1,4 @@
-using System;
-using System.Diagnostics;
-using System.Numerics;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace Slip_through
 {
@@ -30,9 +26,9 @@ namespace Slip_through
         string panelName = "panel1";
         string panelNumberString = "0";
         string combatText = "";
-        Panel[] panelArray = System.Array.Empty<Panel>();
-        PictureBox[] pictureBoxPlayerArray = System.Array.Empty<PictureBox>();
-        CombatCard[] playerCombatCardArray = System.Array.Empty<CombatCard>();
+        Panel[] panelArray = Array.Empty<Panel>();
+        PictureBox[] pictureBoxPlayerArray = Array.Empty<PictureBox>();
+        CombatCard[] playerCombatCardArray = Array.Empty<CombatCard>();
         PictureBox currentPlayerPictureBox;
 
         //assign default values: (short names not to repeat the same long names everywhere)
