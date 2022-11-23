@@ -5,8 +5,11 @@
 #(e.g. to check if i implemented changes properly)
 #If they are the ones to cover for debugging which i do rarely, then let's say
 #I might do without them / get them back if necessary
-bin/Debug/net6.0-windows/ 
-obj/Debug/net6.0-windows/ 
+bin/Debug/net6.0-windows/*.dll
+bin/Debug/net6.0-windows/*.pdb
+obj/Debug/net6.0-windows/*.cache
+obj/Debug/net6.0-windows/*.dll
+obj/Debug/net6.0-windows/*.pdb
 
 #bin/publish or bin/Release are cool
 
