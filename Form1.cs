@@ -1,8 +1,4 @@
-using System;
-using System.Diagnostics;
-using System.Numerics;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace Slip_through
 {
@@ -29,9 +25,9 @@ namespace Slip_through
         string panelName = "panel1";
         string panelNumberString = "0";
         string combatText = "";
-        Panel[] panelArray = System.Array.Empty<Panel>();
-        PictureBox[] pictureBoxPlayerArray = System.Array.Empty<PictureBox>();
-        CombatCard[] playerCombatCardArray = System.Array.Empty<CombatCard>();
+        Panel[] panelArray = Array.Empty<Panel>();
+        PictureBox[] pictureBoxPlayerArray = Array.Empty<PictureBox>();
+        CombatCard[] playerCombatCardArray = Array.Empty<CombatCard>();
         PictureBox currentPlayerPictureBox;
 
         //assign default values: (short names not to repeat the same long names everywhere)
@@ -256,7 +252,8 @@ namespace Slip_through
             //chosing the enemy depending on how far the player is 
             if (panelNumberInt <= 10) //1-10
             {
-                WolfCard.hitPoints = WolfCardTemplate.maxHP;            //something of revive (reallly its like making a new one but less unnecessary operations since only hp changes)
+                WolfCard.hitPoints = WolfCardTemplate.maxHP;            
+                //something of revive (reallly its like making a new one but less unnecessary operations since only hp changes)
                 enemy = WolfCard;
             }
             else if (panelNumberInt <= 20) //11-20
@@ -301,10 +298,10 @@ namespace Slip_through
                 //FIGHT
                 flowLayoutLongLog.Visible = false;
 
-                combatText = "";
-                combatText += $"{enemy.name} attacks {player.name}.\n";
-                combatText += $"{player.name} ({player.attack},{player.defence},{player.effectiveness},{player.hitPoints}).\n";
-                combatText += $"{enemy.name} ({enemy.attack},{enemy.defence},{enemy.effectiveness},{enemy.hitPoints}).\n\n";
+                combatText = $"Combat recap for {enemy.name} x {player.name}\n";
+                combatText += $"{enemy.name} attacks {player.name}\n";
+                combatText += $"{player.name} ({player.attack},{player.defence},{player.effectiveness},{player.hitPoints})\n";
+                combatText += $"{enemy.name} ({enemy.attack},{enemy.defence},{enemy.effectiveness},{enemy.hitPoints})\n\n";
                 combatText += "Attacked|Roll|Cond|Success|HP\n";
                 combatText += "--------|----|----|-------|--\n";
 
@@ -321,7 +318,7 @@ namespace Slip_through
                     fought = true;                                              //and also enable them to choose reward
                     died = false;
 
-                    setCombatText($"{player.name} killed the {enemy.name}");
+                    setCombatText($"\n{player.name} killed the {enemy.name}!");
                 }
 
                 if (player.hitPoints <= 0)                                      //player died
@@ -573,7 +570,7 @@ namespace Slip_through
             labelEnemyHitPoints.Text = enemy.hitPoints.ToString();
             tableLayoutPanelEnemy.Update(); //absolutely neccessary
         }
-        private void setCombatText(String message)
+        private void setCombatText(string message)
         {
             labelCombatLog.Text += message;        //this waiting is important for the feel of the fight to be somewhat natural
             Thread.Sleep(iterationMs);             //slider can be setting this value, same as the sleep before / you can check every 1000ms if there was a click or something
