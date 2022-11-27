@@ -130,11 +130,11 @@
   <data name="shaman" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shaman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="warrior_negate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warrior_negate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="blood" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blood.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="archer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\archer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="archer_negate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\archer_negate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,8 +142,11 @@
   <data name="fire" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fire.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="archer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\archer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="druid_negate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\druid_negate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="warrior_negate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warrior_negate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="wizard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wizard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,7 +169,7 @@
   <data name="wizard_negate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wizard_negate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="druid_negate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\druid_negate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="boar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

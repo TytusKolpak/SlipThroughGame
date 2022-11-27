@@ -64,37 +64,37 @@
                 int WDEF = (int)nUDWarriorDEF.Value;    //-||-
                 int WEFF = (int)nUDWarriorEFF.Value;    //-||-
                 int WHP = (int)nUDWarriorHP.Value;      //-||-
-                int mWATT = Form1.instance.S[0, 0];       //set for good in top of Form1 OR can be changed if I add new numericalUpDowns - would be pretty cool but not so useful xd
-                int mWDEF = Form1.instance.S[0, 2];       //-||- do change after all else fucntional changes are aplied
-                int mWEFF = Form1.instance.S[0, 4];       //-||-
-                int minWHP = Form1.instance.S[0, 6];     //-||-
+                int mWATT = Form1.instance.S[0, 1];     //set for good in top of Form1 OR can be changed if I add new numericalUpDowns - would be pretty cool but not so useful xd
+                int mWDEF = Form1.instance.S[0, 3];     //-||- do change after all else fucntional changes are aplied
+                int mWEFF = Form1.instance.S[0, 5];     //-||-
+                int minWHP = Form1.instance.S[0, 7];    //-||-
 
                 int AATT = (int)nUDArcherATT.Value;
                 int ADEF = (int)nUDArcherDEF.Value;
                 int AEFF = (int)nUDArcherEFF.Value;
                 int AHP = (int)nUDArcherHP.Value;
-                int mAATT = Form1.instance.S[1, 0];
-                int mADEF = Form1.instance.S[1, 2];
-                int mAEFF = Form1.instance.S[1, 4];
-                int minAHP = Form1.instance.S[1, 6];
+                int mAATT = Form1.instance.S[1, 1];
+                int mADEF = Form1.instance.S[1, 3]; 
+                int mAEFF = Form1.instance.S[1, 5]; 
+                int minAHP = Form1.instance.S[1, 7];
 
                 int WiATT = (int)nUDWizardATT.Value;
                 int WiDEF = (int)nUDWizardDEF.Value;
                 int WiEFF = (int)nUDWizardEFF.Value;
                 int WiHP = (int)nUDWizardHP.Value;
-                int mWiATT = Form1.instance.S[2, 0];
-                int mWiDEF = Form1.instance.S[2, 2];
-                int mWiEFF = Form1.instance.S[2, 4];
-                int minWiHP = Form1.instance.S[2, 6];
+                int mWiATT = Form1.instance.S[2, 1];
+                int mWiDEF = Form1.instance.S[2, 3]; 
+                int mWiEFF = Form1.instance.S[2, 5]; 
+                int minWiHP = Form1.instance.S[2, 7];
 
                 int DATT = (int)nUDDruidATT.Value;
                 int DDEF = (int)nUDDruidDEF.Value;
                 int DEFF = (int)nUDDruidEFF.Value;
                 int DHP = (int)nUDDruidHP.Value;
-                int mDATT = Form1.instance.S[3, 0];
-                int mDDEF = Form1.instance.S[3, 2];
-                int mDEFF = Form1.instance.S[3, 4];
-                int minDHP = Form1.instance.S[3, 6];
+                int mDATT = Form1.instance.S[3, 1];
+                int mDDEF = Form1.instance.S[3, 3]; 
+                int mDEFF = Form1.instance.S[3, 5]; 
+                int minDHP = Form1.instance.S[3, 7];
 
                 int WoATT = (int)nUDWolfATT.Value;
                 int WoDEF = (int)nUDWolfDEF.Value;

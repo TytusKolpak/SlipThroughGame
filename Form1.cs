@@ -17,6 +17,9 @@ namespace Slip_through
         bool archerPlays = true;
         bool wizardPlays = true;
         bool druidPlays = true;
+        bool archerSkipsTurn = false;
+        bool wizardCreatedImage = false;
+        bool druidSummonedBoar = false;
         int iterationMs = 200;
         int panelNumberInt = 0;
         int playerNr = 0;
@@ -34,10 +37,10 @@ namespace Slip_through
         public int[,] S = new int[,] //2D ARRAY for Stats (character stats)
         //pattern: stat, max value of that stat (created not to grind for eternity to ensure 100% succes
         {  //ATT MAX  DEF MAX EFF MAX HP MinHP
-            {2  ,6   ,1  ,6  ,0  ,6  ,12 ,7},    //Warrior's STATS
+            {2  ,4   ,1  ,6  ,0  ,6  ,12 ,7},    //Warrior's STATS
             {1  ,6   ,1  ,3  ,1  ,12 ,9  ,5},    //Archer's
             {3  ,12  ,0  ,3  ,0  ,6  ,8  ,4},    //Wizard's
-            {1  ,6   ,2  ,3  ,0  ,6  ,9  ,6},    //Druid's
+            {1  ,6   ,2  ,4  ,0  ,6  ,9  ,6},    //Druid's
         };
 
         public int[,] E = new int[,] //2D for Enemy stats (they have less)
@@ -70,6 +73,7 @@ namespace Slip_through
         public CombatCardTemplate ArcherGhostCardTemplate;
         public CombatCardTemplate WizardGhostCardTemplate;
         public CombatCardTemplate DruidGhostCardTemplate;
+        public CombatCardTemplate BoarCardTemplate;
 
         CombatCard WarriorCard;
         CombatCard ArcherCard;
@@ -82,6 +86,8 @@ namespace Slip_through
         CombatCard ArcherGhostCard;
         CombatCard WizardGhostCard;
         CombatCard DruidGhostCard;
+        CombatCard BoarCard; //druid's fighting companion, summoned for 2 hp
+
 
         CombatCard player;
         CombatCard enemy;
@@ -300,36 +306,112 @@ namespace Slip_through
             {
                 //FIGHT
                 flowLayoutLongLog.Visible = false;
-
-                combatText = $"Combat recap for {enemy.name} x {player.name}\n";
-                combatText += $"{enemy.name} attacks {player.name}\n";
-                combatText += $"{player.name} ({player.attack},{player.defence},{player.effectiveness},{player.hitPoints})\n";
-                combatText += $"{enemy.name} ({enemy.attack},{enemy.defence},{enemy.effectiveness},{enemy.hitPoints})\n\n";
-                combatText += "Attacked|Roll|Cond|Success|HP\n";
-                combatText += "--------|----|----|-------|--\n";
-
-                labelCombatLog.Text = combatText; //override previous that battle log
-
                 displayEnemyInfo();
 
                 //ask a player if he wants to use a card / special ability
                 // if we want to give player any time to o it then we can split the main sequence in 2 ?
-                //string WarriorAbility = "Warrior can go into a rage which would resu reducing his max health by 1 and rising his attack by 1.\n";
-                //string messBoxContent = $"Do You want {player.name} to use his special ability.\n{WarriorAbility}";
-                //MessageBox.Show(messBoxContent, "Choice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                string warriorAbility = "Warrior can go into a rage, " +
+                    "which would reduce his max health by 1 and rise his max attack by 1.\n";//relocate
+                string archerbility = "Archer can apply poison to his arrows," +
+                    " which would rise his damage by 1 in the next fight, but make him skip his first attack.\n";//relocate
+                string wizardAbility = "Wizard can create his magic image causing the enemy to attack it instad of him," +
+                    " which would cause their first attack to deal no damage and him to deal 1 less damage that fight.\n";//relocate
+                string druidAbility = "Druid can summon a boar to fight for him, " +
+                    " which would cost him 2 hp, beast would fight before him and have the stats of ((his att)/0/(his eff)/(his def)).\n";//relocate
 
+                string messageBoxContent = $"Do You want {player.name} to use his special ability?\n";
+
+                if (player.name == "Warrior")
+                    messageBoxContent += warriorAbility;
+                else if (player.name == "Archer")
+                    messageBoxContent += archerbility;
+                else if (player.name == "Wizard")
+                    messageBoxContent += wizardAbility;
+                else if (player.name == "Druid")
+                    messageBoxContent += druidAbility;
+
+                DialogResult result = MessageBox.Show(messageBoxContent, "Special ability", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 //program will wait until YES or NO is clicked 
+
+                if (result == DialogResult.Yes)
+                {
+                    if (player.name == "Warrior")
+                    {
+                        player.maxAttack++;
+                        player.maxHP--;
+                        player.hitPoints--;
+                        displayPlayerInfo();
+                    }
+                    else if (player.name == "Archer")
+                    {
+                        player.attack++;
+                        archerSkipsTurn = true;
+                        displayPlayerInfo();
+                    }
+                    else if (player.name == "Wizard")
+                    {
+                        wizardCreatedImage = true;
+                        player.attack--;
+                        displayPlayerInfo();
+                    }
+                    else if (player.name == "Druid")
+                    {
+                        player.hitPoints -= 2;
+                        druidSummonedBoar = true; //        att      def         eff               health
+                        BoarCardTemplate = new("Boar", player.attack, 1, player.effectiveness, player.defence, Properties.Resources.boar);
+                        BoarCard = new (BoarCardTemplate);
+
+                        //that's just the easier way of replacing druid wth boar for the beginning of the fight
+                        player = BoarCard;
+                        displayPlayerInfo();
+                    }
+                }
+                //else do nothing
+
+                //Fight begins
+                combatText = $"{enemy.name} attacks {player.name}\n";//override previous that battle log
+                combatText += $"{player.name} ({player.attack},{player.defence},{player.effectiveness},{player.hitPoints})\n";
+                combatText += $"{enemy.name} ({enemy.attack},{enemy.defence},{enemy.effectiveness},{enemy.hitPoints})\n\n";
+                combatText += "Attacked|Roll|Cond|Success|HP\n";
+                combatText += "--------|----|----|-------|--\n";
+                labelCombatLog.Text = combatText; 
 
                 while (player.hitPoints > 0 && enemy.hitPoints > 0)             //carry out full sequence until someone dies                    
                     fightSequence();
 
-                if (enemy.hitPoints <= 0)                                       //enemy died - player won
+                if (druidSummonedBoar) //can connect those 2 conditions now
                 {
-                    nowMovement = false;                                        //to disable player form clicking 1 on their keybaord multiple times
-                    fought = true;                                              //and also enable them to choose reward
+                    if (enemy.hitPoints > 0)   //if enemy killed the boar
+                    {
+                        combatText = $"{enemy.name} kills {player.name}\n";
+                        druidSummonedBoar = false;                  //reset 
+                        player = DruidCard;                         //change player form boar card to druid card
+                        displayPlayerInfo();
+
+                        //write down that the druid is now fighting
+                        combatText += $"{enemy.name} attacks {player.name}\n";
+                        combatText += $"{player.name} ({player.attack},{player.defence},{player.effectiveness},{player.hitPoints})\n";
+                        labelCombatLog.Text += combatText;
+
+                        while (player.hitPoints > 0 && enemy.hitPoints > 0)     //carry out full sequence until druid or the enemy                    
+                            fightSequence();
+                    }
+                }
+
+                if (enemy.hitPoints <= 0)               //enemy died - player won
+                {
+                    nowMovement = false;                //to disable player form clicking 1 on their keybaord multiple times
+                    fought = true;                      //and also enable them to choose reward
                     died = false;
 
                     setCombatText($"\n{player.name} killed the {enemy.name}!");
+
+                    if (druidSummonedBoar)
+                    {
+                        druidSummonedBoar = false;      //reset 
+                        player = DruidCard;             //change player form boar card to druid card
+                        displayPlayerInfo();
+                    }
                 }
 
                 if (player.hitPoints <= 0)                                      //player died
@@ -342,7 +424,7 @@ namespace Slip_through
                     died = true;
                     nowMovement = false;                                        //same as if player wins, but for acknowledging death
 
-                    setCombatText($"{enemy.name} killed the {player.name} .{player.name}'s max health lowers by 1");
+                    setCombatText($"{enemy.name} killed the {player.name}. {player.name}'s max health lowers by 1");
                     player.deathCounter++;                                      //keep track of how many deaths each player has
                     currentPlayerPictureBox.Parent = panelArray[0];             //move player to the first tile
 
@@ -358,6 +440,21 @@ namespace Slip_through
 
                 enemy.hitPoints = enemy.maxHP;                              //Set health of the enemy back to max for next fight
                 tableLayoutPanelEnemy.Visible = false;                      //old enemies are never encountered again (idk if correct)
+
+                if (result == DialogResult.Yes)
+                {
+                    //fight ended - reverse some temporary changes
+                    if (player.name == "Archer")
+                    {
+                        player.attack--;
+                        displayPlayerInfo();
+                    }
+                    else if (player.name == "Wizard")
+                    {
+                        player.attack++;
+                        displayPlayerInfo();
+                    }
+                }
             }
         }
         private void fightSequence()
@@ -372,36 +469,41 @@ namespace Slip_through
                 diceRoll = random.Next(1, 7);
 
                 int condition1;
-
                 if (enemy.effectiveness - player.effectiveness < 0)
                     condition1 = 0;
                 else
                     condition1 = enemy.effectiveness - player.effectiveness;
 
-                if (player.effectiveness + diceRoll > enemy.effectiveness) //player manages to attack the enemy
+                if (!archerSkipsTurn)
                 {
-                    combatText += $"enemy   |{diceRoll}   |>{condition1}  |true   |";
+                    if (player.effectiveness + diceRoll > enemy.effectiveness) //player manages to attack the enemy
+                    {
+                        combatText += $"enemy   |{diceRoll}   |>{condition1}  |true   |";
 
-                    damage = player.attack - enemy.defence;
-                    damage = damage >= 1 ? damage : 1;      //it can only go down to 1, no lower (to avoid infinite loops)
-                    enemy.hitPoints -= damage;              //enemy loses health
+                        damage = player.attack - enemy.defence;
+                        damage = damage >= 1 ? damage : 1;      //it can only go down to 1, no lower (to avoid infinite loops)
+                        enemy.hitPoints -= damage;              //enemy loses health
 
-                    //animatePlayerAttack();
+                        animatePlayerAttack();
 
-                    combatText += $"{enemy.hitPoints}\n";
-                    setCombatText(combatText);
+                        combatText += $"{enemy.hitPoints}\n";
+                        setCombatText(combatText);
 
-                    displayEnemyInfo();                     //show changed S and refresh the view
+                        displayEnemyInfo();                     //show changed S and refresh the view
+
+                    }
+                    else
+                    {
+                        combatText += $"enemy   |{diceRoll}   |>{condition1}  |false  |";
+
+                        animatePlayerAttackFail();
+
+                        combatText += $"{enemy.hitPoints}\n";
+                        setCombatText(combatText);
+                    }
                 }
                 else
-                {
-                    combatText += $"enemy   |{diceRoll}   |>{condition1}  |false  |";
-
-                    //animatePlayerAttackFail();
-
-                    combatText += $"{enemy.hitPoints}\n";
-                    setCombatText(combatText);
-                }
+                    archerSkipsTurn = false; //skip 1 so check if true and then revert to default false
             }
 
             if (enemy.hitPoints > 0)                        //carry out enemy attack if they are alive
@@ -416,30 +518,35 @@ namespace Slip_through
                 else
                     condition2 = enemy.effectiveness - player.effectiveness;
 
-                if (enemy.effectiveness - diceRoll >= player.effectiveness) //enemy manages to attack the player
+                if (!wizardCreatedImage)
                 {
-                    combatText += $"player  |{diceRoll}   |<={condition2} |true   |";
+                    if (enemy.effectiveness - diceRoll >= player.effectiveness) //enemy manages to attack the player
+                    {
+                        combatText += $"player  |{diceRoll}   |<={condition2} |true   |";
 
-                    damage = enemy.attack - player.defence;
-                    damage = damage >= 1 ? damage : 1;      //it can only go down to 1, no lower (to avoid infinite loops) same as for player
-                    player.hitPoints -= damage;
+                        damage = enemy.attack - player.defence;
+                        damage = damage >= 1 ? damage : 1;      //it can only go down to 1, no lower (to avoid infinite loops) same as for player
+                        player.hitPoints -= damage;
 
-                    //animateEnemyAttack();
+                        animateEnemyAttack();
 
-                    combatText += $"{player.hitPoints}\n";
-                    setCombatText(combatText);
+                        combatText += $"{player.hitPoints}\n";
+                        setCombatText(combatText);
 
-                    displayPlayerInfo();                     //show changed S and refresh the view
+                        displayPlayerInfo();                     //show changed S and refresh the view
+                    }
+                    else
+                    {
+                        combatText += $"player  |{diceRoll}   |<={condition2} |false  |";
+
+                        animateEnemyAttackFail();
+
+                        combatText += $"{player.hitPoints}\n";
+                        setCombatText(combatText);
+                    }
                 }
                 else
-                {
-                    combatText += $"player  |{diceRoll}   |<={condition2} |false  |";
-
-                    //animateEnemyAttackFail();
-
-                    combatText += $"{player.hitPoints}\n";
-                    setCombatText(combatText);
-                }
+                    wizardCreatedImage = false;
             }
         }
         private void animatePlayerAttack()
