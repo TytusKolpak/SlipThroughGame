@@ -314,9 +314,9 @@ namespace Slip_through
 
                 //ask a player if he wants to use a card / special ability
                 // if we want to give player any time to o it then we can split the main sequence in 2 ?
-                string WarriorAbility = "Warrior can go into a rage which would resu reducing his max health by 1 and rising his attack by 1.\n";
-                string messBoxContent = $"Do You want {player.name} to use his special ability.\n{WarriorAbility}";
-                MessageBox.Show(messBoxContent, "Choice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                //string WarriorAbility = "Warrior can go into a rage which would resu reducing his max health by 1 and rising his attack by 1.\n";
+                //string messBoxContent = $"Do You want {player.name} to use his special ability.\n{WarriorAbility}";
+                //MessageBox.Show(messBoxContent, "Choice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 //program will wait until YES or NO is clicked 
 
