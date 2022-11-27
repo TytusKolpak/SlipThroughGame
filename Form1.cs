@@ -32,11 +32,12 @@ namespace Slip_through
 
         //assign default values:
         public int[,] S = new int[,] //2D ARRAY for Stats (character stats)
-        {
-            {2,6 ,1,6 ,0,6 ,12,7},   //Warrior's STATS
-            {1,6 ,1,3 ,1,12,9 ,5},    //Archer's
-            {3,12,0,3 ,0,6 ,8 ,4},    //Wizard's
-            {1,6 ,2,3 ,0,6 ,9 ,6},    //Druid's
+        //pattern: stat, max value of that stat (created not to grind for eternity to ensure 100% succes
+        {  //ATT MAX  DEF MAX EFF MAX HP MinHP
+            {2  ,6   ,1  ,6  ,0  ,6  ,12 ,7},    //Warrior's STATS
+            {1  ,6   ,1  ,3  ,1  ,12 ,9  ,5},    //Archer's
+            {3  ,12  ,0  ,3  ,0  ,6  ,8  ,4},    //Wizard's
+            {1  ,6   ,2  ,3  ,0  ,6  ,9  ,6},    //Druid's
         };
 
         public int[,] E = new int[,] //2D for Enemy stats (they have less)
@@ -88,7 +89,7 @@ namespace Slip_through
 
         public static Form1 instance;   //for sending data between forms
 
-        public Form1()//working and complete (so far)
+        public Form1()
         {
             InitializeComponent();
             instance = this;            //for sending data between forms
@@ -99,19 +100,19 @@ namespace Slip_through
             setAddButtonsVisibility(false);
             buttonOK.Visible = false;
         }
-        public void createCardsFromTemplates() //once at the beginning
-        {
-            WarriorCardTemplate = new("Warrior",    S[0, 0], S[0, 1], S[0, 2], S[0, 3], S[0, 4], S[0, 5], S[0, 6], S[0, 7], WarriorwST, Properties.Resources.warrior);
-            ArcherCardTemplate = new("Archer",      S[1, 0], S[1, 1], S[1, 2], S[1, 3], S[1, 4], S[1, 5], S[1, 6], S[1, 7], ArcherwST, Properties.Resources.archer);
-            WizardCardTemplate = new("Wizard",      S[2, 0], S[2, 1], S[2, 2], S[2, 3], S[2, 4], S[2, 5], S[2, 6], S[2, 7], WizardwST, Properties.Resources.wizard);
-            DruidCardTemplate = new("Druid",        S[3, 0], S[3, 1], S[3, 2], S[3, 3], S[3, 4], S[3, 5], S[3, 6], S[3, 7], DruidwST, Properties.Resources.druid);
-            WolfCardTemplate = new("Wolf",                      E[0, 0], E[0, 1], E[0, 2], E[0, 3], Properties.Resources.wolf);
-            WerewolfCardTemplate = new("Werewolf",              E[1, 0], E[1, 1], E[1, 2], E[1, 3], Properties.Resources.werewolf);
-            CerberusCardTemplate = new("Cerberus",              E[2, 0], E[2, 1], E[2, 2], E[2, 3], Properties.Resources.cerberus);
-            WarriorGhostCardTemplate = new("Warrior's Ghost",   E[3, 0], E[3, 1], E[3, 2], E[3, 3], Properties.Resources.warrior_negate);
-            ArcherGhostCardTemplate = new("Archer's Ghost",     E[3, 0], E[3, 1], E[3, 2], E[3, 3], Properties.Resources.archer_negate);
-            WizardGhostCardTemplate = new("Wizard's Ghost",     E[3, 0], E[3, 1], E[3, 2], E[3, 3], Properties.Resources.wizard_negate);
-            DruidGhostCardTemplate = new("Druid's Ghost",       E[3, 0], E[3, 1], E[3, 2], E[3, 3], Properties.Resources.druid_negate);
+        public void createCardsFromTemplates()
+        {                                                     // att     max att  def      max def  eff      max eff  max hp   min hp   slip enabler picture
+            WarriorCardTemplate = new("Warrior",                S[0, 0], S[0, 1], S[0, 2], S[0, 3], S[0, 4], S[0, 5], S[0, 6], S[0, 7], WarriorwST,  Properties.Resources.warrior);
+            ArcherCardTemplate = new("Archer",                  S[1, 0], S[1, 1], S[1, 2], S[1, 3], S[1, 4], S[1, 5], S[1, 6], S[1, 7], ArcherwST,   Properties.Resources.archer);
+            WizardCardTemplate = new("Wizard",                  S[2, 0], S[2, 1], S[2, 2], S[2, 3], S[2, 4], S[2, 5], S[2, 6], S[2, 7], WizardwST,   Properties.Resources.wizard);
+            DruidCardTemplate = new("Druid",                    S[3, 0], S[3, 1], S[3, 2], S[3, 3], S[3, 4], S[3, 5], S[3, 6], S[3, 7], DruidwST,    Properties.Resources.druid);
+            WolfCardTemplate = new("Wolf",                      E[0, 0],          E[0, 1],          E[0, 2],          E[0, 3],                       Properties.Resources.wolf);
+            WerewolfCardTemplate = new("Werewolf",              E[1, 0],          E[1, 1],          E[1, 2],          E[1, 3],                       Properties.Resources.werewolf);
+            CerberusCardTemplate = new("Cerberus",              E[2, 0],          E[2, 1],          E[2, 2],          E[2, 3],                       Properties.Resources.cerberus);
+            WarriorGhostCardTemplate = new("Warrior's Ghost",   E[3, 0],          E[3, 1],          E[3, 2],          E[3, 3],                       Properties.Resources.warrior_negate);
+            ArcherGhostCardTemplate = new("Archer's Ghost",     E[3, 0],          E[3, 1],          E[3, 2],          E[3, 3],                       Properties.Resources.archer_negate);
+            WizardGhostCardTemplate = new("Wizard's Ghost",     E[3, 0],          E[3, 1],          E[3, 2],          E[3, 3],                       Properties.Resources.wizard_negate);
+            DruidGhostCardTemplate = new("Druid's Ghost",       E[3, 0],          E[3, 1],          E[3, 2],          E[3, 3],                       Properties.Resources.druid_negate);
 
             //one object created based on another object, but one is used in a game, and other can be set outside of a game (customed by player)
             WarriorCard = new(WarriorCardTemplate);
@@ -144,7 +145,7 @@ namespace Slip_through
             currentPlayerPictureBox.BorderStyle = BorderStyle.Fixed3D;      //make it look special
             currentPlayerPictureBox.Update();
         }
-        private void createArrays()//working and complete
+        private void createArrays()
         {
             panelArray = new Panel[30]
             {
@@ -164,7 +165,7 @@ namespace Slip_through
                 pictureBoxDruid,
             };
         }
-        private void movementElement(int steps)//working and complete
+        private void movementElement(int steps)
         {
             fought = false;
             panelName = currentPlayerPictureBox.Parent.Name.ToString();
@@ -311,7 +312,15 @@ namespace Slip_through
 
                 displayEnemyInfo();
 
-                while (player.hitPoints > 0 && enemy.hitPoints > 0)             //carry out full sequence until someone dies
+                //ask a player if he wants to use a card / special ability
+                // if we want to give player any time to o it then we can split the main sequence in 2 ?
+                string WarriorAbility = "Warrior can go into a rage which would resu reducing his max health by 1 and rising his attack by 1.\n";
+                string messBoxContent = $"Do You want {player.name} to use his special ability.\n{WarriorAbility}";
+                MessageBox.Show(messBoxContent, "Choice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                //program will wait until YES or NO is clicked 
+
+                while (player.hitPoints > 0 && enemy.hitPoints > 0)             //carry out full sequence until someone dies                    
                     fightSequence();
 
                 if (enemy.hitPoints <= 0)                                       //enemy died - player won
@@ -351,7 +360,7 @@ namespace Slip_through
                 tableLayoutPanelEnemy.Visible = false;                      //old enemies are never encountered again (idk if correct)
             }
         }
-        private void fightSequence()//working and enough for now
+        private void fightSequence()
         {
             int diceRoll;
             int damage;
@@ -524,7 +533,7 @@ namespace Slip_through
             menuStrip1.Update();            //otherwise there would be remains of player card left on it
             tableLayoutPanelPlayer.Update();
         }
-        private void nextPlayer()//working and complete, adaptive to any number of players below 3
+        private void nextPlayer()
         {
             currentPlayerPictureBox.BorderStyle = BorderStyle.None;         //back to normal
             currentPlayerPictureBox.Update();
@@ -552,7 +561,7 @@ namespace Slip_through
             currentPlayerPictureBox.BorderStyle = BorderStyle.Fixed3D;      //make it look special
             currentPlayerPictureBox.Update();
         }
-        private void displayPlayerInfo()//working and complete
+        private void displayPlayerInfo()
         {
             //load that player's info to the window elements to be shown
             pictureBoxPlayer.Image = player.bitmapImage;                    //big main picture on the right
@@ -869,7 +878,7 @@ namespace Slip_through
             Form3 Controlls = new Form3();
             Controlls.Show();
         }
-        private void playAgainToolStripMenuItem_Click(object sender, EventArgs e) //working
+        private void playAgainToolStripMenuItem_Click(object sender, EventArgs e)
         {//reload everything to start a new game
             DialogResult result = MessageBox.Show("Do you really want to start again?", "Play again", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
