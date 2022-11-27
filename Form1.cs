@@ -30,27 +30,29 @@ namespace Slip_through
         CombatCard[] playerCombatCardArray = Array.Empty<CombatCard>();
         PictureBox currentPlayerPictureBox;
 
-        //assign default values: (short names not to repeat the same long names everywhere)
-        //last 3 letters (or 2 in HP) correspond to the stat that this value corresponds to
-        //first one (or 2 if there would be conflicts W Warrior and W Wizard? W for first starting with W and W+i for next WIzard) are for name
+        //assign default values:
+        public int[,] S = new int[,] //2D ARRAY for Stats (character stats)
+        {
+            {2,6 ,1,6 ,0,6 ,12,7},   //Warrior's STATS
+            {1,6 ,1,3 ,1,12,9 ,5},    //Archer's
+            {3,12,0,3 ,0,6 ,8 ,4},    //Wizard's
+            {1,6 ,2,3 ,0,6 ,9 ,6},    //Druid's
+        };
 
+        public int[,] E = new int[,] //2D for Enemy stats (they have less)
+        {
+            {2,0,3,5},      //Wolf's
+            {4,1,5,7},      //Werewolf'S
+            {5,3,8,11},     //Cerberus'
+            {0,0,0,0},      //Ghost's
+        };
 
-        public int WATT = 2, mWATT = 6, WDEF = 1, mWDEF = 6, WEFF = 0, mWEFF = 6, WHP = 12, minWHP = 7;//Warrior's 
-        public int AATT = 1, mAATT = 6, ADEF = 1, mADEF = 3, AEFF = 1, mAEFF = 12, AHP = 9, minAHP = 5;//Archer's 
-        public int WiATT = 3, mWiATT = 12, WiDEF = 0, mWiDEF = 3, WiEFF = 0, mWiEFF = 6, WiHP = 8, minWiHP = 4;//Wizard's stats     
-        public int DATT = 1, mDATT = 6, DDEF = 2, mDDEF = 3, DEFF = 0, mDEFF = 6, DHP = 9, minDHP = 6;//Druid's 
-        public int WoATT = 2, mWoATT = 0, WoDEF = 0, mWoDEF = 0, WoEFF = 3, mWoEFF = 0, WoHP = 5, minWoHP = 0;//Wolf's stats
-        public int WeATT = 4, mWeATT = 0, WeDEF = 1, mWeDEF = 0, WeEFF = 5, mWeEFF = 0, WeHP = 7, minWeHP = 0;//Werewolf's stats
-        public int CATT = 5, mCATT = 0, CDEF = 3, mCDEF = 0, CEFF = 8, mCEFF = 0, CHP = 11, minCHP = 0;//Cerberus' stats
-        public int GATT = 0, mGATT = 0, GDEF = 0, mGDEF = 0, GEFF = 0, mGEFF = 0, GHP = 0, minGHP = 0;//Ghost's stats (they change later)
         public bool[] WarriorwST = new bool[4] { false, false, false, false };
         public bool[] ArcherwST = new bool[4] { false, false, false, false };
         public bool[] WizardwST = new bool[4] { false, false, false, false };
         public bool[] DruidwST = new bool[4] { false, false, false, false };
-        public bool[] filler = new bool[4] { false, false, false, false };
-        //never used in reality by some player
 
-        //Everybody has the same pattern of walls Slipped Through - player can slpi only if they have not done it yet.
+        //Everybody has the same pattern of walls Slipped Through - player can slip only if they have not done it yet.
         //In the beginning none is slipped and when a player slips it changes to true
 
         //First create template objects for CombatCard templates
@@ -99,17 +101,17 @@ namespace Slip_through
         }
         public void createCardsFromTemplates() //once at the beginning
         {
-            WarriorCardTemplate = new("Warrior", WATT, mWATT, WDEF, mWDEF, WEFF, mWEFF, WHP, minWHP, WarriorwST, Properties.Resources.warrior);
-            ArcherCardTemplate = new("Archer", AATT, mAATT, ADEF, mADEF, AEFF, mAEFF, AHP, minAHP, ArcherwST, Properties.Resources.archer);
-            WizardCardTemplate = new("Wizard", WiATT, mWiATT, WiDEF, mWiDEF, WiEFF, mWiEFF, WiHP, minWiHP, WizardwST, Properties.Resources.wizard);
-            DruidCardTemplate = new("Druid", DATT, mDATT, DDEF, mDDEF, DEFF, mDEFF, DHP, minDHP, DruidwST, Properties.Resources.druid);
-            WolfCardTemplate = new("Wolf", WoATT, mWoATT, WoDEF, mWoDEF, WoEFF, mWoEFF, WoHP, minWoHP, filler, Properties.Resources.wolf);
-            WerewolfCardTemplate = new("Werewolf", WeATT, mWeATT, WeDEF, mWeDEF, WeEFF, mWeEFF, WeHP, minWeHP, filler, Properties.Resources.werewolf);
-            CerberusCardTemplate = new("Cerberus", CATT, mCATT, CDEF, mCDEF, CEFF, mCEFF, CHP, minCHP, filler, Properties.Resources.cerberus);
-            WarriorGhostCardTemplate = new("Warrior's Ghost", GATT, mGATT, GDEF, mGDEF, GEFF, mGEFF, GHP, minGHP, filler, Properties.Resources.warrior_negate);
-            ArcherGhostCardTemplate = new("Archer's Ghost", GATT, mGATT, GDEF, mGDEF, GEFF, mGEFF, GHP, minGHP, filler, Properties.Resources.archer_negate);
-            WizardGhostCardTemplate = new("Wizard's Ghost", GATT, mGATT, GDEF, mGDEF, GEFF, mGEFF, GHP, minGHP, filler, Properties.Resources.wizard_negate);
-            DruidGhostCardTemplate = new("Druid's Ghost", GATT, mGATT, GDEF, mGDEF, GEFF, mGEFF, GHP, minGHP, filler, Properties.Resources.druid_negate);
+            WarriorCardTemplate = new("Warrior",    S[0, 0], S[0, 1], S[0, 2], S[0, 3], S[0, 4], S[0, 5], S[0, 6], S[0, 7], WarriorwST, Properties.Resources.warrior);
+            ArcherCardTemplate = new("Archer",      S[1, 0], S[1, 1], S[1, 2], S[1, 3], S[1, 4], S[1, 5], S[1, 6], S[1, 7], ArcherwST, Properties.Resources.archer);
+            WizardCardTemplate = new("Wizard",      S[2, 0], S[2, 1], S[2, 2], S[2, 3], S[2, 4], S[2, 5], S[2, 6], S[2, 7], WizardwST, Properties.Resources.wizard);
+            DruidCardTemplate = new("Druid",        S[3, 0], S[3, 1], S[3, 2], S[3, 3], S[3, 4], S[3, 5], S[3, 6], S[3, 7], DruidwST, Properties.Resources.druid);
+            WolfCardTemplate = new("Wolf",                      E[0, 0], E[0, 1], E[0, 2], E[0, 3], Properties.Resources.wolf);
+            WerewolfCardTemplate = new("Werewolf",              E[1, 0], E[1, 1], E[1, 2], E[1, 3], Properties.Resources.werewolf);
+            CerberusCardTemplate = new("Cerberus",              E[2, 0], E[2, 1], E[2, 2], E[2, 3], Properties.Resources.cerberus);
+            WarriorGhostCardTemplate = new("Warrior's Ghost",   E[3, 0], E[3, 1], E[3, 2], E[3, 3], Properties.Resources.warrior_negate);
+            ArcherGhostCardTemplate = new("Archer's Ghost",     E[3, 0], E[3, 1], E[3, 2], E[3, 3], Properties.Resources.archer_negate);
+            WizardGhostCardTemplate = new("Wizard's Ghost",     E[3, 0], E[3, 1], E[3, 2], E[3, 3], Properties.Resources.wizard_negate);
+            DruidGhostCardTemplate = new("Druid's Ghost",       E[3, 0], E[3, 1], E[3, 2], E[3, 3], Properties.Resources.druid_negate);
 
             //one object created based on another object, but one is used in a game, and other can be set outside of a game (customed by player)
             WarriorCard = new(WarriorCardTemplate);
@@ -277,8 +279,8 @@ namespace Slip_through
                 else if (player.name == "Druid")
                     enemy = DruidGhostCard;
 
-                //there are templates if i wanted to set custom stats for each ghost
-                //#Boss stats (over all - jsut a bit weaker than you, with 50% chance for att and def and high hp)
+                //there are templates if i wanted to set custom S for each ghost
+                //#Boss S (over all - jsut a bit weaker than you, with 50% chance for att and def and high hp)
                 enemy.attack = player.attack - 1;
                 if (player.defence != 0)
                     enemy.defence = player.defence - 1;
@@ -375,18 +377,18 @@ namespace Slip_through
                     damage = damage >= 1 ? damage : 1;      //it can only go down to 1, no lower (to avoid infinite loops)
                     enemy.hitPoints -= damage;              //enemy loses health
 
-                    animatePlayerAttack();
+                    //animatePlayerAttack();
 
                     combatText += $"{enemy.hitPoints}\n";
                     setCombatText(combatText);
 
-                    displayEnemyInfo();                     //show changed stats and refresh the view
+                    displayEnemyInfo();                     //show changed S and refresh the view
                 }
                 else
                 {
                     combatText += $"enemy   |{diceRoll}   |>{condition1}  |false  |";
 
-                    aniematePlayerAttackFail();
+                    //animatePlayerAttackFail();
 
                     combatText += $"{enemy.hitPoints}\n";
                     setCombatText(combatText);
@@ -413,18 +415,18 @@ namespace Slip_through
                     damage = damage >= 1 ? damage : 1;      //it can only go down to 1, no lower (to avoid infinite loops) same as for player
                     player.hitPoints -= damage;
 
-                    animateEnemyAttack();
+                    //animateEnemyAttack();
 
                     combatText += $"{player.hitPoints}\n";
                     setCombatText(combatText);
 
-                    displayPlayerInfo();                     //show changed stats and refresh the view
+                    displayPlayerInfo();                     //show changed S and refresh the view
                 }
                 else
                 {
                     combatText += $"player  |{diceRoll}   |<={condition2} |false  |";
 
-                    animateEnemyAttackFail();
+                    //animateEnemyAttackFail();
 
                     combatText += $"{player.hitPoints}\n";
                     setCombatText(combatText);
@@ -449,7 +451,7 @@ namespace Slip_through
             tableLayoutPanelPlayer.Update();
             tableLayoutPanelEnemy.Update();
         }
-        private void aniematePlayerAttackFail()
+        private void animatePlayerAttackFail()
         {
             //animate both of the panels to signify a miss 
             //imidiately move player out of the enemy's reach
@@ -478,7 +480,7 @@ namespace Slip_through
         }
         private void animateEnemyAttack()
         {
-            //animate a kind of smoothish attack
+            ////animate a kind of smoothish attack
             tableLayoutPanelEnemy.BringToFront();
             tableLayoutPanelEnemy.Location = new Point(tableLayoutPanelEnemy.Location.X, tableLayoutPanelEnemy.Location.Y - 100);
             tableLayoutPanelEnemy.Update();
@@ -496,7 +498,7 @@ namespace Slip_through
         }
         private void animateEnemyAttackFail()
         {
-            //animate both of the panels to signify a miss 
+            ////animate both of the panels to signify a miss 
             //imidiately move player out of the enemy's reach
             tableLayoutPanelPlayer.Location = new Point(tableLayoutPanelPlayer.Location.X, tableLayoutPanelPlayer.Location.Y - 25);
             tableLayoutPanelPlayer.Update();
@@ -554,7 +556,7 @@ namespace Slip_through
         {
             //load that player's info to the window elements to be shown
             pictureBoxPlayer.Image = player.bitmapImage;                    //big main picture on the right
-            labelPlayerAttack.Text = player.attack.ToString();              //following stats
+            labelPlayerAttack.Text = player.attack.ToString();              //following S
             labelPlayerDefense.Text = player.defence.ToString();
             labelPlayerEffectiveness.Text = player.effectiveness.ToString();
             labelPlayerHitPoints.Text = player.hitPoints.ToString();
@@ -577,7 +579,7 @@ namespace Slip_through
         }
         private void getReward()
         {
-            setAddButtonsVisibility(true);          //show the buttons related to increasing stats
+            setAddButtonsVisibility(true);          //show the buttons related to increasing S
             buttonAddATT.Focus();                   //mark it as ready to be clicked, create a blue rectangle on the button
             setMovementButtonsVisibility(false);    //hide the buttons related to movement
         }
@@ -900,7 +902,7 @@ namespace Slip_through
                     pictureBoxWarrior.Parent = panel1;
                     pictureBoxWarrior.Update();
 
-                    //reset stats to default (reverse stat increases and hp drops) OR SET STATS TO NEWLY SET CUSTOM VALUES IN Characters WINDOW
+                    //reset S to default (reverse stat increases and hp drops) OR SET S TO NEWLY SET CUSTOM VALUES IN Characters WINDOW
                     WarriorCard = new(WarriorCardTemplate);
 
                     //for picture boxes
@@ -964,7 +966,7 @@ namespace Slip_through
                 WerewolfCard = new(WerewolfCardTemplate);
                 CerberusCard = new(CerberusCardTemplate);
 
-                //update player card in player's panel, so that it shows reseted stats and not the ones from previous game
+                //update player card in player's panel, so that it shows reseted S and not the ones from previous game
                 currentPlayerPictureBox.BorderStyle = BorderStyle.None;  //back to normal
                 currentPlayerPictureBox.Update();
 

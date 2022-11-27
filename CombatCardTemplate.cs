@@ -13,7 +13,7 @@
         //from CombatCardTemplate the class you make WarriorCardTemplate the object
         //then you can use the WarriorCardTemplate to affect new WarriorCard objects
         //which is usefull if the player wants to customize his warrior and others
-        public CombatCardTemplate(String name, int attack, int maxAttack, int defence, int maxDefence,
+        public CombatCardTemplate(string name, int attack, int maxAttack, int defence, int maxDefence,
             int effectiveness, int maxEffectiveness, int maxHP, int minHP, bool[] wallsSlippedThrough, Bitmap bitmapImage)
         {
             this.name = name;
@@ -26,6 +26,18 @@
             this.maxHP = maxHP;
             this.minHP = minHP;
             this.wallsSlippedThrough = wallsSlippedThrough;
+            this.bitmapImage = bitmapImage;
+        }
+
+        //for enemies (they don't need walls slipped through array and max stats)
+        public CombatCardTemplate(string name, int attack, int defence,
+            int effectiveness, int maxHP, Bitmap bitmapImage)
+        {
+            this.name = name;
+            this.attack = attack;
+            this.defence = defence;
+            this.effectiveness = effectiveness;
+            this.maxHP = maxHP;
             this.bitmapImage = bitmapImage;
         }
     }
