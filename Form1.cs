@@ -251,8 +251,35 @@ namespace Slip_through
                         panelNumberInt++;                               //just mark next panel as destination
 
                     //place the player on destination tile and update it
-                    currentPlayerPictureBox.Parent = panelArray[panelNumberInt - 1]; //-1 is because panel1 has index 0 : x on x-1
+                    currentPlayerPictureBox.Parent = panelArray[panelNumberInt - 1]; //-1 is because panel1 has index 0 and panel 'x' hasss index of 'x-1'
                     currentPlayerPictureBox.Update();
+
+                    //if it's the last iteration of movement - if the character is on his last tile
+                    if (i==steps-1)
+                    {
+                        //if there is someone on the last tile of movement and it's not me XD
+                        if (pictureBoxWarrior.Parent == panelArray[panelNumberInt - 1] && currentPlayerPictureBox != pictureBoxWarrior)
+                        { 
+                            //-2 is because panel1 has index 0 and panel 'x' hasss index of 'x-1' and additionaly -1 for displacement to the back
+                            pictureBoxWarrior.Parent = panelArray[panelNumberInt - 2];
+                            pictureBoxWarrior.Update();
+                        }
+                        if (pictureBoxArcher.Parent == panelArray[panelNumberInt - 1] && currentPlayerPictureBox != pictureBoxArcher)
+                        {
+                            pictureBoxArcher.Parent = panelArray[panelNumberInt - 2];
+                            pictureBoxArcher.Update();
+                        }
+                        if (pictureBoxWizard.Parent == panelArray[panelNumberInt - 1] && currentPlayerPictureBox != pictureBoxWizard)
+                        {
+                            pictureBoxWizard.Parent = panelArray[panelNumberInt - 2];
+                            pictureBoxWizard.Update();
+                        }
+                        if (pictureBoxDruid.Parent == panelArray[panelNumberInt - 1] && currentPlayerPictureBox != pictureBoxDruid)
+                        {
+                            pictureBoxDruid.Parent = panelArray[panelNumberInt - 2];
+                            pictureBoxDruid.Update();
+                        }
+                    }
                 }
             }
         }
