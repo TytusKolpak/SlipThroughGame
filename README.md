@@ -49,6 +49,7 @@ Along the path there are increasingly difficult to defeat enemies trying to kill
 	- Such action can be performed only once per wall.
 - The order in which players move is set to warrior -> archer -> wizard -> s, after last players turn end a new round begins.
 - Instead of movement, the player can choose to rest. If they do, then they stay on the tile they started and heal by 4HP (but limited by their maxHP).
+- When a player finishes a move on a field with one or more other players alredy on it, they are moved back by 1 tile.
 
 ### Combat rules
 
@@ -101,4 +102,3 @@ Ghost is the game's boss. Ghost's statistics are defined by the character who at
 | 20  | 19  | 18  | 17  | 16  |
 | 21  | 22  | 23  | 24  | 25  |
 | 30  | 29  | 28  | 27  | 26  |
-
