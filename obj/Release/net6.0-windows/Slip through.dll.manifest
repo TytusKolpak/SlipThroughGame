@@ -63,22 +63,22 @@
       <dsig:DigestValue>ldGJrC1lkvBi+WGmGJajCUbM1m2mROd9qyXjZhDFkpU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Slip through.dll" size="1357312">
+  <file name="Slip through.dll" size="1357824">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Mxz10Tlx+OZu5uIevmcJ3EXENLNoN3ixNUshcctPihM=</dsig:DigestValue>
+      <dsig:DigestValue>Pp2Tx1shFfewNnjbHyWLcs+1IUkay6H7F60Sf0BBbDU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Slip through.exe" size="160256">
+  <file name="Slip through.exe" size="160768">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>J5o8pj5bgD4ncwXvbisoW8B3R8jvH+7wkSrJKHl3LRI=</dsig:DigestValue>
+      <dsig:DigestValue>/v1UmfOL1tQqHLFT3uWxBhYF4E8vu3pwaowYh42EULc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Slip through.runtimeconfig.json" size="372">
