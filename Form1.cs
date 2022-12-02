@@ -21,7 +21,8 @@ namespace Slip_through
         bool wizardCreatedImage = false;
         bool druidSummonedBoar = false;
         int iterationMs = 200;
-        int panelNumberInt = 0;
+        //int panelNumberInt = 0;
+        public int panelNumberInt = 0;
         int playerNr = 0;
         int turnCounter = 1;
         int numberOfPlayers;
@@ -105,6 +106,8 @@ namespace Slip_through
             flowLayoutLongLog.Visible = false;
             setAddButtonsVisibility(false);
             buttonOK.Visible = false;
+
+            
         }
         public void createCardsFromTemplates()
         {                                                     // att     max att  def      max def  eff      max eff  max hp   min hp   slip enabler picture
@@ -357,7 +360,7 @@ namespace Slip_through
                 else if (player.name == "Druid")
                     messageBoxContent += druidAbility;
 
-                DialogResult result = MessageBox.Show(messageBoxContent, "Special ability", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(messageBoxContent, "Special ability", MessageBoxButtons.YesNo);
                 //program will wait until YES or NO is clicked 
 
                 if (result == DialogResult.Yes)
@@ -763,7 +766,7 @@ namespace Slip_through
             displayPlayerInfo();    //of the next player
             flowLayoutLongLog.Visible = false;
         }
-        private void Form1_Resize(object sender, System.EventArgs e)
+        private void Form1_Resize(object sender, EventArgs e)
         {
             //make them approximately half of the tile - always, and start form the 0,0 or 0,y/2 or x/2,0 point
             //where x,y are the width and height of the tile they are on
@@ -778,7 +781,7 @@ namespace Slip_through
             pictureBoxDruid.Size = new Size(width, height);
             pictureBoxDruid.Location = new Point(width + 2, height + 2);
         }
-        private void mainSequence(int distanceChoice)
+        public void mainSequence(int distanceChoice)
         {
             movementElement(distanceChoice);            //carry out all actions related to movement
 
@@ -836,6 +839,7 @@ namespace Slip_through
             if (panelNumberInt <= 27)
                 mainSequence(3);
         }//move by 3
+
         private void button4_Click(object sender, EventArgs e)
         {
             if (panelNumberInt <= 26)
