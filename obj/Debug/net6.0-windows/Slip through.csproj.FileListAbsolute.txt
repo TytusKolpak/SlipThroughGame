@@ -40,3 +40,4 @@ C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Coding\Taka Gierka Autorska\Slip through
 C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Coding\Taka Gierka Autorska\Slip through - The game\obj\Debug\net6.0-windows\Slip through.pdb
 C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Coding\Taka Gierka Autorska\Slip through - The game\obj\Debug\net6.0-windows\Slip through.genruntimeconfig.cache
 C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Coding\Taka Gierka Autorska\Slip through - The game\obj\Debug\net6.0-windows\ref\Slip through.dll
+C:\.STUDIA AGH\WIMIIP IT\SEMESTR 9\Inne\Coding\Taka Gierka Autorska\Slip through - The game\obj\Debug\net6.0-windows\Slip_through.MyMessage.resources

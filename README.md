@@ -30,11 +30,7 @@ I additionally encourage you, to create a shortcut of this file and put it on th
 
 ### Game overview
 
-The game is supposed to be a digital version of a simple board game for 1-4 people.
-It is played on a board with 30 tiles in a grid pattern - with 6 rows and 5 columns.
-Players move through the board, along single path, that can be changed if the player wants it.
-The goal of the game is to get to the end, to the 30th tile before other players do so.
-Along the path there are increasingly difficult to defeat enemies trying to kill you, in which case you are placed on the 1st tile of the board.
+The game is supposed to be a digital version of a simple board game for 1-4 people. It is played on a board with 30 tiles in a grid pattern - with 6 rows and 5 columns. Players move through the board, along single path, that can be changed if the player wants it. The goal of the game is to get to the end, to the 30th tile before other players do so. Along the path there are enemies trying to kill You. It gets increasingly more difficult to defeat enemies. If they manage to kill you, then you are placed on the 1st tile of the board and You begin the whole journey anew.
 
 ### Movement rules
 
