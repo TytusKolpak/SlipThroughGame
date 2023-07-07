@@ -11,3 +11,5 @@ obj/Debug/net6.0-windows/Slip through.pdb
 .vs/Slip through/DesignTimeBuild/.dtbcache.v2
 .vs/ProjectEvaluation/slip through.projects.v5.1
 .vs/ProjectEvaluation/slip through.metadata.v5.1
+*.editorconfig
+*.cache
