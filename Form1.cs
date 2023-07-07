@@ -360,9 +360,6 @@ namespace Slip_through
                 else if (player.name == "Druid")
                     messageBoxContent += druidAbility;
 
-                MyMessage myMessage = new MyMessage();
-                myMessage.Show();
-
                 DialogResult result = MessageBox.Show(messageBoxContent, "Special ability", MessageBoxButtons.YesNo);
                 //program will wait until YES or NO is clicked 
 
